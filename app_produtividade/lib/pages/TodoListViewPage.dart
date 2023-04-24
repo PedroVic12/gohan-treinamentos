@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gohan_treinamentos_app/models/TodoList.dart';
+import 'package:app_produtividade/models/TodoList.dart';
 
 class TodoListViewPage extends StatefulWidget {
   const TodoListViewPage({super.key});

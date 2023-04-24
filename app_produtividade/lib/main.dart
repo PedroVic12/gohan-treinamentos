@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:gohan_treinamentos_app/models/TodoList.dart';
-import 'package:gohan_treinamentos_app/pages/GetXHomePage.dart';
-import 'package:gohan_treinamentos_app/pages/home_page.dart';
-import 'package:gohan_treinamentos_app/pages/page1.dart';
-import 'package:gohan_treinamentos_app/pages/page2.dart';
-import 'package:gohan_treinamentos_app/pages/page3.dart';
-import 'package:gohan_treinamentos_app/provider/menu_provider.dart';
+import 'package:app_produtividade/models/TodoList.dart';
+import 'package:app_produtividade/pages/GetXHomePage.dart';
+import 'package:app_produtividade/pages/home_page.dart';
+import 'package:app_produtividade/pages/page1.dart';
+import 'package:app_produtividade/pages/page2.dart';
+import 'package:app_produtividade/pages/page3.dart';
+import 'package:app_produtividade/provider/menu_provider.dart';
 import 'package:provider/provider.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];

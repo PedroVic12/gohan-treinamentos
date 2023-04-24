@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gohan_treinamentos_app/controllers/TodoController.dart';
-import 'package:gohan_treinamentos_app/pages/TodoListViewPage.dart';
-import 'package:gohan_treinamentos_app/pages/TodoScreen.dart';
+import 'package:app_produtividade/controllers/TodoController.dart';
+import 'package:app_produtividade/pages/TodoListViewPage.dart';
+import 'package:app_produtividade/pages/TodoScreen.dart';
 
 //packages
 import 'dart:convert';

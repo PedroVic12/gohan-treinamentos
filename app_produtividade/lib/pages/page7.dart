@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gohan_treinamentos_app/controllers/TodoController.dart';
-import 'package:gohan_treinamentos_app/pages/TodoScreen.dart';
-import 'package:gohan_treinamentos_app/widgets/CustomContainer.dart';
-import 'package:gohan_treinamentos_app/widgets/ScrollTela.dart';
-import 'package:gohan_treinamentos_app/pages/TodoListPage.dart';
-import 'package:gohan_treinamentos_app/widgets/YoutubePlayer.dart';
+import 'package:app_produtividade/controllers/TodoController.dart';
+import 'package:app_produtividade/pages/TodoScreen.dart';
+import 'package:app_produtividade/widgets/CustomContainer.dart';
+import 'package:app_produtividade/widgets/ScrollTela.dart';
+import 'package:app_produtividade/pages/TodoListPage.dart';
+import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:http/http.dart';
 
 //! Refatorar esse codigo para ficar funcional e arrumar que eu usei a todo List aqui

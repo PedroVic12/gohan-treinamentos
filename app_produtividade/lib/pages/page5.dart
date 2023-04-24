@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gohan_treinamentos_app/widgets/CustomContainer.dart';
-import 'package:gohan_treinamentos_app/widgets/ScrollTela.dart';
-import 'package:gohan_treinamentos_app/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/CustomContainer.dart';
+import 'package:app_produtividade/widgets/ScrollTela.dart';
+import 'package:app_produtividade/widgets/card_soft.dart';
 
 class Page5 extends StatelessWidget {
   const Page5({Key? key}) : super(key: key);

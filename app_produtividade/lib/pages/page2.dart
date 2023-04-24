@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:gohan_treinamentos_app/widgets/CustomContainer.dart';
-import 'package:gohan_treinamentos_app/widgets/ScrollTela.dart';
-import 'package:gohan_treinamentos_app/widgets/TextRetanguleBox.dart';
-import 'package:gohan_treinamentos_app/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/CustomContainer.dart';
+import 'package:app_produtividade/widgets/ScrollTela.dart';
+import 'package:app_produtividade/widgets/TextRetanguleBox.dart';
+import 'package:app_produtividade/widgets/card_soft.dart';
 
 class Page2 extends StatefulWidget {
   @override

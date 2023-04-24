@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gohan_treinamentos_app/controllers/TodoController.dart';
-import 'package:gohan_treinamentos_app/models/TodoList.dart';
+import 'package:app_produtividade/controllers/TodoController.dart';
+import 'package:app_produtividade/models/TodoList.dart';
 
 //! Todo list padrão
 class TodoScreen extends StatelessWidget {

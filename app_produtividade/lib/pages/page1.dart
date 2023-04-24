@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gohan_treinamentos_app/widgets/CustomContainer.dart';
-import 'package:gohan_treinamentos_app/widgets/ScrollTela.dart';
-import 'package:gohan_treinamentos_app/widgets/YoutubePlayer.dart';
+import 'package:app_produtividade/widgets/CustomContainer.dart';
+import 'package:app_produtividade/widgets/ScrollTela.dart';
+import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});

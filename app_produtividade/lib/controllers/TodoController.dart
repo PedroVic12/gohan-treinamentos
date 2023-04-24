@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:gohan_treinamentos_app/models/TodoList.dart';
+import 'package:app_produtividade/models/TodoList.dart';
 
 class TodoController extends GetxController {
   var todoItens = <TodoList>[].obs;
