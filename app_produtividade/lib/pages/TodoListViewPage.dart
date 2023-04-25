@@ -179,9 +179,12 @@ class TodoControllerGetx extends GetxController {
           '- Capitulo 6 - DSA - Modulos e Pacotes',
           "- Aula 1 Imersao power BI"
         ]),
-    TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
-    TodoList(texto: 'PROJETO CIÊNCIA DE DADOS', done: false, subTitulo: []),
-    TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
+    //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
+    TodoList(
+        texto: 'PROJETO CIÊNCIA DE DADOS - Marketing + Relatórios',
+        done: false,
+        subTitulo: []),
+    //TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
     TodoList(texto: 'PROJETO Flutter Freelancer', done: false, subTitulo: []),
   ].obs;
 
