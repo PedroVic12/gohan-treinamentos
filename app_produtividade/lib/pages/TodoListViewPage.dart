@@ -177,7 +177,8 @@ class TodoControllerGetx extends GetxController {
         done: false,
         subTitulo: [
           '- Capitulo 6 - DSA - Modulos e Pacotes',
-          "- Aula 1 Imersao power BI"
+          "- Data Science Roadmap - 6 Months",
+          '- '
         ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
