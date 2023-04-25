@@ -145,13 +145,14 @@ class TodoControllerGetx extends GetxController {
     TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
     //TodoList(texto: '7 Days MongoDB', done: false, subTitulo: []),
     TodoList(
-        texto: 'Aulas UFF + 5 Exercícios cada matéria',
+        texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
         done: false,
         subTitulo: [
           '- Estudar Eletromagnetismo | P1 = 24/04',
           '- Sinais e Sistemas com muitos exercícios',
-          '- Lista de Exercícios Circuitos ',
-          '- Revisar aula passada de Maquinas Térmicas | P1 = 10/05'
+          '- Lista de Exercícios Circuitos Corrente Continua ',
+          '- Revisar aula passada de Maquinas Térmicas | P1 = 10/05',
+          '- Estrutura de Dados | C++ Ponteiros'
         ]),
     // TodoList(
     //     texto: 'Aula Dart + Arquitetura Limpa (MVC)',
