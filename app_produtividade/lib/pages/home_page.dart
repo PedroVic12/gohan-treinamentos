@@ -154,7 +154,7 @@ class MyHomePage extends StatelessWidget {
               children: <Widget>[
                 //! PARTE DE COMUNICAÇÃO
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 80),
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
@@ -168,9 +168,12 @@ class MyHomePage extends StatelessWidget {
                           link: 'https://www.youtube.com/watch?v=xFWXl8uLFtk'),
 
                       //TODO Colocar as frases dentro de uma lista e que seja aleatoria
-                      const Text(
-                        'Frase do dia: \n"As Pessoas tem que se esforçar e acreditar em si mesmas, assim damos valor a vida porque temos um futuro para viver" \n- Son Goku',
-                        style: TextStyle(fontSize: 25),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        child: const Text(
+                          'Frase do dia: \n"As Pessoas tem que se esforçar e acreditar em si mesmas, assim damos valor a vida porque temos um futuro para viver" \n- Son Goku',
+                          style: TextStyle(fontSize: 25),
+                        ),
                       ),
 
                       //TODO Colocar um cronograma de horarios de estudo aqui
@@ -179,7 +182,10 @@ class MyHomePage extends StatelessWidget {
                         style: TextStyle(fontSize: 30, color: Colors.red),
                       ),
 
-                      TableCustom(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TableCustom(),
+                      ),
 
                       Row(
                         children: const [
