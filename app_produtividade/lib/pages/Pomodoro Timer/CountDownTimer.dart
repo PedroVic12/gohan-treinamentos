@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:app_produtividade/Pomodoro%20Timer/models/TimerModel.dart';
+import 'package:app_produtividade/pages/Pomodoro%20Timer/models/TimerModel.dart';
 
 class CountDownTimer {
   //Atributos

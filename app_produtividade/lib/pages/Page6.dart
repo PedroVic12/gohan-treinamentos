@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:app_produtividade/Pomodoro%20Timer/CountDownTimer.dart';
+import 'package:app_produtividade/pages/Pomodoro%20Timer/CountDownTimer.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../Pomodoro Timer/models/TimerModel.dart';
-import '../Pomodoro Timer/views/ProductivityButton.dart';
+import 'Pomodoro Timer/models/TimerModel.dart';
+import 'Pomodoro Timer/views/ProductivityButton.dart';
 
 //!Paramos na Pagina 93
 
