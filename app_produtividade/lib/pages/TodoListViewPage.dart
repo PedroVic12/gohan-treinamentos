@@ -148,11 +148,11 @@ class TodoControllerGetx extends GetxController {
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
         done: false,
         subTitulo: [
-          '- Estudar Eletromagnetismo | P1 = 24/04',
-          '- Sinais e Sistemas com muitos exercícios',
-          '- Lista de Exercícios Circuitos Corrente Continua ',
-          '- Revisar aula passada de Maquinas Térmicas | P1 = 10/05',
-          '- Estrutura de Dados | C++ Ponteiros'
+          '- Eletromagnetismo | Exercícios aula',
+          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto',
+          '- Circuitos Corrente Continua | Lista de Exercícios ',
+          '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) | P1 = 10/05',
+          '- Estrutura de Dados | Aula invertida'
         ]),
     // TodoList(
     //     texto: 'Aula Dart + Arquitetura Limpa (MVC)',

@@ -19,7 +19,7 @@ class Page1 extends StatelessWidget {
               Card(
                 borderOnForeground: bool.hasEnvironment(AutofillHints.birthday),
                 child: Column(
-                  children: [
+                  children: const [
                     Text('- 10 Pull ups'),
                     Text('- 10 Chin ups'),
                     Text('- 10 Chin ups hold'),
@@ -35,7 +35,7 @@ class Page1 extends StatelessWidget {
               ),
               Card(
                 child: Column(
-                  children: [
+                  children: const [
                     Text('TREINO DE PEITO'),
                     YoutubeLink(
                         link:
@@ -49,7 +49,7 @@ class Page1 extends StatelessWidget {
               Text('TREINO DE COSTAS'),
               Card(
                 child: Column(
-                  children: [
+                  children: const [
                     Text('TREINO DE PERNA'),
                     YoutubeLink(
                         link: 'https://www.youtube.com/watch?v=qLPrPVz4NzQ')
@@ -58,7 +58,7 @@ class Page1 extends StatelessWidget {
               ),
               Card(
                   child: Column(
-                children: [
+                children: const [
                   Text('Calistenics Moves Tutorial',
                       style: TextStyle(fontSize: 30, color: Colors.red)),
                   YoutubeLink(
@@ -67,7 +67,7 @@ class Page1 extends StatelessWidget {
               )),
               Card(
                   child: Column(
-                children: [
+                children: const [
                   Text('TREINO DE ABS',
                       style: TextStyle(fontSize: 30, color: Colors.red)),
                   YoutubeLink(
@@ -76,7 +76,7 @@ class Page1 extends StatelessWidget {
               )),
               Card(
                   child: Column(
-                children: [
+                children: const [
                   Text('Treino Calistenia Moves!',
                       style: TextStyle(fontSize: 30, color: Colors.red)),
                   YoutubeLink(
