@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gohan Treinamentos Version 4 - 26/04/23'),
+        title: const Text('Gohan Treinamentos Version 5 - 27/04/23'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add_alert),

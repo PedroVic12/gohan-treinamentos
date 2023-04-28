@@ -149,8 +149,8 @@ class TodoControllerGetx extends GetxController {
         done: false,
         subTitulo: [
           '- Eletromagnetismo | Exercícios aula',
-          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto',
-          '- Circuitos Corrente Continua | Lista de Exercícios ',
+          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto | P1 = 24/05',
+          '- Circuitos Corrente Continua | Lista de Exercícios = 10/05 ',
           '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) | P1 = 10/05',
           '- Estrutura de Dados | Aula invertida'
         ]),
