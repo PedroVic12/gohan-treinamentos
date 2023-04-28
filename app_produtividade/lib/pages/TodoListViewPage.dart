@@ -140,6 +140,7 @@ Widget buildSubItem(String subItem) {
   );
 }
 
+//!Controlador que alimenta a todoLIST
 class TodoControllerGetx extends GetxController {
   var itens = <TodoList>[
     TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
@@ -176,20 +177,22 @@ class TodoControllerGetx extends GetxController {
         texto: 'Aula Power Bi + Python para Data Science',
         done: false,
         subTitulo: [
-          '- Capitulo 6 - DSA - Modulos e Pacotes',
+          '- Capitulo 6 - DSA - Módulos e Pacotes',
           "- Data Science Roadmap - 6 Months",
           '- Marketing Digital para Data Science'
         ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
-        texto: 'PROJETO CIÊNCIA DE DADOS - Marketing + Relatórios',
+        texto: 'PROJETO CIÊNCIA DE DADOS - Marketing Digital + Relatórios',
         done: false,
         subTitulo: []),
     //TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
-    TodoList(
-        texto: 'PROJETO Flutter Freelancer',
-        done: false,
-        subTitulo: ['- Calendario', '- Crud Database google sheets']),
+    TodoList(texto: 'PROJETO Flutter Freelancer', done: false, subTitulo: [
+      '- Calendario com Gerenciamento de Estado',
+      '- Crud Database google sheets',
+      '- Botões com Horários disponíveis'
+    ]),
+    TodoList(texto: 'PROJETO GeoMarketing', done: false, subTitulo: []),
   ].obs;
 
   void onItemChanged(int index, bool value) {
