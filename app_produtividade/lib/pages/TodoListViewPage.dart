@@ -149,10 +149,10 @@ class TodoControllerGetx extends GetxController {
         done: false,
         subTitulo: [
           '- Eletromagnetismo | Exercícios aula',
-          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto | P1 = 24/05',
+          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
           '- Circuitos Corrente Continua | Lista de Exercícios = 10/05 ',
           '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) | P1 = 10/05',
-          '- Estrutura de Dados | Aula invertida'
+          '- Estrutura de Dados | '
         ]),
     // TodoList(
     //     texto: 'Aula Dart + Arquitetura Limpa (MVC)',
@@ -178,7 +178,7 @@ class TodoControllerGetx extends GetxController {
         subTitulo: [
           '- Capitulo 6 - DSA - Modulos e Pacotes',
           "- Data Science Roadmap - 6 Months",
-          '- '
+          '- Marketing Digital para Data Science'
         ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
