@@ -143,13 +143,13 @@ Widget buildSubItem(String subItem) {
 //!Controlador que alimenta a todoLIST
 class TodoControllerGetx extends GetxController {
   var itens = <TodoList>[
-    TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
+    //TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
     //TodoList(texto: '7 Days MongoDB', done: false, subTitulo: []),
     TodoList(
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
         done: false,
         subTitulo: [
-          '- Eletromagnetismo | Exercícios aula',
+          '- Eletromagnetismo | Exercícios aula + Refazer Prova Antiga',
           '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
           '- Circuitos Corrente Continua | Lista de Exercícios = 10/05 ',
           '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) | P1 = 10/05',
@@ -171,16 +171,14 @@ class TodoControllerGetx extends GetxController {
     TodoList(texto: 'Aula GetX + Flutter Padawan', done: false, subTitulo: [
       "- Flutter Design Telegram: Bloco 3 - 00:32 minutos",
       '- Api Calls',
-      '- DataBase Integration (Autenticação, Data Storage, Cloud Functions)'
+      '- DataBase Integration (Autenticação, Data Storage, Cloud Functions, CRUD com Google Sheets)'
     ]),
-    TodoList(
-        texto: 'Aula Power Bi + Python para Data Science',
-        done: false,
-        subTitulo: [
-          '- Capitulo 6 - DSA - Módulos e Pacotes',
-          "- Data Science Roadmap - 6 Months",
-          '- Marketing Digital para Data Science'
-        ]),
+    TodoList(texto: 'Python para Data Science', done: false, subTitulo: [
+      '- Capitulo 6 - DSA - Módulos e Pacotes',
+      "- Data Science Roadmap - 6 Months",
+      '- Marketing Digital para Data Science',
+      '- Aprender a como fazer relatórios'
+    ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
         texto: 'PROJETO CIÊNCIA DE DADOS - Marketing Digital + Relatórios',
@@ -189,7 +187,6 @@ class TodoControllerGetx extends GetxController {
     //TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
     TodoList(texto: 'PROJETO Flutter Freelancer', done: false, subTitulo: [
       '- Calendario com Gerenciamento de Estado',
-      '- Crud Database google sheets',
       '- Botões com Horários disponíveis'
     ]),
     TodoList(texto: 'PROJETO GeoMarketing', done: false, subTitulo: []),
