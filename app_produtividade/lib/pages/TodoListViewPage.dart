@@ -157,7 +157,7 @@ class TodoControllerGetx extends GetxController {
           '- Eletromagnetismo | Pegar aula passada + Refazer Prova Antiga',
           '- Sinais e Sistemas | Lista exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
           '- Circuitos Corrente Continua | Lei de corrente, nos, Norton, Thevikein, Lista de Exercícios + Simulador = 10/05 ',
-          '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) + 5 Exercícios | P1 = 10/05',
+          '- Maquinas Térmicas | Revisar aula passada (Aula 3,4) + 5 Exercícios | P1 = 10/05',
           '- Estrutura de Dados | Algorítimos Monte Carlo | 19/05 '
         ]),
     // TodoList(
@@ -179,6 +179,7 @@ class TodoControllerGetx extends GetxController {
     TodoList(texto: 'Aula GetX + Flutter Padawan', done: false, subTitulo: [
       '- 5 Widgets para estudo',
       '- Api Calls',
+      '- Saber lidar com erros e Debugar em Flutter',
       '- DataBase Integration (Autenticação, Data Storage, Cloud Functions, CRUD com Google Sheets)'
     ]),
     TodoList(texto: 'Python para Data Science', done: false, subTitulo: [
