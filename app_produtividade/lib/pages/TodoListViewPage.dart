@@ -146,9 +146,9 @@ class TodoControllerGetx extends GetxController {
     //TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
     //TodoList(texto: '7 Days MongoDB', done: false, subTitulo: []),
     TodoList(texto: 'Produtividade + Hábitos', subTitulo: [
-      '- Organização e passar a limpo Tarefas',
+      '- Organização plano de estudos com Metas semanais e do mes',
       '- Ler 1 Capitulo de um Livro',
-      '-Fechar 5 Abas de cada Navegador'
+      '- Fechar 5 Abas de cada Navegador'
     ]),
     TodoList(
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
