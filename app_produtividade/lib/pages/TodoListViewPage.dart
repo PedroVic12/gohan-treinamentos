@@ -192,13 +192,16 @@ class TodoControllerGetx extends GetxController {
     TodoList(
         texto: 'PROJETO CIÊNCIA DE DADOS - Marketing Digital + Relatórios',
         done: false,
-        subTitulo: []),
+        subTitulo: ['- Analise Exploratoria', '- Regressão Linear']),
     //TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
     TodoList(texto: 'PROJETO Flutter Freelancer', done: false, subTitulo: [
-      '- Calendario com Gerenciamento de Estado',
-      '- Botões com Horários disponíveis'
+      '- Botões com Horários disponíveis',
+      '- Outras paginas do App (Login, ServicosPage, HomePage)'
     ]),
     TodoList(texto: 'PROJETO GeoMarketing', done: false, subTitulo: []),
+    TodoList(
+        texto: 'PROJETO Portfolio + Blog com Flutter para Estudos',
+        subTitulo: ['- HomePage', '- Markdown para Flutter'])
   ].obs;
 
   void onItemChanged(int index, bool value) {
