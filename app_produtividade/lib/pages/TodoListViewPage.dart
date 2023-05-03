@@ -158,7 +158,7 @@ class TodoControllerGetx extends GetxController {
           '- Sinais e Sistemas | Lista exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
           '- Circuitos Corrente Continua | Lei de corrente, nos, Norton, Thevikein, Lista de Exercícios + Simulador = 10/05 ',
           '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) + 5 Exercícios | P1 = 10/05',
-          '- Estrutura de Dados | '
+          '- Estrutura de Dados | Algorítimos Monte Carlo | 19/05 '
         ]),
     // TodoList(
     //     texto: 'Aula Dart + Arquitetura Limpa (MVC)',
@@ -167,22 +167,25 @@ class TodoControllerGetx extends GetxController {
     TodoList(
         texto: 'Aula IoT Specialist Arduino | C++ Developer',
         done: false,
-        subTitulo: ['TRABALHO ELETRÔNICA IRRIGAÇÃO INTELIGENTE']),
+        subTitulo: [
+          'TRABALHO ELETRÔNICA IRRIGAÇÃO INTELIGENTE',
+          'Algorítimos de Monte Carlo'
+        ]),
     //TodoList(
     //! Não fiz ainda
     //texto: 'Aula Machine Learning Specialist Python',
     //done: false,
     //subTitulo: []),
     TodoList(texto: 'Aula GetX + Flutter Padawan', done: false, subTitulo: [
-      "- Flutter Design Telegram: Bloco 3 - 00:32 minutos",
+      '- 5 Widgets para estudo',
       '- Api Calls',
       '- DataBase Integration (Autenticação, Data Storage, Cloud Functions, CRUD com Google Sheets)'
     ]),
     TodoList(texto: 'Python para Data Science', done: false, subTitulo: [
       '- Capitulo 6 - DSA - Módulos e Pacotes',
       "- Data Science Roadmap - 6 Months",
-      '- Marketing Digital para Data Science',
-      '- Aprender a como fazer relatórios'
+      '- Livro Marketing Digital para Data Science',
+      '- Aulas de  como fazer relatórios e Dashboards'
     ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
