@@ -145,14 +145,19 @@ class TodoControllerGetx extends GetxController {
   var itens = <TodoList>[
     //TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
     //TodoList(texto: '7 Days MongoDB', done: false, subTitulo: []),
+    TodoList(texto: 'Produtividade + Hábitos', subTitulo: [
+      '- Organização e passar a limpo Tarefas',
+      '- Ler 1 Capitulo de um Livro',
+      '-Fechar 5 Abas de cada Navegador'
+    ]),
     TodoList(
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
         done: false,
         subTitulo: [
-          '- Eletromagnetismo | Exercícios aula + Refazer Prova Antiga',
-          '- Sinais e Sistemas | muitos exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
-          '- Circuitos Corrente Continua | Lista de Exercícios = 10/05 ',
-          '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) | P1 = 10/05',
+          '- Eletromagnetismo | Pegar aula passada + Refazer Prova Antiga',
+          '- Sinais e Sistemas | Lista exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
+          '- Circuitos Corrente Continua | Lei de corrente, nos, Norton, Thevikein, Lista de Exercícios + Simulador = 10/05 ',
+          '- Revisar aula passada de Maquinas Térmicas (Aula 3,4) + 5 Exercícios | P1 = 10/05',
           '- Estrutura de Dados | '
         ]),
     // TodoList(
