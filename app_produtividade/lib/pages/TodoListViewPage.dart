@@ -148,7 +148,8 @@ class TodoControllerGetx extends GetxController {
     TodoList(texto: 'Produtividade + Hábitos', subTitulo: [
       '- Organização plano de estudos com Metas semanais e do mes',
       '- Ler 1 Capitulo de um Livro',
-      '- Fechar 5 Abas de cada Navegador'
+      '- Fechar 5 Abas de cada Navegador',
+      //'- Organização desse App'
     ]),
     TodoList(
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
