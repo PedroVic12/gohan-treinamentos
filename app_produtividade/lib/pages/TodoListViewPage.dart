@@ -186,7 +186,7 @@ class TodoControllerGetx extends GetxController {
       '- Capitulo 6 - DSA - Módulos e Pacotes',
       "- Data Science Roadmap - 6 Months",
       '- Livro Marketing Digital para Data Science',
-      '- Aulas de  como fazer relatórios e Dashboards'
+      '- Aulas de  como fazer relatórios em PDF e Dashboards com Excel e Tableau'
     ]),
     //TodoList(texto: 'PROJETO JARVIS - Robótica', done: false, subTitulo: []),
     TodoList(
