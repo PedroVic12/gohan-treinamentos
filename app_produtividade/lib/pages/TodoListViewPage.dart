@@ -145,7 +145,7 @@ class TodoControllerGetx extends GetxController {
   var itens = <TodoList>[
     //TodoList(texto: '7 Days Aulas Data Science', done: false, subTitulo: []),
     //TodoList(texto: '7 Days MongoDB', done: false, subTitulo: []),
-    TodoList(texto: 'Produtividade + Hábitos', subTitulo: [
+    TodoList(texto: 'Produtividade + Hábitos [aula] ', subTitulo: [
       '- Organização plano de estudos com Metas semanais e do mes',
       '- Ler 1 Capitulo de um Livro',
       '- Fechar 5 Abas de cada Navegador',
@@ -183,7 +183,7 @@ class TodoControllerGetx extends GetxController {
       '- Saber lidar com erros e Debugar em Flutter',
       '- DataBase Integration (Autenticação, Data Storage, Cloud Functions, CRUD com Google Sheets)'
     ]),
-    TodoList(texto: 'Python para Data Science', done: false, subTitulo: [
+    TodoList(texto: 'Aula Python para Data Science', done: false, subTitulo: [
       '- Capitulo 6 - DSA - Módulos e Pacotes',
       "- Data Science Roadmap - 6 Months",
       '- Livro Marketing Digital para Data Science',
