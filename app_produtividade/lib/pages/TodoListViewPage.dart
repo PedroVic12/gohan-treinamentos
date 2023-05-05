@@ -36,15 +36,15 @@ class _TodoListViewState extends State<TodoListViewPage> {
               : projetoList;
 
           return sectionItems.isEmpty // não mostrar seção se não houver itens
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Center(
                         child: Container(
-                          padding: EdgeInsets.all(7.0),
+                          padding: const EdgeInsets.all(7.0),
                           decoration: BoxDecoration(
                             border:
                                 Border.all(width: 3, color: Colors.redAccent),
@@ -52,14 +52,14 @@ class _TodoListViewState extends State<TodoListViewPage> {
                           ),
                           child: Text(
                             sectionTitle,
-                            style: TextStyle(fontSize: 28.0),
+                            style: const TextStyle(fontSize: 28.0),
                           ),
                         ),
                       ),
                     ),
                     ListView.builder(
                       shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       itemCount: sectionItems.length,
                       itemBuilder: (context, index) {
                         final item = sectionItems[index];
@@ -77,7 +77,7 @@ class _TodoListViewState extends State<TodoListViewPage> {
                                         bottom: 10, top: 5),
                                     child: Text(
                                       item.texto,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.purple,
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600),
@@ -89,7 +89,7 @@ class _TodoListViewState extends State<TodoListViewPage> {
                                       if (item.subTitulo.isNotEmpty)
                                         ListView.builder(
                                           shrinkWrap: true,
-                                          physics: ClampingScrollPhysics(),
+                                          physics: const ClampingScrollPhysics(),
                                           itemCount: item.subTitulo.length,
                                           itemBuilder: (context, subIndex) {
                                             final subItem =
@@ -97,7 +97,7 @@ class _TodoListViewState extends State<TodoListViewPage> {
                                             //print(subItem);
                                             return Text(
                                               subItem,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15),
                                             );
