@@ -89,7 +89,8 @@ class _TodoListViewState extends State<TodoListViewPage> {
                                       if (item.subTitulo.isNotEmpty)
                                         ListView.builder(
                                           shrinkWrap: true,
-                                          physics: const ClampingScrollPhysics(),
+                                          physics:
+                                              const ClampingScrollPhysics(),
                                           itemCount: item.subTitulo.length,
                                           itemBuilder: (context, subIndex) {
                                             final subItem =
@@ -149,6 +150,7 @@ class TodoControllerGetx extends GetxController {
       '- Organização plano de estudos com Metas semanais e do mes',
       '- Ler 1 Capitulo de um Livro',
       '- Fechar 5 Abas de cada Navegador',
+      '- Regra 80/20 e 5/25'
       //'- Organização desse App'
     ]),
     TodoList(
