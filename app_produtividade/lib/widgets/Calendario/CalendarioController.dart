@@ -22,13 +22,13 @@ List<String> getServicosDoDiaSelecionado(DateTime diaSelecionado) {
 
 
   // Retorna os eventos do dia selecionado
-  List<EventosCalendario> get selectedEvents {
+ // List<EventosCalendario> get selectedEvents {
 
    // if (_events.value[diaSelecionado] != null) {
      // return _events.value[diaSelecionado]!;
     //} else {
       // Retornar uma lista com um evento padrão
       //return [EventosCalendario(nome_evento: "Nenhum evento disponível", data_hora_evento: DateTime.now(), servicos: ['Sem serviço'])];
-    }
-  }
+    //}
+  //}
 
