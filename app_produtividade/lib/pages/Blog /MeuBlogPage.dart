@@ -5,6 +5,13 @@ class MeuBlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Gohan Treinamentos'),
+      ),
+      body: Center(
+        child: Text('Meu Blog'),
+      ),
+    );
   }
 }

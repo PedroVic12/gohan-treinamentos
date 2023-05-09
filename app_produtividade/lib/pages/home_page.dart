@@ -1,3 +1,4 @@
+import 'package:app_produtividade/pages/Blog%20/MeuBlogPage.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/pages/Page6.dart';
 import 'package:app_produtividade/pages/TodoScreen.dart';
@@ -10,6 +11,12 @@ import 'package:app_produtividade/widgets/TableCustom.dart';
 import 'package:app_produtividade/pages/TodoListPage.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:app_produtividade/widgets/card_soft.dart';
+
+// TODO -> Alarmes diversos para manha, tarde e noite
+// TODO -> COntador de numero de pomodoros ( 2 pomodoros por Tarefa = Ideial | 4 pomodoros = Perfeito)
+// TODO -> Gerar Tarefas aleatorias Manha, Tarde e Noite
+// TODO -> Metas Diarias (4 Tarefas) | Metas Semanais (Aplicação e deploy de 1 Projeto) | Metais Mensais (Renda Extra com algum Projeto + Uso diario de algum APP e postar suas melhorias no Blog + Linkeding)
+// TODO ->
 
 class GohanTreinamentos extends StatelessWidget {
   const GohanTreinamentos({Key? key}) : super(key: key);
@@ -59,6 +66,17 @@ class MyHomePage extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
+            ListTile(
+              title: const Text('Blog + Calendario'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MeuBlogPage(),
+                  ),
+                );
+              },
+            ),
             ListTile(
               title: const Text('Page 1 - Calistenia APP'),
               onTap: () {
