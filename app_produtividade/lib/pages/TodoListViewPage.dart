@@ -157,10 +157,10 @@ class TodoControllerGetx extends GetxController {
         texto: '2 Aulas UFF + 5 Exercícios cada matéria como Revisão',
         done: false,
         subTitulo: [
-          '- Eletromagnetismo | Pegar aula passada + Refazer Prova Antiga',
+          '- Eletromagnetismo | Pegar aula passada + Lista de exercicios| P2 = ',
           '- Sinais e Sistemas | Lista exercícios, Convolução, LIT, Tempo Discreto | P1 = 22/05',
-          '- Circuitos Corrente Continua | Lei de corrente, nos, Norton, Thevikein, Lista de Exercícios + Simulador = 10/05 ',
-          '- Maquinas Térmicas | Revisar aula passada (Aula 3,4) + 5 Exercícios | P1 = 10/05',
+          '- Circuitos Corrente Continua |Análise Modal |Lei de corrente, nos, Norton, Thevikein, Lista de Exercícios + Simulador = 10/05 ',
+          '- Maquinas Térmicas | Avaliação Exercícios | P2 =',
           '- Estrutura de Dados | Algorítimos Monte Carlo | 19/05 '
         ]),
     // TodoList(
@@ -196,7 +196,10 @@ class TodoControllerGetx extends GetxController {
         texto: 'PROJETO CIÊNCIA DE DADOS - Marketing Digital + Relatórios',
         done: false,
         subTitulo: ['- Analise Exploratoria', '- Regressão Linear']),
-    //TodoList(texto: 'PROJETO IoT/ Smart Home', done: false, subTitulo: []),
+    TodoList(
+        texto: 'PROJETO Camorim',
+        done: false,
+        subTitulo: ["- Relatorios tecnicos"]),
     TodoList(texto: 'PROJETO Flutter Freelancer', done: false, subTitulo: [
       '- Botões com Horários disponíveis',
       '- Outras paginas do App (Login, ServicosPage, HomePage)'

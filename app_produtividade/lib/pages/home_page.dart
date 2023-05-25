@@ -51,7 +51,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gohan Treinamentos Version 7 - 05/05/23'),
+        title: const Text('Gohan Treinamentos Version 7 - 25/05/23'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add_alert),
@@ -72,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MeuBlogPage(),
+                    builder: (context) =>  MeuBlogPage(),
                   ),
                 );
               },
