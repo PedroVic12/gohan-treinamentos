@@ -37,10 +37,10 @@ class _MyAppState extends State<MyApp> {
           primaryColor: Colors.indigo,
           colorScheme:
               ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
-          scaffoldBackgroundColor: Colors.black12,
+          scaffoldBackgroundColor: Colors.blueGrey,
           textTheme: const TextTheme(
             bodyText2: TextStyle(
-              color: Colors.red,
+              color: Colors.black,
             ),
           ),
         ),

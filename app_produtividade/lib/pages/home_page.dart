@@ -12,11 +12,14 @@ import 'package:app_produtividade/pages/TodoListPage.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:app_produtividade/widgets/card_soft.dart';
 
+import '5 Hobbies/BlogPage.dart';
+
 // TODO -> Alarmes diversos para manha, tarde e noite
 // TODO -> COntador de numero de pomodoros ( 2 pomodoros por Tarefa = Ideial | 4 pomodoros = Perfeito)
 // TODO -> Gerar Tarefas aleatorias Manha, Tarde e Noite
 // TODO -> Metas Diarias (4 Tarefas) | Metas Semanais (Aplicação e deploy de 1 Projeto) | Metais Mensais (Renda Extra com algum Projeto + Uso diario de algum APP e postar suas melhorias no Blog + Linkeding)
-// TODO ->
+// TODO -> Pagina mudar conforme o tempo Manha, Tarde e Noite
+// TODO -> Quizz App
 
 class GohanTreinamentos extends StatelessWidget {
   const GohanTreinamentos({Key? key}) : super(key: key);
@@ -72,7 +75,7 @@ class MyHomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  MeuBlogPage(),
+                    builder: (context) => BlogPage2(),
                   ),
                 );
               },
