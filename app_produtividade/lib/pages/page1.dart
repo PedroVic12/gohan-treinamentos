@@ -20,6 +20,7 @@ class Page1 extends StatelessWidget {
                 borderOnForeground: bool.hasEnvironment(AutofillHints.birthday),
                 child: Column(
                   children: const [
+                    Text('TREINO DE COSTAS'),
                     Text('- 10 Pull ups'),
                     Text('- 10 Chin ups'),
                     Text('- 10 Chin ups hold'),
@@ -37,6 +38,10 @@ class Page1 extends StatelessWidget {
                 child: Column(
                   children: const [
                     Text('TREINO DE PEITO'),
+                    Text('150 Repetições'),
+                    Text('3x10 {Supino}'),
+                    Text('3x10 {Supino Inclinado}'),
+                    Text('3x10 {Voador}'),
                     YoutubeLink(
                         link:
                             'https://www.youtube.com/watch?v=ypxmdLxCK7k&t=441s'),
@@ -46,7 +51,6 @@ class Page1 extends StatelessWidget {
                   ],
                 ),
               ),
-              Text('TREINO DE COSTAS'),
               Card(
                 child: Column(
                   children: const [

@@ -111,24 +111,25 @@ class _BlogPage2State extends State<BlogPage2> {
             ListView(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.money_off_csred_outlined),
                   title: Text('1) One to build Knowledge'),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.money_off_csred_outlined),
                   title: Text('2) One to make your money'),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.money_off_csred_outlined),
                   title: Text('3) One to keep you in shape'),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.money_off_csred_outlined),
                   title: Text('4) One to grow your mindset'),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.money_off_csred_outlined),
                   title: Text('5) One to stay creactive'),
                 ),
