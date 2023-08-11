@@ -6,6 +6,9 @@ import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 class Page1 extends StatelessWidget {
   const Page1({super.key});
 
+
+  // TODO -> 100 repetiçoes (normal) + 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
