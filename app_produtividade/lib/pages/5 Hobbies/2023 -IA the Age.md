@@ -1,8 +1,6 @@
 # 2023 - Era da I.A
 
-
 ### Manha, Tarde e Noite
-
 
 ## You only need 5 hobbies
 
@@ -23,7 +21,7 @@
 4) One to build Knowledge
 
 - 2 Disciplinas da UFF por Dia
-- 1 Aula + 5 Exericios
+- 2 Aula + 5 Exericios
 
 5) One to grow your mindset
 

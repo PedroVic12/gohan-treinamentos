@@ -1,8 +1,9 @@
 import 'package:app_produtividade/pages/Blog%20/MeuBlogPage.dart';
+import 'package:app_produtividade/widgets/DrawerNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/pages/Page6.dart';
 import 'package:app_produtividade/pages/TodoScreen.dart';
-import 'package:app_produtividade/pages/page1.dart';
+import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:app_produtividade/pages/page3.dart';
 import 'package:app_produtividade/pages/page7.dart';
@@ -66,100 +67,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              title: const Text('Blog + Calendario'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlogPage2(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 1 - Calistenia APP'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Page1(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 2 - Your SuperPower'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Page2(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 3 - Conceitos de Scrum e Produtividade'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Page3(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 4 - Organizador - TODO LIST'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TodoListPage(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 5 - Como o Universo funciona'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Page5(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 6 - Pomodoro Timer'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Page6(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Page 7 - Repositorio'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Page7(),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: DrawerNavigation(),
       //! Código para ter um scroll na minha tela
       body: GestureDetector(
         onHorizontalDragEnd: (DragEndDetails details) {

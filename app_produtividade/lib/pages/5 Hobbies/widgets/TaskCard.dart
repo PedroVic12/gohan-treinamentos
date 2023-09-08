@@ -22,10 +22,7 @@ class TaskCard extends StatelessWidget {
             itemCount: subTasks.length,
             itemBuilder: (context, index) {
               final subTask = subTasks[index];
-              return SubTaskWidget(
-                title: subTask['title'],
-                isChecked: subTask['isChecked'],
-              );
+              return Container();
             },
           ),
         ],
