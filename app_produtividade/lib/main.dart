@@ -1,3 +1,5 @@
+import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
+import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -43,6 +45,16 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
+        initialRoute: '/', // Rota inicial
+        getPages: [
+          GetPage(name: '/', page: () => GohanTreinamentos()),
+          GetPage(name: '/blog', page: () => BlogPage2()),
+          GetPage(name: '/calisteniaApp', page: () => const Page1()),
+          GetPage(name: '/page2', page: () => Page2()),
+          GetPage(name: '/page8', page: () => ListaDeFilmesPage()),
+
+          //... (adicione todas as outras rotas aqui)
+        ],
         home: const GohanTreinamentos());
   }
 }
@@ -54,7 +66,7 @@ class GohanTreinamentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: MyHomePage(), 
+      body: MyHomePage(),
     );
   }
 }

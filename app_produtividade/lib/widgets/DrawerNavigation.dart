@@ -9,6 +9,7 @@ import 'package:app_produtividade/pages/page3.dart';
 import 'package:app_produtividade/pages/page5.dart';
 import 'package:app_produtividade/pages/page7.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DrawerNavigation extends StatelessWidget {
   const DrawerNavigation({super.key});
@@ -21,23 +22,13 @@ class DrawerNavigation extends StatelessWidget {
           ListTile(
             title: const Text('Blog + Calendario'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BlogPage2(),
-                ),
-              );
+              Get.toNamed('/blog');
             },
           ),
           ListTile(
             title: const Text('Page 1 - Calistenia APP'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Page1(),
-                ),
-              );
+              Get.toNamed('/calisteniaApp');
             },
           ),
           ListTile(
@@ -109,12 +100,7 @@ class DrawerNavigation extends StatelessWidget {
           ListTile(
             title: const Text('Page 8 - Lista de Filmes'),
             onTap: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ListaDeFilmesPage(),
-                ),
-              );
+              Get.toNamed('/page8');
             },
           ),
         ],
