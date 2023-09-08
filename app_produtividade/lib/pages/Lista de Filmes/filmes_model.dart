@@ -25,14 +25,14 @@ class Tarefa {
   String? objectId;
   String? descricao;
   bool? concluido;
-  String createdAt; // Este campo é não-nulo
+  String? createdAt; // Este campo é não-nulo
   String? updatedAt;
 
   Tarefa({
     this.objectId,
-    this.descricao,
-    this.concluido,
-    required this.createdAt, // Use "required" para garantir que ele seja sempre fornecido
+    required this.descricao,
+    required this.concluido,
+    this.createdAt, // Use "required" para garantir que ele seja sempre fornecido
     this.updatedAt,
   });
 
@@ -51,6 +51,14 @@ class Tarefa {
     data['concluido'] = concluido;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
+    return data;
+  }
+
+  Map<String, dynamic> toCreateJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['descricao'] = descricao;
+    data['concluido'] = concluido;
+
     return data;
   }
 }

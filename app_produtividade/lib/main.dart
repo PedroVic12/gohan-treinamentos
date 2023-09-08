@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:app_produtividade/models/TodoList.dart';
-import 'package:app_produtividade/pages/GetXHomePage.dart';
 import 'package:app_produtividade/pages/home_page.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
@@ -55,7 +54,7 @@ class GohanTreinamentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: MyHomePage(), //GetxHomePage(),  tem!
+      body: MyHomePage(), 
     );
   }
 }

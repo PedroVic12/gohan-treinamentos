@@ -1,19 +1,9 @@
-import 'package:app_produtividade/pages/Blog%20/MeuBlogPage.dart';
 import 'package:app_produtividade/widgets/DrawerNavigation.dart';
 import 'package:flutter/material.dart';
-import 'package:app_produtividade/pages/Page6.dart';
-import 'package:app_produtividade/pages/TodoScreen.dart';
-import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
-import 'package:app_produtividade/pages/page2.dart';
-import 'package:app_produtividade/pages/page3.dart';
-import 'package:app_produtividade/pages/page7.dart';
-import 'package:app_produtividade/pages/page5.dart';
+
 import 'package:app_produtividade/widgets/TableCustom.dart';
-import 'package:app_produtividade/pages/TodoListPage.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:app_produtividade/widgets/card_soft.dart';
-
-import '5 Hobbies/BlogPage.dart';
 
 // TODO -> Alarmes diversos para manha, tarde e noite
 // TODO -> COntador de numero de pomodoros ( 2 pomodoros por Tarefa = Ideial | 4 pomodoros = Perfeito)
@@ -55,7 +45,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gohan Treinamentos Version 7 - 25/05/23'),
+        title: const Text('Gohan Treinamentos Version 8 - 08/09/23'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add_alert),

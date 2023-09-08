@@ -109,11 +109,10 @@ class DrawerNavigation extends StatelessWidget {
           ListTile(
             title: const Text('Page 8 - Lista de Filmes'),
             onTap: () async {
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ListaDeFilmesPage(),
+                  builder: (context) => ListaDeFilmesPage(),
                 ),
               );
             },
