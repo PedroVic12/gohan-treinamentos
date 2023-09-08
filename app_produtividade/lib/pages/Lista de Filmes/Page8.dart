@@ -17,7 +17,8 @@ class _ListaDeFilmesPageState extends State<ListaDeFilmesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Filmes'),
+        title: Center(child: Text('Lista de Filmes')),
+        automaticallyImplyLeading: false,
         actions: [
           Obx(() => Switch(
                 value: controller.apenasNaoConcluidos.value,

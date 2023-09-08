@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         getPages: [
           GetPage(name: '/', page: () => GohanTreinamentos()),
           GetPage(name: '/blog', page: () => BlogPage2()),
-          GetPage(name: '/calisteniaApp', page: () => const Page1()),
+          GetPage(name: '/calisteniaApp', page: () => Page1()),
           GetPage(name: '/page2', page: () => Page2()),
           GetPage(name: '/page8', page: () => ListaDeFilmesPage()),
 
