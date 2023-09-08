@@ -109,9 +109,6 @@ class DrawerNavigation extends StatelessWidget {
           ListTile(
             title: const Text('Page 8 - Lista de Filmes'),
             onTap: () async {
-              var filme = FilmesRepository();
-              var filmes = await filme.obterFilmes();
-              print(filmes);
 
               Navigator.push(
                 context,

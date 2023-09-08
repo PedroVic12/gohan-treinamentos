@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
               ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
           scaffoldBackgroundColor: Colors.blueGrey,
           textTheme: const TextTheme(
-            bodyText2: TextStyle(
+            bodyMedium: TextStyle(
               color: Colors.black,
             ),
           ),
@@ -55,7 +55,7 @@ class GohanTreinamentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: MyHomePage(), //GetxHomePage(), tambem tem!
+      body: MyHomePage(), //GetxHomePage(),  tem!
     );
   }
 }

@@ -1,7 +1,7 @@
 class FilmesModel {
   List<Tarefa>? results;
 
-  FilmesModel({this.results});
+  FilmesModel({this.results}); // Removido o parâmetro List list
 
   FilmesModel.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
