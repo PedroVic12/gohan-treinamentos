@@ -97,12 +97,12 @@ class Page1 extends StatelessWidget {
         title: const Text('Calistenia APP'),
       ),
       body: ListView(
-        children: [
+        children: const [
           Text('ola mundo'),
           Card(
             borderOnForeground: bool.hasEnvironment(AutofillHints.birthday),
             child: Column(
-              children: const [
+              children: [
                 Text('TREINO DE COSTAS'),
                 Text('- 10 Pull ups'),
                 Text('- 10 Chin ups'),
@@ -119,7 +119,7 @@ class Page1 extends StatelessWidget {
           ),
           Card(
             child: Column(
-              children: const [
+              children: [
                 Text('TREINO DE PEITO'),
                 Text('150 Repetições'),
                 Text('3x10 {Supino}'),
@@ -134,7 +134,7 @@ class Page1 extends StatelessWidget {
           ),
           Card(
             child: Column(
-              children: const [
+              children: [
                 Text('TREINO DE PERNA'),
                 YoutubeLink(link: 'https://www.youtube.com/watch?v=qLPrPVz4NzQ')
               ],
@@ -142,7 +142,7 @@ class Page1 extends StatelessWidget {
           ),
           Card(
               child: Column(
-            children: const [
+            children: [
               Text('Calistenics Moves Tutorial',
                   style: TextStyle(fontSize: 30, color: Colors.red)),
               YoutubeLink(link: 'https://www.youtube.com/watch?v=Jeew_oxr5ZA'),
@@ -150,7 +150,7 @@ class Page1 extends StatelessWidget {
           )),
           Card(
               child: Column(
-            children: const [
+            children: [
               Text('TREINO DE ABS',
                   style: TextStyle(fontSize: 30, color: Colors.red)),
               YoutubeLink(link: 'https://www.youtube.com/watch?v=fpK5VZCwJPY'),
@@ -158,7 +158,7 @@ class Page1 extends StatelessWidget {
           )),
           Card(
               child: Column(
-            children: const [
+            children: [
               Text('Treino Calistenia Moves!',
                   style: TextStyle(fontSize: 30, color: Colors.red)),
               YoutubeLink(link: 'https://www.youtube.com/watch?v=0cMXdZL9ESA'),

@@ -1,15 +1,13 @@
-import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
-import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:app_produtividade/models/TodoList.dart';
 import 'package:app_produtividade/pages/home_page.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
-import 'package:app_produtividade/pages/page3.dart';
-import 'package:app_produtividade/provider/menu_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:get_storage/get_storage.dart';
+
+import 'pages/5 Hobbies/BlogPage.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];
 
