@@ -5,7 +5,7 @@ import 'package:app_produtividade/pages/Lista%20de%20Filmes/filmes_repository.da
 import 'package:app_produtividade/pages/Page6.dart';
 import 'package:app_produtividade/pages/TodoListPage.dart';
 import 'package:app_produtividade/pages/page2.dart';
-import 'package:app_produtividade/pages/page3.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/page3.dart';
 import 'package:app_produtividade/pages/page5.dart';
 import 'package:app_produtividade/pages/page7.dart';
 import 'package:flutter/material.dart';
