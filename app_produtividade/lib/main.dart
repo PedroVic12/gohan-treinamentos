@@ -59,16 +59,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 // Page Controller getx
-class GohanTreinamentos extends StatelessWidget {
-  const GohanTreinamentos({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: MyHomePage(),
-    );
-  }
-}
 
 //Page controller Provider
 class PageController extends ChangeNotifier {

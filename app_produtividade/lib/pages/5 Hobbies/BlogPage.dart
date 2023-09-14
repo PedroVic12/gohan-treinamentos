@@ -1,4 +1,8 @@
+import 'package:app_produtividade/pages/5%20Hobbies/HobbiesModel.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/HobbiesPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // TODO -> You only Need 5 Hobbies
 //
@@ -11,132 +15,145 @@ import 'package:flutter/material.dart';
 /// TODO -> Organização + Planejamento + Metas
 
 class BlogPage2 extends StatefulWidget {
-  const BlogPage2({super.key});
+  BlogPage2({super.key});
 
   @override
   State<BlogPage2> createState() => _BlogPage2State();
 }
 
 class _BlogPage2State extends State<BlogPage2> {
+  final List<Hobby> hobbies = [
+    Hobby(
+        title: "One to make your money",
+        description:
+            "Estágio em Engenharia, Citta Delivery App, Iniciação Cientifica"),
+
+    Hobby(
+        title: "One to keep you in shape",
+        description:
+            "Calistenia App + Movimentos Calistenicos, Treino Academia + Força"),
+
+    Hobby(
+        title: "One to build Knowledge",
+        description: " 2 Disciplinas da UFF por Dia , 2 Aula + 5 Exericios"),
+
+    Hobby(
+        title: "One to grow your mindset",
+        description: "Fazer 1 Projeto que Resolva problemas"),
+
+    Hobby(
+        title: "One to stay creactive",
+        description:
+            "Ler 1 Livro, Documentario, Material de Apoio de algo Revolucionario"),
+
+    // ... adicione outros hobbies aqui
+  ];
+  int get totalHobbiesCount =>
+      hobbies.fold(0, (previousValue, hobby) => previousValue + hobby.count);
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCounts();
+  }
+
+  _loadCounts() async {
+    final prefs = await SharedPreferences.getInstance();
+    for (int i = 0; i < hobbies.length; i++) {
+      hobbies[i].count = prefs.getInt('hobby_count_$i') ?? 0;
+    }
+    setState(() {});
+  }
+
+  _saveCounts() async {
+    final prefs = await SharedPreferences.getInstance();
+    for (int i = 0; i < hobbies.length; i++) {
+      prefs.setInt('hobby_count_$i', hobbies[i].count);
+    }
+  }
+
+  _resetCounts() {
+    for (var hobby in hobbies) {
+      hobby.count = 0;
+    }
+    _saveCounts();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gohan Treinamentos'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: _resetCounts,
+            tooltip: "Reset counts",
+          ),
+        ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // TODO -> Transformar num Widget
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Text(
-                        'Dicas de uma I.A para aprender melhor e ser mais Produtivo',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const Divider(),
-                    ListView(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+      body: Column(
+        children: [
+          // TODO -> Transformar num Widget
+
+          const Text('Segunda, 12/06/2023'),
+          // CheckBox
+
+          const Text('You Only Need 5 hobbies'),
+
+          const Text('Entender -> Aprender -> Praticar -> Aplicar'),
+          Expanded(
+            child: ListView.builder(
+              itemCount: hobbies.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  margin: const EdgeInsets.all(8.0),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    title: Text(hobbies[index].title),
+                    subtitle: Text(hobbies[index].description),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              ' Divida as tarefas maiores em tarefas menores e mais gerenciáveis. Priorize as tarefas com base em sua importância e prazos.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Defina metas realistas: Estabeleça metas realistas para cada dia, levando em consideração suas limitações e a quantidade de trabalho que pode ser concluída em um determinado período de tempo. Evite sobrecarregar-se com expectativas irreais.\n\nEstabeleça metas claras: Defina metas específicas para cada sessão de estudo, seja por tópico, capítulo ou quantidade de exercícios a serem concluídos. Isso ajudará a direcionar seu foco e acompanhar seu progresso.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Revise regularmente: Dedique tempo regularmente para revisar o material já estudado. A revisão espaçada, onde você revisita o conteúdo em intervalos regulares, ajuda a fortalecer a retenção e a memória a longo prazo.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Use técnicas de gestão de tempo e produtividade como Pomodoro'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Varie as técnicas de estudo: Além de resolver questões, experimente outras técnicas de aprendizado, como resumos, mapas mentais, gravação de áudio, elaboração de flashcards, discussões em grupo, entre outras. Variedade ajuda a manter o interesse e a reforçar a aprendizagem por meio de diferentes abordagens.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Participe ativamente das aulas: Esteja presente e engajado durante as aulas. Faça anotações, faça perguntas, participe de discussões e atividades práticas. Isso ajudará você a consolidar o que está sendo ensinado e a identificar lacunas em seu entendimento.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Pratique resolução de problemas: Para matérias mais práticas, como programação, resolva problemas e exercícios práticos regularmente. Quanto mais você praticar, melhor se tornará na aplicação dos conceitos e na resolução de desafios.'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Ensine para aprender: Uma ótima maneira de consolidar o que você aprendeu é ensinando-o a outra pessoa. Isso pode ser feito explicando os conceitos em voz alta para si mesmo, gravando vídeos explicativos ou ajudando colegas de classe com dúvidas.'),
-                        ),
-                        const ListTile(
-                            leading: Icon(Icons.check),
-                            title: Text(
-                                'Identifique e minimize as distrações ao seu redor. ')),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text(
-                              'Priorize o autocuidado, incluindo uma boa alimentação, sono adequado e exercícios físicos regulares'),
+                        Text(hobbies[index].count.toString()),
+                        // Update the onPressed callback for the IconButton
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              hobbies[index].count++;
+                              _saveCounts();
+                            });
+                          },
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
-            const Text('Segunda, 12/06/2023'),
-            // CheckBox
-
-            const Text('You Only Need 5 hobbies'),
-            ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              // ignore: prefer_const_literals_to_create_immutables
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 100.0),
+            child: Column(
               children: [
-                const ListTile(
-                  leading: Icon(Icons.money_off_csred_outlined),
-                  title: Text('1) One to build Knowledge'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.money_off_csred_outlined),
-                  title: Text('2) One to make your money'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.money_off_csred_outlined),
-                  title: Text('3) One to keep you in shape'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.money_off_csred_outlined),
-                  title: Text('4) One to grow your mindset'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.money_off_csred_outlined),
-                  title: Text('5) One to stay creactive'),
-                ),
+                Text("Desempenho da semana: ${totalHobbiesCount}/35",
+                    style: TextStyle(fontSize: 20)),
+                LinearProgressIndicator(
+                  value: totalHobbiesCount / 35,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                  backgroundColor: Colors.grey[200],
+                )
               ],
             ),
-          ],
-        ),
+          ),
+
+          //CardProdutividade()
+        ],
       ),
     );
   }
