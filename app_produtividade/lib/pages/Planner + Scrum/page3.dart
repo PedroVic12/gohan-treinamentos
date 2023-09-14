@@ -14,7 +14,7 @@ class Page3 extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Text('Quadro de Organização'),
+            Text('Quadro de Organização - Pagina 163 do Livro Scrum'),
 
             ScrumPlanner(
               headers: const [

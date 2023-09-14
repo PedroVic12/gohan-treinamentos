@@ -1,8 +1,9 @@
+import 'package:app_produtividade/pages/Home%20Page/GohanTreinamentosPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
 import 'package:get/get.dart';
-import 'package:app_produtividade/pages/home_page.dart';
+import 'package:app_produtividade/pages/Home%20Page/home_page.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:get_storage/get_storage.dart';
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/', // Rota inicial
         getPages: [
-          GetPage(name: '/', page: () => GohanTreinamentos()),
+          GetPage(name: '/', page: () => GohanTreinamentosPage()),
           GetPage(name: '/blog', page: () => BlogPage2()),
           GetPage(name: '/calisteniaApp', page: () => Page1()),
           GetPage(name: '/page2', page: () => Page2()),
@@ -53,7 +54,7 @@ class _MyAppState extends State<MyApp> {
 
           //... (adicione todas as outras rotas aqui)
         ],
-        home: const GohanTreinamentos());
+        home: const GohanTreinamentosPage());
   }
 }
 
