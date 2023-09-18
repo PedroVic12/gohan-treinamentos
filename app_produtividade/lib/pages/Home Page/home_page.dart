@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:app_produtividade/widgets/TableCustom.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
-import 'package:app_produtividade/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 
 // TODO -> Alarmes diversos para manha, tarde e noite
 // TODO -> COntador de numero de pomodoros ( 2 pomodoros por Tarefa = Ideial | 4 pomodoros = Perfeito)

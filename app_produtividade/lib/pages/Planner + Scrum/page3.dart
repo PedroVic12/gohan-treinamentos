@@ -1,6 +1,6 @@
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/widgets/ScrumPlanner.dart';
 import 'package:flutter/material.dart';
-import 'package:app_produtividade/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 
 class Page3 extends StatelessWidget {
   Page3({Key? key}) : super(key: key);

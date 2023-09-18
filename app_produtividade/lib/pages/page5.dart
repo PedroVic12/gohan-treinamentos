@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/CustomContainer.dart';
 import 'package:app_produtividade/widgets/ScrollTela.dart';
-import 'package:app_produtividade/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 
 class Page5 extends StatelessWidget {
   const Page5({Key? key}) : super(key: key);

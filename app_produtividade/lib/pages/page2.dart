@@ -2,8 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/CustomContainer.dart';
 import 'package:app_produtividade/widgets/ScrollTela.dart';
-import 'package:app_produtividade/widgets/TextRetanguleBox.dart';
-import 'package:app_produtividade/widgets/card_soft.dart';
+import 'package:app_produtividade/widgets/Layout/TextRetanguleBox.dart';
+import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 
 class Page2 extends StatefulWidget {
   @override

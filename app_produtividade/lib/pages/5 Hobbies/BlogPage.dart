@@ -107,6 +107,11 @@ class _BlogPage2State extends State<BlogPage2> {
 
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
 
+          const Text('Code -> Debug -> Rest -> Motivation'),
+
+          const Text(
+              'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
+
           //Expanded(child: CardHobbiesWidget()),
           const Card(
             child: Text(
