@@ -81,11 +81,12 @@ class HobbiesPage extends StatelessWidget {
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Text(hobby.contador.toString()),
+                                    Text('1'),
+                                    //Text(hobby.contador.toString()),
                                     IconButton(
                                       icon: Icon(Icons.add),
                                       onPressed: () {
-                                        controller.incrementarContador(hobby);
+                                        //controller.incrementarContador(hobby);
                                       },
                                     ),
                                   ],
@@ -95,11 +96,15 @@ class HobbiesPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const DesempenhoWidget()
+
+
                 ],
               );
             }
-          }),
+          }),                  const DesempenhoWidget()
+
+
+
         ],
       ),
     );
