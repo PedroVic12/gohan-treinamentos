@@ -25,3 +25,27 @@ class Hobby {
     };
   }
 }
+
+class MeuHobby {
+  String? title;
+  List<String>? description;
+  late int count;
+
+  MeuHobby({
+    required this.title,
+    required this.description,
+    this.count = 0,
+  });
+
+  MeuHobby.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    description = json['description'].cast<String>();
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
+    data['description'] = this.description;
+    return data;
+  }
+}

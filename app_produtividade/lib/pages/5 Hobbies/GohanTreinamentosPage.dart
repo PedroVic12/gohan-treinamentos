@@ -1,8 +1,10 @@
 import 'package:app_produtividade/widgets/DrawerNavigation.dart';
+import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:app_produtividade/widgets/TableCustom.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:app_produtividade/widgets/card_soft.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GohanTreinamentosPage extends StatelessWidget {
   const GohanTreinamentosPage({Key? key}) : super(key: key);
@@ -10,22 +12,9 @@ class GohanTreinamentosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: CustomAppBar(),
       drawer: DrawerNavigation(),
       body: _buildBody(context),
-    );
-  }
-
-  AppBar _buildAppBar() {
-    return AppBar(
-      title: const Text('Gohan Treinamentos Version 10 - 13/09/23'),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.add_alert),
-          tooltip: 'Show Snackbar',
-          onPressed: () {},
-        ),
-      ],
     );
   }
 

@@ -1,5 +1,6 @@
-import 'package:app_produtividade/pages/5%20Hobbies/HobbiesModel.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesModel.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesPage.dart';
+import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:localstorage/localstorage.dart';
@@ -101,11 +102,14 @@ class _BlogPage2State extends State<BlogPage2> {
           // TODO -> Transformar num Widget
 
           const Text('Segunda, 12/06/2023'),
-          // CheckBox
 
           const Text('You Only Need 5 hobbies'),
 
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
+
+          //Expanded(child: CardHobbiesWidget()),
+          Text('1 shape | 1 Knowlodge | '),
+
           Expanded(
             child: ListView.builder(
               itemCount: hobbies.length,
@@ -141,7 +145,7 @@ class _BlogPage2State extends State<BlogPage2> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 100.0),
+            padding: const EdgeInsets.only(bottom: 50.0),
             child: Column(
               children: [
                 Text("Desempenho da semana: ${totalHobbiesCount}/35",
@@ -156,11 +160,23 @@ class _BlogPage2State extends State<BlogPage2> {
             ),
           ),
 
-          ElevatedButton(
-              onPressed: () {
-                Get.to(BlogPage());
-              },
-              child: Text('Pagina 2'))
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  Get.to(HobbiesPage());
+                },
+                child: Text('Pagina Hobbies Crud JSON')),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  Get.to(HomeScreen());
+                },
+                child: Text('HomeScreen')),
+          )
 
           //CardProdutividade()
         ],

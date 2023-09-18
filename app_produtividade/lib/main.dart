@@ -16,6 +16,8 @@ void main() {
   // iniciando
   GetStorage.init();
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Rodando o App
   runApp(const MyApp());
 }
@@ -59,7 +61,6 @@ class _MyAppState extends State<MyApp> {
 }
 
 // Page Controller getx
-
 
 //Page controller Provider
 class PageController extends ChangeNotifier {

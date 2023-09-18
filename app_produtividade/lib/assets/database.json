@@ -3,32 +3,35 @@
         "title": "One to make your money",
         "description": [
             "Estágio em Engenharia",
-            "Freelancer Chatbot + App"
+            "Freelancer Chatbot + App",
+            "Iniciação Cientifica"
         ]
     },
     {
         "title": "One to keep you in shape",
         "description": [
-            "Calistenia App + Movimentos Calistenicos",
-            "Treino Academia + Força"
+            "Calistenia App + Movimentos Calistênicos",
+            "Treino Academia + Força",
+            "Normal x Super Sayajin 1"
         ]
     },
     {
         "title": "One to stay creative",
         "description": [
-            "Ler 1 Livro, Documentario, Material de Apoio de algo Revolucionario"
+            "Ler 1 Livro, Documentário, Material de Apoio de algo Revolucionário"
         ]
     },
     {
         "title": "One to build Knowledge",
         "description": [
             "2 Disciplinas da UFF por Dia",
-            "2 Aula + 5 Exercícios"
+            "2 Aulas + 5 Exercícios cada"
         ]
     },
     {
         "title": "One to grow your mindset",
         "description": [
+            "Por em pratica o que voce aprendeu",
             "Fazer 1 Projeto que Resolva problemas"
         ]
     }
