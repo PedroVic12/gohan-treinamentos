@@ -1,7 +1,8 @@
 import 'package:app_produtividade/pages/5%20Hobbies/HobbiesModel.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/HobbiesPage.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // TODO -> You only Need 5 Hobbies
@@ -22,6 +23,8 @@ class BlogPage2 extends StatefulWidget {
 }
 
 class _BlogPage2State extends State<BlogPage2> {
+  final LocalStorage storage = LocalStorage('hobbies_storage');
+
   final List<Hobby> hobbies = [
     Hobby(
         title: "One to make your money",
@@ -58,17 +61,17 @@ class _BlogPage2State extends State<BlogPage2> {
   }
 
   _loadCounts() async {
-    final prefs = await SharedPreferences.getInstance();
+    await storage.ready;
+
     for (int i = 0; i < hobbies.length; i++) {
-      hobbies[i].count = prefs.getInt('hobby_count_$i') ?? 0;
+      hobbies[i].count = storage.getItem('hobby_count_$i') ?? 0;
     }
     setState(() {});
   }
 
   _saveCounts() async {
-    final prefs = await SharedPreferences.getInstance();
     for (int i = 0; i < hobbies.length; i++) {
-      prefs.setInt('hobby_count_$i', hobbies[i].count);
+      storage.setItem('hobby_count_$i', hobbies[i].count);
     }
   }
 
@@ -145,12 +148,19 @@ class _BlogPage2State extends State<BlogPage2> {
                     style: TextStyle(fontSize: 20)),
                 LinearProgressIndicator(
                   value: totalHobbiesCount / 35,
+                  color: Colors.black,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
                   backgroundColor: Colors.grey[200],
                 )
               ],
             ),
           ),
+
+          ElevatedButton(
+              onPressed: () {
+                Get.to(BlogPage());
+              },
+              child: Text('Pagina 2'))
 
           //CardProdutividade()
         ],
