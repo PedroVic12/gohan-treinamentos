@@ -108,7 +108,10 @@ class _BlogPage2State extends State<BlogPage2> {
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
 
           //Expanded(child: CardHobbiesWidget()),
-          Text('1 shape | 1 Knowlodge | '),
+          const Card(
+            child: Text(
+                '1 shape | 1 Knowledge | 1 Creative | 0 MindSet | 0 Money'),
+          ),
 
           Expanded(
             child: ListView.builder(

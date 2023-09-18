@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+
 class Hobby {
   String title;
   String description;
@@ -26,20 +28,29 @@ class Hobby {
   }
 }
 
+@HiveType(typeId: 0)
 class MeuHobby {
+  @HiveField(0)
   String? title;
+
+  @HiveField(1)
   List<String>? description;
-  late int count;
+
+  @HiveField(2)
+  late int contador;
 
   MeuHobby({
     required this.title,
     required this.description,
-    this.count = 0,
+    this.contador = 0,
   });
 
   MeuHobby.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     description = json['description'].cast<String>();
+  }
+  void increment() {
+    contador++;
   }
 
   Map<String, dynamic> toJson() {

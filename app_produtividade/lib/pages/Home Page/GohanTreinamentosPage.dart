@@ -45,9 +45,17 @@ class GohanTreinamentosPage extends StatelessWidget {
       child: Column(
         children: [
           const Text('Flutter Padawan Dia 6 - 17/02/2023'),
-          const Text(
-            'COMO TENTAR ORGANIZAR SUA VIDA!',
-            style: TextStyle(fontSize: 30, color: Colors.red),
+          const Card(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'COMO TENTAR ORGANIZAR SUA VIDA!',
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
           YoutubeLink(link: 'https://www.youtube.com/watch?v=xFWXl8uLFtk'),
           _dailyQuote(),

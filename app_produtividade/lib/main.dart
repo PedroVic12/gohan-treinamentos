@@ -1,4 +1,4 @@
-import 'package:app_produtividade/pages/5%20Hobbies/GohanTreinamentosPage.dart';
+import 'package:app_produtividade/pages/Home%20Page/GohanTreinamentosPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
@@ -12,7 +12,7 @@ import 'pages/5 Hobbies/BlogPage.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];
 
-void main() {
+void main() async {
   // iniciando
   GetStorage.init();
 
