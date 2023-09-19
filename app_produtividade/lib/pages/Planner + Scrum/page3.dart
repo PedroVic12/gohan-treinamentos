@@ -1,6 +1,9 @@
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/widgets/ScrumPlanner.dart';
+import 'package:app_produtividade/widgets/TableCustom.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
+
+import 'widgets/Tabela.dart';
 
 class Page3 extends StatelessWidget {
   Page3({Key? key}) : super(key: key);
@@ -12,7 +15,7 @@ class Page3 extends StatelessWidget {
         title: const Text('Page 3 - Scrum e Produtividade'),
       ),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             Text('Quadro de Organização - Pagina 163 do Livro Scrum'),
 
@@ -30,6 +33,19 @@ class Page3 extends StatelessWidget {
                 'Cientista de Dados',
               ],
             ),
+
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TableCustom(columns: const [
+                'Entregas',
+                'Prazos em dias(19/09/23)'
+              ], rows: const [
+                ['Relatório OS', ' 4'],
+                ['Modelo Preditivo', 'Analise de dados'],
+                ['Scanner PDF', 'Analise de dados'],
+                ['Camorim APP', 'Analise de dados'],
+              ]),
+            )
 
             //GridLayout(),
             //Expanded(child: ColunasCapitulos())

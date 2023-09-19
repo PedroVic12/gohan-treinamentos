@@ -103,7 +103,31 @@ class MyHomePage extends StatelessWidget {
 
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: TableCustom(),
+                        child: TableCustom(
+                          columns: const ['HORARIO', 'Tarefas'],
+                          rows: const [
+                            [
+                              '07h- 09h',
+                              'Acordar, tomar café, se exercitar e tomar banho para se organizar para estudar'
+                            ],
+                            [
+                              '09h-12h',
+                              'Estudar e adquirir conhecimento em algum assunto importante'
+                            ],
+                            [
+                              '13h-15h',
+                              'Trabalhar em tarefas difíceis com muita determinação!'
+                            ],
+                            [
+                              '15h-18h',
+                              'Buscar soluções criativas no trabalho!'
+                            ],
+                            [
+                              '18h-20h',
+                              'Treino e descanso, refletindo seu desempenho durante o dia'
+                            ],
+                          ],
+                        ),
                       ),
 
                       Row(

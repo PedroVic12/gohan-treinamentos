@@ -87,7 +87,28 @@ class GohanTreinamentosPage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: TableCustom(),
+          child: TableCustom(
+            columns: const ['HORARIO', 'Tarefas'],
+            rows: const [
+              [
+                '07h- 09h',
+                'Acordar, tomar café, se exercitar e tomar banho para se organizar para estudar'
+              ],
+              [
+                '09h-12h',
+                'Estudar e adquirir conhecimento em algum assunto importante'
+              ],
+              [
+                '13h-15h',
+                'Trabalhar em tarefas difíceis com muita determinação!'
+              ],
+              ['15h-18h', 'Buscar soluções criativas no trabalho!'],
+              [
+                '18h-20h',
+                'Treino e descanso, refletindo seu desempenho durante o dia'
+              ],
+            ],
+          ),
         ),
       ],
     );
@@ -121,11 +142,11 @@ class GohanTreinamentosPage extends StatelessWidget {
 
   Widget _otherLinks() {
     return Column(
-      children: [
-        const Text(
+      children: const [
+        Text(
           'O segredo da vida: https://www.youtube.com/watch?v=xFWXl8uLFtk',
         ),
-        const Text(
+        Text(
           'https://www.youtube.com/watch?v=cy7i5B18z-c',
           textWidthBasis: TextWidthBasis.longestLine,
           textAlign: TextAlign.center,
