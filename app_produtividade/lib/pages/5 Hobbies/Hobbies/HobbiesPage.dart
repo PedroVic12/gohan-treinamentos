@@ -1,6 +1,9 @@
 import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesController.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/contador_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../widgets/BotaoNavegaçao.dart';
 
 class HobbiesPage extends StatelessWidget {
   final controller = Get.put(MeuHobbyController());
@@ -96,15 +99,14 @@ class HobbiesPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
-
                 ],
               );
             }
-          }),                  const DesempenhoWidget()
+          }),
+          //const DesempenhoWidget(),
 
-
-
+          BotaoNavegacao(
+              pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
         ],
       ),
     );
