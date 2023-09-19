@@ -104,9 +104,6 @@ class HobbiesPage extends StatelessWidget {
             }
           }),
           //const DesempenhoWidget(),
-
-          BotaoNavegacao(
-              pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
         ],
       ),
     );
