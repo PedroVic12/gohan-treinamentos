@@ -7,8 +7,12 @@ import 'package:app_produtividade/pages/Home%20Page/home_page.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart' as pathProvider;
 
 import 'pages/5 Hobbies/BlogPage.dart';
+import 'pages/5 Hobbies/CRUD HIVE/models/note_model.dart';
+import 'pages/5 Hobbies/CRUD HIVE/repository/box_repository.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];
 
@@ -17,7 +21,15 @@ void main() async {
   GetStorage.init();
 
   WidgetsFlutterBinding.ensureInitialized();
+// Obtém o diretório de documentos do dispositivo
+  final appDocumentDirectory =
+      await pathProvider.getApplicationDocumentsDirectory();
 
+  // Define o caminho onde o Hive armazenará os dados
+  Hive.init(appDocumentDirectory.path);
+
+  // Abre o Box (substitua 'your_box' pelo nome que deseja dar ao seu Box)
+  await Hive.openBox<Note>('CRUD');
   // Rodando o App
   runApp(const MyApp());
 }

@@ -2,12 +2,14 @@ import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesModel.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/contador_controller.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
+import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/BotaoNavegaçao.dart';
+import 'CRUD HIVE/views/notes_screen.dart';
 
 // TODO -> You only Need 5 Hobbies
 //
@@ -92,6 +94,7 @@ class _BlogPage2State extends State<BlogPage2> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gohan Treinamentos'),
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
             icon: Icon(Icons.refresh),
@@ -173,24 +176,7 @@ class _BlogPage2State extends State<BlogPage2> {
 
           BotaoNavegacao(
               pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-                onPressed: () {
-                  Get.to(HobbiesPage());
-                },
-                child: Text('Pagina Hobbies Crud JSON')),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-                onPressed: () {
-                  Get.to(HomeScreen());
-                },
-                child: Text('HomeScreen')),
-          )
-
+          BotaoNavegacao(pagina: NoteScreen(), titlePagina: 'CRUD HIVE'),
           //CardProdutividade()
         ],
       ),
