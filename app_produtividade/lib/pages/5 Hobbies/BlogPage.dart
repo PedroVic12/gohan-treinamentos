@@ -1,5 +1,3 @@
-import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesModel.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/Hobbies/HobbiesPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/contador_controller.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
@@ -10,6 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/BotaoNavegaçao.dart';
 import 'CRUD HIVE/views/notes_screen.dart';
+import 'CRUD HIVE/views/task_view.dart';
+import './HobbyModel.dart';
 
 // TODO -> You only Need 5 Hobbies
 //
@@ -107,8 +107,12 @@ class _BlogPage2State extends State<BlogPage2> {
         children: [
           // TODO -> Transformar num Widget
 
-          const Text('Segunda, 12/06/2023'),
-
+          const Center(
+              child: Card(
+                  child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Segunda, 18/06/2023'),
+          ))),
           const Text('You Only Need 5 hobbies'),
 
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
@@ -176,7 +180,7 @@ class _BlogPage2State extends State<BlogPage2> {
 
           BotaoNavegacao(
               pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
-          BotaoNavegacao(pagina: NoteScreen(), titlePagina: 'CRUD HIVE'),
+          BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           //CardProdutividade()
         ],
       ),

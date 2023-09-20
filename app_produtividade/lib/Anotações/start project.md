@@ -1,16 +1,12 @@
 # Como automatizar sua vida?
 
-- web scraping "exercícios gustavo guanabara matemática" no google
-
-- Como usar um bot no whatsapp para colocar sua própria playlist numa pagina html
-
 - Dividir tudo em Padawan, Jedi e Mestre Jedi
 
 - Use formulas de Fibonacci para produtividade
 
 - técnicas pomodoro
 
-  - tempo de descanso + tempo de trabalho
+- tempo de descanso + tempo de trabalho
 
 - calcule o tempo
 
