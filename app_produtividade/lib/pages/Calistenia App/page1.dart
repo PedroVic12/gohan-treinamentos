@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_produtividade/widgets/CustomContainer.dart';
+import 'package:app_produtividade/widgets/Custom/CustomContainer.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:get/get.dart';
 

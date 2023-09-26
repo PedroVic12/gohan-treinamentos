@@ -10,7 +10,7 @@ import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/BotaoNavegaçao.dart';
-import '../../widgets/TableCustom.dart';
+import '../../widgets/Custom/TableCustom.dart';
 import 'CRUD HIVE/views/notes_screen.dart';
 import 'CRUD HIVE/views/task_view.dart';
 import 'Hobbies/HobbyModel.dart';

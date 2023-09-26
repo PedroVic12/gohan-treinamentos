@@ -1,7 +1,7 @@
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/ScrumPlanner.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/TaskScreen.dart';
 import 'package:app_produtividade/widgets/BotaoNavega%C3%A7ao.dart';
-import 'package:app_produtividade/widgets/TableCustom.dart';
+import 'package:app_produtividade/widgets/Custom/TableCustom.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 import 'package:get/get.dart';
