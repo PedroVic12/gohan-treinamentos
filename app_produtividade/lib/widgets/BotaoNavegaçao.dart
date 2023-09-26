@@ -14,7 +14,7 @@ class BotaoNavegacao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
+      width: 150,
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: ElevatedButton(

@@ -18,6 +18,7 @@ class TaskAdapter extends TypeAdapter<Task> {
     };
     return Task(
       fields[0] as String,
+      description: '',
     );
   }
 

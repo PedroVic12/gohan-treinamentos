@@ -1,15 +1,20 @@
-import 'package:app_produtividade/pages/5%20Hobbies/contador_controller.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/CalendarioPage.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/BotaoNavegaçao.dart';
+import '../../widgets/TableCustom.dart';
 import 'CRUD HIVE/views/notes_screen.dart';
 import 'CRUD HIVE/views/task_view.dart';
-import './HobbyModel.dart';
+import 'Hobbies/HobbyModel.dart';
+import 'Hobbies/HobbyController.dart';
 
 // TODO -> You only Need 5 Hobbies
 //
@@ -30,32 +35,27 @@ class BlogPage2 extends StatefulWidget {
 
 class _BlogPage2State extends State<BlogPage2> {
   final LocalStorage storage = LocalStorage('hobbies_storage');
+  final HobbyController _controller = Get.put(HobbyController());
 
   final List<Hobby> hobbies = [
     Hobby(
         title: "One to make your money",
         description:
             "Estágio em Engenharia, Citta Delivery App, Iniciação Cientifica"),
-
     Hobby(
         title: "One to keep you in shape",
         description:
             "Calistenia App + Movimentos Calistenicos, Treino Academia + Força"),
-
     Hobby(
         title: "One to build Knowledge",
         description: " 2 Disciplinas da UFF por Dia , 2 Aula + 5 Exericios"),
-
     Hobby(
         title: "One to grow your mindset",
         description: "Fazer 1 Projeto que Resolva problemas"),
-
     Hobby(
         title: "One to stay creactive",
         description:
             "Ler 1 Livro, Documentario, Material de Apoio de algo Revolucionario"),
-
-    // ... adicione outros hobbies aqui
   ];
   int get totalHobbiesCount =>
       hobbies.fold(0, (previousValue, hobby) => previousValue + hobby.count);
@@ -97,7 +97,7 @@ class _BlogPage2State extends State<BlogPage2> {
         backgroundColor: Colors.black,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
             onPressed: _resetCounts,
             tooltip: "Reset counts",
           ),
@@ -111,9 +111,21 @@ class _BlogPage2State extends State<BlogPage2> {
               child: Card(
                   child: Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text('Segunda, 18/06/2023'),
+            child: Text(
+              'Segunda, 25/09/2023',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
           ))),
           const Text('You Only Need 5 hobbies'),
+
+          const Card(
+            color: Colors.grey,
+            child: ListTile(
+              title: Text('Total da semana (18/09/2023): 11'),
+              trailing: Text('Rendimento: {fraco}'),
+              leading: Text('Foco maior {Money}'),
+            ),
+          ),
 
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
 
@@ -122,32 +134,41 @@ class _BlogPage2State extends State<BlogPage2> {
           const Text(
               'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
 
-          //Expanded(child: CardHobbiesWidget()),
-          const Card(
-            child: Text(
-                '1 shape | 1 Knowledge | 1 Creative | 0 MindSet | 0 Money'),
-          ),
+          //! CODIGO LIMPO MAS MOSTRA APENAS 1 HobbyList(controller: _controller),
 
           Expanded(
             child: ListView.builder(
               itemCount: hobbies.length,
               itemBuilder: (context, index) {
                 return Card(
+                  color: Colors.amber.shade300,
                   margin: const EdgeInsets.all(8.0),
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ListTile(
-                    title: Text(hobbies[index].title),
-                    subtitle: Text(hobbies[index].description),
+                    title: Text(
+                      hobbies[index].title,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: CupertinoColors.activeBlue),
+                    ),
+                    subtitle: Text(
+                      hobbies[index].description,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(hobbies[index].count.toString()),
+                        CircleAvatar(
+                          child: Text(
+                            hobbies[index].count.toString(),
+                          ),
+                        ),
                         // Update the onPressed callback for the IconButton
                         IconButton(
-                          icon: Icon(Icons.add),
+                          icon: const Icon(Icons.add),
                           onPressed: () {
                             setState(() {
                               hobbies[index].count++;
@@ -162,28 +183,68 @@ class _BlogPage2State extends State<BlogPage2> {
               },
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.only(bottom: 50.0),
             child: Column(
               children: [
                 Text("Desempenho da semana: ${totalHobbiesCount}/35",
-                    style: TextStyle(fontSize: 20)),
+                    style: const TextStyle(fontSize: 20)),
                 LinearProgressIndicator(
                   value: totalHobbiesCount / 35,
                   color: Colors.black,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
                   backgroundColor: Colors.grey[200],
                 )
               ],
             ),
           ),
 
-          BotaoNavegacao(
-              pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
+          //BotaoNavegacao(        pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
+
+          BotaoNavegacao(pagina: CalendarioPage(), titlePagina: 'Calendario'),
+
           BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           //CardProdutividade()
         ],
       ),
+    );
+  }
+}
+
+class BottomBarController extends GetxController {
+  var selectedIndex = 0.obs; // Observável para armazenar o índice selecionado
+
+  // Método para alterar o índice selecionado
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
+  }
+}
+
+class BarraInferiorNavegacao extends StatelessWidget {
+  const BarraInferiorNavegacao({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final _bottomBarController = Get.put(BottomBarController());
+
+    return BottomNavigationBar(
+      currentIndex: _bottomBarController.selectedIndex.value,
+      onTap: _bottomBarController.changeTabIndex,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Início',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dashboard),
+          label: 'Dashboard',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: 'Configurações',
+        ),
+      ],
     );
   }
 }

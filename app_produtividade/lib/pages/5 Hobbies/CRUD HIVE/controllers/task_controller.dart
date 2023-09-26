@@ -45,7 +45,7 @@ class TaskController extends GetxController {
   }
 
   void addTask(String title) {
-    final task = Task(title ); // Forneça a descrição aqui.
+    final task = Task(title, description: '' ); // Forneça a descrição aqui.
     taskBox.add(task);
     taskList.add(task);
 

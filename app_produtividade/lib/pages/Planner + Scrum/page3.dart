@@ -1,9 +1,12 @@
-import 'package:app_produtividade/pages/Planner%20+%20Scrum/widgets/ScrumPlanner.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/ScrumPlanner.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/TaskScreen.dart';
+import 'package:app_produtividade/widgets/BotaoNavega%C3%A7ao.dart';
 import 'package:app_produtividade/widgets/TableCustom.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
+import 'package:get/get.dart';
 
-import 'widgets/Tabela.dart';
+import 'Views/Tabela.dart';
 
 class Page3 extends StatelessWidget {
   Page3({Key? key}) : super(key: key);
@@ -12,12 +15,23 @@ class Page3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Page 3 - Scrum e Produtividade'),
+        title: const Text('Page 3 - Scrum, Kanban e Produtividade'),
+        backgroundColor: Colors.black45,
+        actions: [
+          IconButton(
+            onPressed: () {
+              //Get.to(const TaskScreen());
+            },
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
       body: SafeArea(
         child: ListView(
           children: [
-            Text('Quadro de Organização - Pagina 163 do Livro Scrum'),
+            Card(
+                child:
+                    Text('Quadro de Organização - Pagina 163 do Livro Scrum')),
 
             ScrumPlanner(
               headers: const [
@@ -34,18 +48,50 @@ class Page3 extends StatelessWidget {
               ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TableCustom(columns: const [
-                'Entregas',
-                'Prazos em dias(19/09/23)'
-              ], rows: const [
-                ['Relatório OS', ' 4'],
-                ['Modelo Preditivo', 'Analise de dados'],
-                ['Scanner PDF', 'Analise de dados'],
-                ['Camorim APP', 'Analise de dados'],
-              ]),
-            )
+            TableCustom(columns: const [
+              'Entregas',
+              'Prazos em dias(19/09/23)'
+            ], rows: const [
+              ['Relatório OS', ' 4'],
+              ['Modelo Preditivo', ''],
+              ['Scanner PDF', ''],
+              ['Camorim APP', ''],
+            ]),
+
+            TableCustom(columns: const [
+              'Modelo agil'
+            ], rows: const [
+              ['Entregas parciaos do produto ao longo do processo'],
+              ['Procoesso iterativo de desenvolvilmento'],
+              ['Testes ao longo do processo, com ajustes constantes'],
+              ['Alterações e ajustes implementados com facilidade'],
+              ['Risco de retrabalhos e atrasos baixo'],
+              ['Erros podem ser sanados no meio do projeto'],
+            ]),
+
+            TableCustom(columns: const [
+              'Valores do Manifesto Agil '
+            ], rows: const [
+              ['Individuos e interaõ~es acima de processos e ferramentos'],
+              ['Procoesso iterativo de desenvolvilmento'],
+              ['Testes ao longo do processo, com ajustes constantes'],
+              ['Alterações e ajustes implementados com facilidade'],
+              ['Risco de retrabalhos e atrasos baixo'],
+              ['Erros podem ser sanados no meio do projeto'],
+            ]),
+
+            TableCustom(columns: const [
+              'Principios da Metodologia Agil '
+            ], rows: const [
+              ['Individuos e interaõ~es acima de processos e ferramentos'],
+              ['Procoesso iterativo de desenvolvilmento'],
+            ]),
+
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(PlannerScreen());
+                },
+                child: Text('Pagina de Tarefas')),
 
             //GridLayout(),
             //Expanded(child: ColunasCapitulos())
