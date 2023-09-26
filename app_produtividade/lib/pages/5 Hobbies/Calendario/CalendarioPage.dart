@@ -1,11 +1,13 @@
 import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
-import 'package:app_produtividade/pages/TodoListPage.dart';
-import 'package:app_produtividade/pages/TodoListViewPage.dart';
-import 'package:app_produtividade/widgets/Calendario/Calendario.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioController.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListViewPage.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/Calendario.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../widgets/Custom/CustomNavBar.dart';
+import '../../../widgets/Custom/CustomNavBar.dart';
+import 'widgets/TaskList.dart';
 
 class CalendarioPage extends StatefulWidget {
   const CalendarioPage({super.key});
@@ -44,18 +46,23 @@ class _CalendarioPageState extends State<CalendarioPage> {
                 },
                 child: const Text("Cancelar"),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
-                  String titulo = eventoController.text;
-                  if (titulo.isNotEmpty) {
-                    calendar_controller.adicionarEvento(
-                        dataSelecionada as DateTime, titulo);
-                    eventoController.clear();
-                  }
-                  Navigator.of(context).pop();
+                  final String nomeEvento =
+                      ''; // Obtenha o nome do evento do TextFormField
+                  final String tipoEvento =
+                      ''; // Obtenha o tipo do evento do TextFormField
+                  final DateTime dataHoraEvento = DateTime
+                      .now(); // Obtenha a data e hora do evento do DateTimePickerWidget
+                  final String categoriaEvento =
+                      ''; // Obtenha a categoria do evento do DropDownCategoria
+
+                  // Chame a função para adicionar o evento ao calendário
+                  calendar_controller.adicionarEventoAoCalendario(
+                      nomeEvento, tipoEvento, dataHoraEvento, categoriaEvento);
                 },
-                child: const Text("Adicionar"),
-              ),
+                child: const Text('Salvar Evento Canônico!'),
+              )
             ],
           );
         },
@@ -84,6 +91,7 @@ class _CalendarioPageState extends State<CalendarioPage> {
         children: [
           const Text('Calendario'),
           CalendarioWidget(),
+          TaskLists(),
           Expanded(
             child: ListView.builder(
               itemCount: calendar_controller
@@ -108,9 +116,10 @@ class _CalendarioPageState extends State<CalendarioPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _adicionarEvento,
-        child: const Icon(Icons.add),
-      ),
+          child: const Icon(Icons.add),
+          onPressed: () {
+            calendar_controller.createOrUpdateTask(context);
+          }),
       bottomNavigationBar: CustomNavBar(
         navBarItems: [
           NavigationBarItem(

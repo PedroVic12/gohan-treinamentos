@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:app_produtividade/controllers/TodoController.dart';
-import 'package:app_produtividade/pages/TodoScreen.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoScreen.dart';
 import 'package:app_produtividade/widgets/Custom/CustomContainer.dart';
 import 'package:app_produtividade/widgets/ScrollTela.dart';
-import 'package:app_produtividade/pages/TodoListPage.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
 import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:http/http.dart';
 

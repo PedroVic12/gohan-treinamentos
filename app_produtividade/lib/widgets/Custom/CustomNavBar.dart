@@ -1,5 +1,5 @@
-import 'package:app_produtividade/pages/TodoListPage.dart';
-import 'package:app_produtividade/pages/TodoListViewPage.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListViewPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +13,12 @@ class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: navBarItems
-          .map((item) => BottomNavigationBarItem(
-                label: item.label,
-                icon: Icon(item.iconData),
-              ))
-          .toList(),
+      backgroundColor: Colors.white,
+      items: navBarItems.map((item) {
+        // Crie uma cópia personalizada do BottomNavigationBarItem
+        return BottomNavigationBarItem(
+            icon: Icon(item.iconData), label: item.label);
+      }).toList(),
       onTap: (index) {
         // Chame a função onPress do item selecionado
         navBarItems[index].onPress();
@@ -37,4 +37,19 @@ class NavigationBarItem {
     required this.iconData,
     required this.onPress,
   });
+}
+
+class CustomLabel extends StatelessWidget {
+  final String label;
+  final Color textColor;
+
+  CustomLabel({required this.label, required this.textColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: TextStyle(color: textColor),
+    );
+  }
 }

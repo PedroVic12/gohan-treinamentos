@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:app_produtividade/controllers/TodoController.dart';
-import 'package:app_produtividade/pages/TodoListViewPage.dart';
-import 'package:app_produtividade/pages/TodoScreen.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListViewPage.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoScreen.dart';
 
 //packages
 import 'dart:convert';

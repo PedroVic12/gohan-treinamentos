@@ -1,5 +1,5 @@
 import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/CalendarioPage.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';

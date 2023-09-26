@@ -51,6 +51,7 @@ dependencies:
   build_runner: ^2.4.6
   flutter_slidable: ^3.0.0
   table_calendar: ^3.0.9
+  modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:
