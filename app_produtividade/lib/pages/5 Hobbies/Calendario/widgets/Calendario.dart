@@ -19,7 +19,7 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
     var dataSelecionada = DateTime.now();
 
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(16),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.pinkAccent.shade100,
@@ -35,7 +35,7 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
         //?Estilos
         calendarStyle: CalendarStyle(isTodayHighlighted: true),
         headerStyle:
-            HeaderStyle(formatButtonVisible: false, titleCentered: true),
+            HeaderStyle(formatButtonVisible: true, titleCentered: true),
         daysOfWeekStyle: DaysOfWeekStyle(
             weekendStyle:
                 TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),

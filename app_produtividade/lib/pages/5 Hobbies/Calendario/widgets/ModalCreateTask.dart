@@ -1,3 +1,4 @@
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/BotaoPrioridade.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/CampoTextoCard.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DateTimePicker.dart';
@@ -11,7 +12,6 @@ import '../CalendarioController.dart';
 class CreateTaskFields extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController eventNameController = TextEditingController();
-  final TextEditingController eventTypeController = TextEditingController();
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
 
@@ -48,23 +48,28 @@ class CreateTaskFields extends StatelessWidget {
                     children: [
                       TextFormField(
                         onChanged: (value) {
-                          print('Nome do Evento: $value');
+                          //print('Nome do Evento: $value');
                           calendario.atualizarNomeDoEvento(value);
                         },
-                        validator: (value) {},
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Por favor, insira o nome do evento.';
+                          }
+                          return null; // tudo certo com o valor
+                        },
                         decoration: const InputDecoration(
                             hintText: 'Nome do Evento',
                             border: InputBorder.none),
                       ),
-                      TextFormField(
-                        onChanged: (value) {
-                          print('Tipo: $value');
-                          calendario.atualizarTipoDoEvento(value);
-                        },
-                        validator: (value) {},
-                        decoration: const InputDecoration(
-                            hintText: 'Tipo', border: InputBorder.none),
-                      ),
+                      //TextFormField(
+                      //onChanged: (value) {
+                      //print('Tipo: $value');
+                      //calendario.atualizarTipoDoEvento(value);
+                      //},
+                      //validator: (value) {},
+                      //decoration: const InputDecoration(
+                      //  hintText: 'Tipo', border: InputBorder.none),
+                      //),
                     ],
                   ),
                 ),
@@ -153,12 +158,34 @@ class CreateTaskFields extends StatelessWidget {
                         selectedTime!.minute,
                       );
 
-                      calendario.adicionarEvento(
-                        eventDate,
-                        eventNameController.text,
+                      calendario.adicionarEventoNaDataSelecionada(
+                        titulo: calendario.nomeDoEvento.value,
+                        categoria: calendario.categoriaSelecionada.value,
+                        hora: calendario.horaSelecionada.value as TimeOfDay,
+                        prioridade: calendario.prioridadeSelecionada.value,
                       );
 
-                      Navigator.pop(context); // Close the modal
+                      Get.to(() => CalendarioPage());
+
+                      //!Validação de dados
+                    } else if (selectedDate == null) {
+                      Get.snackbar(
+                        'Erro!', // Título
+                        'Por favor, selecione uma data.', // Mensagem
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                        duration: Duration(seconds: 5),
+                      );
+                    } else if (selectedTime == null) {
+                      Get.snackbar(
+                        'Erro!', // Título
+                        'Por favor, selecione uma hora.', // Mensagem
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                        duration: Duration(seconds: 5),
+                      );
                     }
                   },
                   child: const Text('Salvar Evento Canônico'),

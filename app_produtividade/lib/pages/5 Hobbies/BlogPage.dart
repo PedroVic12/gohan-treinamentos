@@ -10,7 +10,10 @@ import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/BotaoNavegaçao.dart';
+import '../../widgets/Custom/CustomNavBar.dart';
 import '../../widgets/Custom/TableCustom.dart';
+import '../Todo List/TodoListPage.dart';
+import '../Todo List/TodoListViewPage.dart';
 import 'CRUD HIVE/views/notes_screen.dart';
 import 'CRUD HIVE/views/task_view.dart';
 import 'Hobbies/HobbyModel.dart';
@@ -185,7 +188,7 @@ class _BlogPage2State extends State<BlogPage2> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(bottom: 50.0),
+            padding: const EdgeInsets.only(bottom: 25.0, top: 25),
             child: Column(
               children: [
                 Text("Desempenho da semana: ${totalHobbiesCount}/35",
@@ -202,10 +205,30 @@ class _BlogPage2State extends State<BlogPage2> {
 
           //BotaoNavegacao(        pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
 
-          BotaoNavegacao(pagina: CalendarioPage(), titlePagina: 'Calendario'),
-
           BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           //CardProdutividade()
+        ],
+      ),
+      bottomNavigationBar: CustomNavBar(
+        navBarItems: [
+          NavigationBarItem(
+              label: 'Calendário',
+              iconData: Icons.date_range_outlined,
+              onPress: () {
+                Get.to(CalendarioPage());
+              }),
+          NavigationBarItem(
+              label: 'Todo List',
+              iconData: Icons.search,
+              onPress: () {
+                Get.to(TodoListPage());
+              }),
+          NavigationBarItem(
+              label: 'Tab 3',
+              iconData: Icons.person,
+              onPress: () {
+                Get.to(TodoListViewPage());
+              }),
         ],
       ),
     );

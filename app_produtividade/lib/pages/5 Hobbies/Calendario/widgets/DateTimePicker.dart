@@ -1,3 +1,4 @@
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
 
 class DateTimePickerWidget extends StatefulWidget {
@@ -40,18 +41,24 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
       child: Container(
         width: 350,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Icon(Icons.timeline),
+          const Icon(Icons.data_exploration_rounded),
           TextButton(
               onPressed: () {
                 _selectDate();
               },
-              child: const Text('Dia')),
+              child: const Text(
+                'Selecione o Dia',
+                style: TextStyle(fontSize: 16),
+              )),
           const Icon(Icons.lock_clock),
           TextButton(
               onPressed: () {
                 _selectTime();
               },
-              child: const Text('Horário')),
+              child: const Text(
+                'Selecione um Horário',
+                style: TextStyle(fontSize: 16),
+              )),
         ]),
       ),
     );
