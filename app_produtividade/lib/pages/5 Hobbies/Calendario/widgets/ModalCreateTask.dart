@@ -26,9 +26,12 @@ class CreateTaskFields extends StatelessWidget {
     return StatefulBuilder(builder: (_, modalSetState) {
       return SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: SizedBox(
-          height: altura * 0.8,
-          width: 400,
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context)
+                .viewInsets
+                .bottom, // Esta linha permite ajustar o espaço quando o teclado é exibido.
+          ),
           child: Column(
             children: [
               Container(
@@ -48,7 +51,6 @@ class CreateTaskFields extends StatelessWidget {
                     children: [
                       TextFormField(
                         onChanged: (value) {
-                          //print('Nome do Evento: $value');
                           calendario.atualizarNomeDoEvento(value);
                         },
                         validator: (value) {

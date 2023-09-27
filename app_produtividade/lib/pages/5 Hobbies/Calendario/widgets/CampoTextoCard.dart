@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CampoDeTextoCard extends StatelessWidget {
@@ -9,6 +8,7 @@ class CampoDeTextoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      color: Colors.grey,
       child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
