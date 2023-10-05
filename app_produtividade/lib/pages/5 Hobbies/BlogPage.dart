@@ -2,6 +2,7 @@ import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/cont
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +116,7 @@ class _BlogPage2State extends State<BlogPage2> {
                   child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Segunda, 25/09/2023',
+              'Segunda, 02/10/2023',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ))),
@@ -129,6 +130,9 @@ class _BlogPage2State extends State<BlogPage2> {
               leading: Text('Foco maior {Money}'),
             ),
           ),
+
+          DesempenhoCardWidget(
+              data: '25/09/23', rendimento: 'Médio', hiperfoco: 'Money'),
 
           const Text('Entender -> Aprender -> Praticar -> Aplicar'),
 
@@ -235,39 +239,40 @@ class _BlogPage2State extends State<BlogPage2> {
   }
 }
 
-class BottomBarController extends GetxController {
-  var selectedIndex = 0.obs; // Observável para armazenar o índice selecionado
-
-  // Método para alterar o índice selecionado
-  void changeTabIndex(int index) {
-    selectedIndex.value = index;
-  }
-}
-
-class BarraInferiorNavegacao extends StatelessWidget {
-  const BarraInferiorNavegacao({super.key});
+class DesempenhoCardWidget extends StatelessWidget {
+  final String data;
+  final String hiperfoco;
+  final String rendimento;
+  DesempenhoCardWidget(
+      {super.key,
+      required this.data,
+      required this.hiperfoco,
+      required this.rendimento});
 
   @override
   Widget build(BuildContext context) {
-    final _bottomBarController = Get.put(BottomBarController());
-
-    return BottomNavigationBar(
-      currentIndex: _bottomBarController.selectedIndex.value,
-      onTap: _bottomBarController.changeTabIndex,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Início',
+    return Card(
+      color: Colors.grey.shade700,
+      child: ListTile(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: CustomText(
+            text: 'Total da semana ($data): 19',
+            color: Colors.white,
+            size: 14,
+          ),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard),
-          label: 'Dashboard',
+        trailing: CustomText(
+          text: 'Rendimento: $rendimento',
+          color: Colors.white,
+          size: 14,
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Configurações',
+        leading: CustomText(
+          text: 'Foco maior: $hiperfoco',
+          color: Colors.white,
+          size: 14,
         ),
-      ],
+      ),
     );
   }
 }

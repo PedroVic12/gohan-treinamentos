@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../api/Gohan_api.dart';
 import '../../../widgets/Custom/CustomNavBar.dart';
 import '../../../widgets/Custom/CustomText.dart';
+import 'widgets/BotaoCaixaDialogo.dart';
 import 'widgets/TaskList.dart';
 
 class CalendarioPage extends StatefulWidget {
@@ -46,7 +48,9 @@ class _CalendarioPageState extends State<CalendarioPage> {
           children: [
             const Text('Calendario'),
             CalendarioWidget(),
+            BotaoCaixaDialogo(),
             ListaEventosCalendario(),
+
             //TaskLists(),
           ],
         ),
@@ -174,6 +178,75 @@ class CustomListTile extends StatelessWidget {
                 }
               },
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EventCardList extends StatefulWidget {
+  @override
+  _EventCardListState createState() => _EventCardListState();
+}
+
+class _EventCardListState extends State<EventCardList> {
+  final GohanFastApi api = GohanFastApi();
+  late Future<List<Map<String, dynamic>>> futureEvents;
+
+  @override
+  void initState() {
+    super.initState();
+    futureEvents = api.getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Map<String, dynamic>>>(
+      future: futureEvents,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text("Erro ao buscar os dados: ${snapshot.error}");
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return Text("Nenhum evento encontrado.");
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return EventCard(event: snapshot.data![index]);
+            },
+          );
+        }
+      },
+    );
+  }
+}
+
+class EventCard extends StatelessWidget {
+  final Map<String, dynamic> event;
+
+  EventCard({required this.event});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              event["nomeDoEvento"],
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text("Prioridade: ${event["prioridade"]}"),
+            Text("Data: ${event["data"]}"),
+            Text("Hora: ${event["hora"]}"),
+            Text("Categoria: ${event["categoria"]}"),
           ],
         ),
       ),

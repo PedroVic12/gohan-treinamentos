@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/Eventos.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
@@ -64,6 +65,11 @@ class CalendarioController extends GetxController {
     print('Categoria: ${categoriaSelecionada.value}');
   }
 
+// Função para verificar se o app está sendo executado na web
+  bool isRunningOnWeb() {
+    return kIsWeb;
+  }
+
   //!Métodos Calendario
   void onDaySelecionado(DateTime selectedDay, DateTime focusedDay) {
     if (!isSameDay(diaSelecionado, selectedDay)) {
@@ -82,7 +88,7 @@ class CalendarioController extends GetxController {
     return eventos[dia] ?? [];
   }
 
-// Função para adicionar um evento ao calendário
+//! Função para adicionar um evento ao calendário
   void adicionarEventoNaDataSelecionada({
     required String titulo,
     required String prioridade,
@@ -110,6 +116,7 @@ class CalendarioController extends GetxController {
     } else {
       eventos[_diaSelecionado.value] = [evento];
     }
+
     try {
       salvarEventosJson(evento);
       Get.snackbar(
@@ -129,9 +136,15 @@ class CalendarioController extends GetxController {
   void createOrUpdateTask(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (bc) {
-          final altura = MediaQuery.of(context).size.height;
-          return CreateTaskFields(altura: altura);
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          final altura =
+              MediaQuery.of(context).size.height * 0.7; // 70% da altura da tela
+          return Container(
+            height: altura,
+            color: Colors.blueGrey.shade100,
+            child: ModalPegarEventosCalendario(altura: altura),
+          );
         });
   }
 
@@ -163,5 +176,40 @@ class CalendarioController extends GetxController {
     } catch (error) {
       print("Erro ao carregar eventos do arquivo: $error");
     }
+  }
+}
+
+class PlatformSpecificContainer extends StatelessWidget {
+  final CalendarioController calendario;
+
+  PlatformSpecificContainer(this.calendario);
+
+  @override
+  Widget build(BuildContext context) {
+    if (calendario.isRunningOnWeb()) {
+      // Salva os dados do calendário no localStorage se estiver na web
+      _saveDataToLocalStorage();
+
+      // Retorna um container para a web
+      return Container(
+        padding: EdgeInsets.all(16.0),
+        color: Colors.blue,
+        child: Text("O aplicativo está sendo executado na web"),
+      );
+    } else {
+      // Retorna um container para outras plataformas
+      return Container(
+        padding: EdgeInsets.all(16.0),
+        color: Colors.green,
+        child: Text("O aplicativo não está sendo executado na web"),
+      );
+    }
+  }
+
+  void _saveDataToLocalStorage() {
+    // Aqui você pode usar o pacote `html` para acessar o `localStorage` da web e salvar os dados
+    // Por exemplo:
+    // window.localStorage['nomeDoEvento'] = calendario.nomeDoEvento.value;
+    // ... e assim por diante para os outros campos.
   }
 }
