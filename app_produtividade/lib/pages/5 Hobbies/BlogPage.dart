@@ -4,6 +4,7 @@ import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
+import 'package:app_produtividade/widgets/Layout/MapaMentalWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -91,6 +92,8 @@ class _BlogPage2State extends State<BlogPage2> {
     }
     _saveCounts();
     setState(() {});
+
+    Get.snackbar('Rotinas Resetadas!', 'Tenha um otimo inicio de semana');
   }
 
   @override
@@ -100,10 +103,12 @@ class _BlogPage2State extends State<BlogPage2> {
         title: const Text('Gohan Treinamentos'),
         backgroundColor: Colors.black,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _resetCounts,
-            tooltip: "Reset counts",
+          CircleAvatar(
+            child: IconButton(
+              icon: const Icon(Icons.refresh),
+              onPressed: _resetCounts,
+              tooltip: "Reset counts",
+            ),
           ),
         ],
       ),
@@ -134,12 +139,14 @@ class _BlogPage2State extends State<BlogPage2> {
           DesempenhoCardWidget(
               data: '25/09/23', rendimento: 'Médio', hiperfoco: 'Money'),
 
-          const Text('Entender -> Aprender -> Praticar -> Aplicar'),
-
-          const Text('Code -> Debug -> Rest -> Motivation'),
-
-          const Text(
-              'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
+          Card(
+            child: Column(children: [
+              const Text('Entender -> Aprender -> Praticar -> Aplicar'),
+              const Text('Code -> Debug -> Rest -> Motivation'),
+              const Text(
+                  'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
+            ]),
+          ),
 
           //! CODIGO LIMPO MAS MOSTRA APENAS 1 HobbyList(controller: _controller),
 
@@ -173,15 +180,20 @@ class _BlogPage2State extends State<BlogPage2> {
                             hobbies[index].count.toString(),
                           ),
                         ),
-                        // Update the onPressed callback for the IconButton
-                        IconButton(
-                          icon: const Icon(Icons.add),
-                          onPressed: () {
-                            setState(() {
-                              hobbies[index].count++;
-                              _saveCounts();
-                            });
-                          },
+                        SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.grey.shade200,
+                          child: IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {
+                              setState(() {
+                                hobbies[index].count++;
+                                _saveCounts();
+                              });
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -254,6 +266,9 @@ class DesempenhoCardWidget extends StatelessWidget {
     return Card(
       color: Colors.grey.shade700,
       child: ListTile(
+        onLongPress: (() {
+          Get.to(HistoricoDesempenhoCardWidget());
+        }),
         title: Padding(
           padding: const EdgeInsets.only(left: 15),
           child: CustomText(
@@ -272,6 +287,29 @@ class DesempenhoCardWidget extends StatelessWidget {
           color: Colors.white,
           size: 14,
         ),
+      ),
+    );
+  }
+}
+
+class HistoricoDesempenhoCardWidget extends StatelessWidget {
+  const HistoricoDesempenhoCardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListView(
+        children: [
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('1'),
+            ),
+            title: Text('Desemepenho do da semana: {data}'),
+          ),
+          Divider(),
+          CirclesAndArrows(),
+        ],
       ),
     );
   }

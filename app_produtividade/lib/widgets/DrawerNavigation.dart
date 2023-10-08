@@ -7,7 +7,6 @@ import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/page3.dart';
 import 'package:app_produtividade/pages/page5.dart';
-import 'package:app_produtividade/pages/page7.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,12 +18,17 @@ class DrawerNavigation extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
+          Divider(),
           ListTile(
             title: const Text('Blog + Calendario'),
+            leading: CircleAvatar(
+              child: Icon(Icons.calendar_month),
+            ),
             onTap: () {
               Get.toNamed('/blog');
             },
           ),
+          Divider(),
           ListTile(
             title: const Text('Page 1 - Calistenia APP'),
             onTap: () {
@@ -82,17 +86,6 @@ class DrawerNavigation extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => Page6(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Page 7 - Repositorio'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Page7(),
                 ),
               );
             },
