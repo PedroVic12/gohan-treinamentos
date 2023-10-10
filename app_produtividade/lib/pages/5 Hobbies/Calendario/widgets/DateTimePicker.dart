@@ -1,5 +1,6 @@
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
+import 'package:glass_kit/glass_kit.dart';
 
 class DateTimePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
@@ -39,7 +40,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
 
     return Flexible(
       child: Container(
-        width: 350,
+        width: 400,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           const Icon(Icons.data_exploration_rounded),
           TextButton(
@@ -48,7 +49,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
               },
               child: const Text(
                 'Selecione o Dia',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
               )),
           const Icon(Icons.lock_clock),
           TextButton(
@@ -57,7 +58,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
               },
               child: const Text(
                 'Selecione um Horário',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
               )),
         ]),
       ),

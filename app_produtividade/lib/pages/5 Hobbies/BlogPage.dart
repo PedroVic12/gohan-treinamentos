@@ -1,4 +1,5 @@
 import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/PaginaCalendario.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
@@ -127,26 +128,13 @@ class _BlogPage2State extends State<BlogPage2> {
           ))),
           const Text('You Only Need 5 hobbies'),
 
-          const Card(
-            color: Colors.grey,
-            child: ListTile(
-              title: Text('Total da semana (18/09/2023): 11'),
-              trailing: Text('Rendimento: {fraco}'),
-              leading: Text('Foco maior {Money}'),
-            ),
-          ),
-
           DesempenhoCardWidget(
-              data: '25/09/23', rendimento: 'Médio', hiperfoco: 'Money'),
-
-          Card(
-            child: Column(children: [
-              const Text('Entender -> Aprender -> Praticar -> Aplicar'),
-              const Text('Code -> Debug -> Rest -> Motivation'),
-              const Text(
-                  'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
-            ]),
-          ),
+              data: '02/10/23',
+              hiperfoco: 'Money',
+              rendimento: 'Médio',
+              onLongPressCard: () {
+                Get.to(HistoricoDesempenhoCardWidget());
+              }),
 
           //! CODIGO LIMPO MAS MOSTRA APENAS 1 HobbyList(controller: _controller),
 
@@ -166,7 +154,7 @@ class _BlogPage2State extends State<BlogPage2> {
                       hobbies[index].title,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: CupertinoColors.activeBlue),
+                          color: CupertinoColors.systemBlue),
                     ),
                     subtitle: Text(
                       hobbies[index].description,
@@ -240,10 +228,10 @@ class _BlogPage2State extends State<BlogPage2> {
                 Get.to(TodoListPage());
               }),
           NavigationBarItem(
-              label: 'Tab 3',
+              label: 'SCRUM CALENDAR',
               iconData: Icons.person,
               onPress: () {
-                Get.to(TodoListViewPage());
+                Get.to(PaginaCalendario());
               }),
         ],
       ),
@@ -255,20 +243,21 @@ class DesempenhoCardWidget extends StatelessWidget {
   final String data;
   final String hiperfoco;
   final String rendimento;
+  final VoidCallback onLongPressCard;
   DesempenhoCardWidget(
       {super.key,
       required this.data,
       required this.hiperfoco,
-      required this.rendimento});
+      required this.rendimento,
+      on,
+      required this.onLongPressCard});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.grey.shade700,
       child: ListTile(
-        onLongPress: (() {
-          Get.to(HistoricoDesempenhoCardWidget());
-        }),
+        onLongPress: onLongPressCard,
         title: Padding(
           padding: const EdgeInsets.only(left: 15),
           child: CustomText(
@@ -297,19 +286,47 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListView(
-        children: [
-          Divider(),
-          ListTile(
-            leading: CircleAvatar(
-              child: Text('1'),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        elevation: 2,
+        title: Text('Appbar'),
+      ),
+      body: Card(
+        child: ListView(
+          children: [
+            Divider(),
+            ListTile(
+              leading: CircleAvatar(
+                child: Text('1'),
+              ),
+              title: Text('Desemepenho do da semana: {data}'),
             ),
-            title: Text('Desemepenho do da semana: {data}'),
-          ),
-          Divider(),
-          CirclesAndArrows(),
-        ],
+            Divider(),
+            const Card(
+              color: Colors.grey,
+              child: ListTile(
+                title: Text('Total da semana (18/09/2023): 11'),
+                trailing: Text('Rendimento: {fraco}'),
+                leading: Text('Foco maior {Money}'),
+              ),
+            ),
+            DesempenhoCardWidget(
+                data: '25/09/23',
+                rendimento: 'Médio',
+                hiperfoco: 'Money',
+                onLongPressCard: (() {})),
+            CirclesAndArrows(),
+            const Card(
+              child: Column(children: [
+                const Text('Entender -> Aprender -> Praticar -> Aplicar'),
+                const Text('Code -> Debug -> Rest -> Motivation'),
+                const Text(
+                    'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }

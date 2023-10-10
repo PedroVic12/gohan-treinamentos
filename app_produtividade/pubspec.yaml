@@ -52,6 +52,8 @@ dependencies:
   flutter_slidable: ^3.0.0
   table_calendar: ^3.0.9
   modal_bottom_sheet: ^2.1.2
+  syncfusion_flutter_calendar: ^23.1.40
+  glass_kit: ^3.0.0
 
 dev_dependencies:
   flutter_test:
