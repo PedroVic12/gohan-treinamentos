@@ -1,4 +1,5 @@
 import 'package:app_produtividade/pages/Home%20Page/GohanTreinamentosPage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
@@ -44,8 +45,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Titulo',
         theme: ThemeData(
           primaryColor: Colors.indigo,
-          colorScheme:
-              ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
+          colorScheme: ColorScheme.fromSwatch()
+              .copyWith(secondary: Colors.deepOrangeAccent),
           scaffoldBackgroundColor: Colors.blueGrey,
           textTheme: const TextTheme(
             bodyMedium: TextStyle(

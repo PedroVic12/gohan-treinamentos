@@ -54,6 +54,10 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   syncfusion_flutter_calendar: ^23.1.40
   glass_kit: ^3.0.0
+  boardview: ^0.2.2
+  file_picker: ^5.5.0
+  open_file: ^3.3.2
+  kanban_board: ^0.1.0
 
 dev_dependencies:
   flutter_test:

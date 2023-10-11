@@ -1,6 +1,8 @@
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/KanbanPage.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/ScrumPlanner.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/TaskScreen.dart';
 import 'package:app_produtividade/widgets/BotaoNavega%C3%A7ao.dart';
+import 'package:app_produtividade/widgets/Custom/CustomNavBar.dart';
 import 'package:app_produtividade/widgets/Custom/TableCustom.dart';
 import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
@@ -112,6 +114,28 @@ class Page3 extends StatelessWidget {
             //Expanded(child: ColunasCapitulos())
           ],
         ),
+      ),
+      bottomNavigationBar: CustomNavBar(
+        navBarItems: [
+          NavigationBarItem(
+              label: 'SCRUM',
+              iconData: Icons.home,
+              onPress: () {
+                Get.to(Page3());
+              }),
+          NavigationBarItem(
+              label: 'KANBAN',
+              iconData: Icons.add_comment_sharp,
+              onPress: () {
+                Get.to(KanbanPage());
+              }),
+          NavigationBarItem(
+              label: 'PLANO DE AÇÃO',
+              iconData: Icons.person,
+              onPress: () {
+                //Get.to(TodoListViewPage());
+              }),
+        ],
       ),
     );
   }

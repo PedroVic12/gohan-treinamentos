@@ -1,3 +1,4 @@
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/page3.dart';
 import 'package:app_produtividade/widgets/DrawerNavigation.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:app_produtividade/widgets/Custom/TableCustom.dart';
@@ -5,6 +6,8 @@ import 'package:app_produtividade/widgets/YoutubePlayer.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../widgets/Custom/CustomNavBar.dart';
 
 class GohanTreinamentosPage extends StatelessWidget {
   const GohanTreinamentosPage({Key? key}) : super(key: key);
@@ -15,6 +18,28 @@ class GohanTreinamentosPage extends StatelessWidget {
       appBar: CustomAppBar(),
       drawer: DrawerNavigation(),
       body: _buildBody(context),
+      bottomNavigationBar: CustomNavBar(
+        navBarItems: [
+          NavigationBarItem(
+              label: 'Pagina 3',
+              iconData: Icons.home,
+              onPress: () {
+                Get.to(Page3());
+              }),
+          NavigationBarItem(
+              label: 'tab',
+              iconData: Icons.add_comment_sharp,
+              onPress: () {
+                //Get.to(TodoListPage());
+              }),
+          NavigationBarItem(
+              label: 'Tab 3',
+              iconData: Icons.person,
+              onPress: () {
+                //Get.to(TodoListViewPage());
+              }),
+        ],
+      ),
     );
   }
 

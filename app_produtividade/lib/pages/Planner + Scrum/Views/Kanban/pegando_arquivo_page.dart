@@ -1,8 +1,8 @@
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/files_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:open_file/open_file.dart';
 
-import '../controllers/files_controller.dart';
 
 class PegandoArquivosPage extends StatefulWidget {
   const PegandoArquivosPage({Key? key}) : super(key: key);
