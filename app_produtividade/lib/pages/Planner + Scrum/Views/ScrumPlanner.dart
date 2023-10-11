@@ -112,8 +112,9 @@ Widget _buildGridItem(int index) {
     decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
     child: Center(
       child: Card(
-          child:
-              Padding(padding: EdgeInsets.all(4), child: Text('Item $index'))),
+          child: Padding(
+              padding: EdgeInsets.all(4),
+              child: Text('Item de trabalho do Scrum $index'))),
     ),
   );
 }

@@ -27,22 +27,30 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
   }
 
   Widget _buildCalendar() {
-    return SfCalendar(
-      view: CalendarView.month,
-      dataSource: FonteDadosReuniao(reunioes),
-      onTap: (details) {
-        print('Data selecionada: ${details.date}');
-        if (details.appointments != null && details.appointments!.isNotEmpty) {
-          setState(() {
-            final events = details.appointments as List<Evento>;
-            reunioes =
-                events.where((e) => e.inicio.day == details.date!.day).toList();
-          });
-          print('Eventos no dia selecionado: ${reunioes.length}');
-        } else {
-          print('Sem eventos no dia selecionado.');
-        }
-      },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.white70,
+        child: SfCalendar(
+          view: CalendarView.month,
+          dataSource: FonteDadosReuniao(reunioes),
+          onTap: (details) {
+            print('Data selecionada: ${details.date}');
+            if (details.appointments != null &&
+                details.appointments!.isNotEmpty) {
+              setState(() {
+                final events = details.appointments as List<Evento>;
+                reunioes = events
+                    .where((e) => e.inicio.day == details.date!.day)
+                    .toList();
+              });
+              print('Eventos no dia selecionado: ${reunioes.length}');
+            } else {
+              print('Sem eventos no dia selecionado.');
+            }
+          },
+        ),
+      ),
     );
   }
 
@@ -52,9 +60,11 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
         itemCount: reunioes.length,
         itemBuilder: (context, index) {
           final event = reunioes[index];
-          return ListTile(
-            title: Text(event.nomeEvento),
-            subtitle: Text('${event.inicio} - ${event.fim}'),
+          return Card(
+            child: ListTile(
+              title: Text(event.nomeEvento),
+              subtitle: Text('${event.inicio} - ${event.fim}'),
+            ),
           );
         },
       ),

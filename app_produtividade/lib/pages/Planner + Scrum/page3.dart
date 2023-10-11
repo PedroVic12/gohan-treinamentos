@@ -20,7 +20,7 @@ class Page3 extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              //Get.to(const TaskScreen());
+              //Get.to(PlannerScreen());
             },
             icon: const Icon(Icons.add),
           ),
@@ -57,6 +57,21 @@ class Page3 extends StatelessWidget {
               ['Scanner PDF', ''],
               ['Camorim APP', ''],
             ]),
+
+            TableCustom(
+              columns: const ['XP Programing'],
+              rows: const [
+                ['Jogo do planejamento'],
+                ['Fases Pequenas'],
+                ['Metafora StoryTelling'],
+                ['Desing Simples - KISS'],
+                ['Testes pelo cliente'],
+                ['Ritmo Sustentavel (40/5) = 8h semanais'],
+                ['Padronização do Código'],
+                ['Refatoração'],
+                ['Entrega Contínua e Agil']
+              ],
+            ),
 
             TableCustom(columns: const [
               'Modelo agil'
