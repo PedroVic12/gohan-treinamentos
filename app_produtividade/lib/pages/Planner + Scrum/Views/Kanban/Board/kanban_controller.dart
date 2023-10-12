@@ -8,19 +8,25 @@ class Task {
   Task({required this.title});
 }
 
-class KanbanController extends GetxController {
-  RxList<Task> backlog = <Task>[].obs;
-  RxList<Task> inProgress = <Task>[].obs;
-  RxList<Task> done = <Task>[].obs;
+class ColunaKanban {
+  final String title;
+  final List<Task> tasks;
 
-  @override
-  void onInit() {
-    super.onInit();
-    backlog.add(Task(title: 'Example Task'));
-  }
+  ColunaKanban({
+    required this.title,
+    required this.tasks,
+  });
+}
 
-  void moveTask(Task task, RxList<Task> oldColumn, RxList<Task> newColumn) {
-    oldColumn.remove(task);
-    newColumn.add(task);
-  }
+class ItemTrabalho {
+  final String title;
+  late String description;
+  late String time;
+  late String tipe;
+
+  ItemTrabalho(
+      {required this.title,
+      this.description = '',
+      this.time = '',
+      this.tipe = ''});
 }

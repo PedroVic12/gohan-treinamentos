@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DraggableExample extends StatefulWidget {
-  const DraggableExample({super.key});
+class DragBox extends StatefulWidget {
+  const DragBox({Key? key});
 
   @override
-  State<DraggableExample> createState() => _DraggableExampleState();
+  State<DragBox> createState() => _ArrastarESoltarExemploState();
 }
 
-class _DraggableExampleState extends State<DraggableExample> {
-  int acceptedData = 0;
+class _ArrastarESoltarExemploState extends State<DragBox> {
+  int dadosAceitos = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -16,49 +16,63 @@ class _DraggableExampleState extends State<DraggableExample> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Draggable<int>(
-          // Data is the value this Draggable stores.
-          data: 10,
-          feedback: Container(
-            height: 100,
-            width: 100,
-            child: const Card(
-                color: Colors.deepOrange, child: Icon(Icons.directions_run)),
-          ),
+          // Os dados são o valor que este Draggable armazena.
+          data: 120,
+          feedback: const Card(
+              color: Colors.greenAccent,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text('movendo...'),
+                    Icon(Icons.directions_run),
+                  ],
+                ),
+              )),
           childWhenDragging: Container(
             height: 100.0,
             width: 100.0,
-            color: Colors.pinkAccent,
-            child: const Center(
-              child: Text('Child When Dragging'),
-            ),
+            color: Colors.red,
+            child: const Center(),
           ),
-          child: Container(
-            height: 100.0,
-            width: 100.0,
-            color: Colors.lightGreenAccent,
-            child: const Center(
-              child: Text('Draggable'),
-            ),
+
+          child: Column(
+            children: [
+              Container(
+                height: 100.0,
+                width: 100.0,
+                color: Colors.lightGreenAccent,
+                child: const Center(
+                  child: Text('CLIQUE AQUI'),
+                ),
+              ),
+            ],
           ),
         ),
         DragTarget<int>(
           builder: (
             BuildContext context,
-            List<dynamic> accepted,
-            List<dynamic> rejected,
+            List dadosAceitos,
+            List<dynamic> dadosRejeitados,
           ) {
-            return Container(
-              height: 100.0,
-              width: 100.0,
-              color: Colors.cyan,
-              child: Center(
-                child: Text('Value is updated to: $acceptedData'),
-              ),
+            return Column(
+              children: [
+                Container(
+                  height: 100.0,
+                  width: 100.0,
+                  color: Colors.lightBlueAccent,
+                  child: const Center(
+                    child: Text('Coluna'),
+                  ),
+                ),
+                Text(
+                    'Dados aceitos: ${dadosAceitos.where((item) => item != null).join(', ')}'),
+              ],
             );
           },
-          onAccept: (int data) {
+          onAccept: (int? dados) {
             setState(() {
-              acceptedData += data;
+              //dadosAceitos.add(dados);
             });
           },
         ),

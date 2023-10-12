@@ -7,10 +7,11 @@ import 'kanban_controller.dart';
 class KanbanBoard extends StatelessWidget {
   final KanbanController _kanbanController = Get.put(KanbanController());
 
-  final List<Color> columnColors = [
-    Colors.lightBlue.shade100,
-    Colors.lightGreen.shade100,
+  final List<Color> coresColunas = [
+    Colors.blue.shade400,
     Colors.red.shade100,
+    Colors.orange.shade100,
+    Colors.green.shade100,
   ];
 
   @override
@@ -19,24 +20,26 @@ class KanbanBoard extends StatelessWidget {
       height: 700,
       child: Row(
         children: [
+          _buildKanbanColumn('Backlog', _kanbanController.columns['backlog']!,
+              coresColunas[0], 0),
           _buildKanbanColumn(
-              'Backlog', _kanbanController.backlog, columnColors[0]),
-          _buildKanbanColumn(
-              'In Progress', _kanbanController.inProgress, columnColors[1]),
-          _buildKanbanColumn('Done', _kanbanController.done, columnColors[2]),
+              'TODO', _kanbanController.columns['todo']!, coresColunas[1], 1),
+          _buildKanbanColumn('In Progress',
+              _kanbanController.columns['inProgress']!, coresColunas[2], 2),
+          _buildKanbanColumn('CONCLUIDO!', _kanbanController.columns['done']!,
+              coresColunas[3], 3),
         ],
       ),
     );
   }
 
-  Widget _buildKanbanColumn(String title, RxList<Task> tasks, Color color) {
+  Widget _buildKanbanColumn(
+      String title, List<ItemTrabalho> tasks, Color color, int index) {
     return KanbanColumn(
       title: title,
       tasks: tasks,
       color: color,
-      onTaskDropped: (Task task) {
-        _kanbanController.moveTask(task, _kanbanController.backlog, tasks);
-      },
+      index: index,
     );
   }
 }
