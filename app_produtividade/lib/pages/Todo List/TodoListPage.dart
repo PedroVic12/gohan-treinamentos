@@ -26,15 +26,8 @@ class TodoListPage extends StatelessWidget {
             Get.to(TodoScreen());
           }),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
-            Text("OLA MUNDO"),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => TodoListViewPage());
-                },
-                child: const Text('Ir para a página de modelagem')),
-
             //! Itens para Exibir
             Padding(
               padding: const EdgeInsets.all(12.0),

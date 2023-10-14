@@ -1,4 +1,5 @@
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/page3.dart';
+import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
 import 'package:app_produtividade/widgets/DrawerNavigation.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:app_produtividade/widgets/Custom/TableCustom.dart';
@@ -30,7 +31,7 @@ class GohanTreinamentosPage extends StatelessWidget {
               label: 'tab',
               iconData: Icons.add_comment_sharp,
               onPress: () {
-                //Get.to(TodoListPage());
+                Get.to(TodoListPage());
               }),
           NavigationBarItem(
               label: 'Tab 3',

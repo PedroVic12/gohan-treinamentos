@@ -85,9 +85,11 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
             return Column(
               mainAxisSize: MainAxisSize.min, // Set to min to prevent overflow
               children: [
-                TextField(
-                  controller: eventNameController,
-                  decoration: InputDecoration(hintText: 'Nome do Evento'),
+                Card(
+                  child: TextField(
+                    controller: eventNameController,
+                    decoration: InputDecoration(hintText: 'Nome do Evento'),
+                  ),
                 ),
                 DateTimePickerWidget(
                   onDateSelected: (date) {
@@ -101,7 +103,6 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
                     });
                   },
                 ),
-                // Optional: Display selected date and time for user confirmation
                 Text("Data : ${selectedDate?.toLocal()}"),
                 Text("Hora : ${selectedTime?.format(context)}"),
               ],
@@ -109,7 +110,7 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
           },
         ),
         actions: [
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
               if (selectedDate != null && selectedTime != null) {

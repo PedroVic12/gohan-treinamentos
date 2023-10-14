@@ -45,8 +45,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Titulo',
         theme: ThemeData(
           primaryColor: Colors.indigo,
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(secondary: Colors.deepOrangeAccent),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
           scaffoldBackgroundColor: Colors.blueGrey,
           textTheme: const TextTheme(
             bodyMedium: TextStyle(
