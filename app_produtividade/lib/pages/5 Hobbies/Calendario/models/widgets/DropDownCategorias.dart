@@ -2,7 +2,7 @@ import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/Contro
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../widgets/Custom/CustomText.dart';
+import '../../../../../widgets/Custom/CustomText.dart';
 
 class DropDownCategoria extends StatefulWidget {
   DropDownCategoria({Key? key}) : super(key: key);
@@ -60,7 +60,7 @@ class _DropDownCategoriaState extends State<DropDownCategoria> {
         onChanged: (String? newValue) {
           setState(() {
             categoriaSelecionada = newValue!;
-            //calendario.atualizarCategoriaSelecionada(categoriaSelecionada);
+            calendario.atualizarPrioridade(categoriaSelecionada);
             print('Prioridade selecionada: $categoriaSelecionada');
           });
         },

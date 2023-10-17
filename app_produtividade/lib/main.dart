@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Titulo',
+        title: 'GOHAN TREINAMENTOS',
         theme: ThemeData(
           primaryColor: Colors.indigo,
           useMaterial3: true,

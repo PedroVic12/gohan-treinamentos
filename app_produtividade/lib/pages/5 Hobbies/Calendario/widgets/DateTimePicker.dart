@@ -48,7 +48,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
                 _selectDate();
               },
               child: const Text(
-                'Selecione o Dia',
+                'Data',
                 style: TextStyle(fontSize: 14),
               )),
           const Icon(Icons.lock_clock),
@@ -57,7 +57,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
                 _selectTime();
               },
               child: const Text(
-                'Selecione um Horário',
+                'Horário',
                 style: TextStyle(fontSize: 14),
               )),
         ]),

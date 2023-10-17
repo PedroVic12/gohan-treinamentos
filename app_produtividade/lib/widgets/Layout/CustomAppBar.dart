@@ -5,7 +5,10 @@ AppBar CustomAppBar() {
   return AppBar(
     backgroundColor: Colors.black,
     bottomOpacity: BorderSide.strokeAlignCenter,
-    title: const Text('Gohan Treinamentos Version 10 - 13/09/23'),
+    title: const Text(
+      'Gohan Treinamentos Version 10 - 13/09/23',
+      style: TextStyle(color: Colors.white),
+    ),
     actions: [
       IconButton(
         icon: const Icon(Icons.add_alert),

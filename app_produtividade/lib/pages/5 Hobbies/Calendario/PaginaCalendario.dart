@@ -1,7 +1,12 @@
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/ControleCalendario.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/BotaoPrioridade.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DateTimePicker.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DropDownCategorias.dart';
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
+import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:glass_kit/glass_kit.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class PaginaCalendario extends StatefulWidget {
@@ -11,13 +16,21 @@ class PaginaCalendario extends StatefulWidget {
 
 class _PaginaCalendarioState extends State<PaginaCalendario> {
   List<Evento> reunioes = <Evento>[];
+  DateTime? dataSelecionada;
+  CalendarioController calendario = Get.put(CalendarioController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: CustomAppBar(),
       body: Column(
-        children: [_buildCalendar(), _buildEventList(), BlurGlassCardWidget()],
+        children: [
+          _buildCalendar(),
+          _buildEventList(),
+          // BlurGlassCardWidget(
+          // eventos: reunioes,
+          //)
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _adicionarEvento(context),
@@ -36,6 +49,10 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
           dataSource: FonteDadosReuniao(reunioes),
           onTap: (details) {
             print('Data selecionada: ${details.date}');
+            setState(() {
+              dataSelecionada = details.date;
+            });
+
             if (details.appointments != null &&
                 details.appointments!.isNotEmpty) {
               setState(() {
@@ -46,6 +63,9 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
               });
               print('Eventos no dia selecionado: ${reunioes.length}');
             } else {
+              setState(() {
+                reunioes = [];
+              });
               print('Sem eventos no dia selecionado.');
             }
           },
@@ -56,19 +76,74 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
 
   Widget _buildEventList() {
     return Expanded(
-      child: ListView.builder(
-        itemCount: reunioes.length,
-        itemBuilder: (context, index) {
-          final event = reunioes[index];
-          return Card(
-            child: ListTile(
-              title: Text(event.nomeEvento),
-              subtitle: Text('${event.inicio} - ${event.fim}'),
+      child: Column(
+        children: [
+          if (dataSelecionada != null)
+            Text(
+                'Eventos em ${dataSelecionada!.day}/${dataSelecionada!.month}/${dataSelecionada!.year}'),
+          if (reunioes.isEmpty) Text('Nenhum evento encontrado.'),
+          Expanded(
+            child: ListView.builder(
+              itemCount: reunioes.length,
+              itemBuilder: (context, index) {
+                final event = reunioes[index];
+                return Card(
+                  child: ListTile(
+                    title: Text(event.nomeEvento),
+                    subtitle: Text('${event.inicio} - ${event.fim}'),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _buildCategorySection(CalendarioController calendario) {
+    return Column(
+      children: [
+        Card(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: const CustomText(text: 'Categorias'),
+        )),
+        Obx(
+          () => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BotaoPrioridade(
+                label: 'Trabalho',
+                color: Colors.green,
+                selected: calendario.prioridadeSelecionada.value == 'Trabalho',
+                onPressed: () => calendario.atualizarPrioridade('Trabalho'),
+              ),
+              BotaoPrioridade(
+                label: 'Faculdade',
+                color: Colors.purpleAccent,
+                selected: calendario.prioridadeSelecionada.value == 'Faculdade',
+                onPressed: () => calendario.atualizarPrioridade('Faculdade'),
+              ),
+              BotaoPrioridade(
+                label: 'Projetos',
+                color: Colors.red,
+                selected: calendario.prioridadeSelecionada.value == 'Projetos',
+                onPressed: () => calendario.atualizarPrioridade('Projetos'),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  void printEventDetails(Evento evento) {
+    print('Nome do Evento: ${evento.nomeEvento}');
+    print('Data de Início: ${evento.inicio}');
+    print('Data de Fim: ${evento.fim}');
+    print('Cor de Fundo: ${evento.corFundo}');
+    print('Dia Todo: ${evento.diaTodo}');
   }
 
   void _adicionarEvento(BuildContext context) {
@@ -83,7 +158,7 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
         content: StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return Column(
-              mainAxisSize: MainAxisSize.min, // Set to min to prevent overflow
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Card(
                   child: TextField(
@@ -105,6 +180,10 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
                 ),
                 Text("Data : ${selectedDate?.toLocal()}"),
                 Text("Hora : ${selectedTime?.format(context)}"),
+                _buildCategorySection(calendario),
+                const SizedBox(height: 8),
+                const CustomText(text: 'Prioridades'),
+                DropDownCategoria(),
               ],
             );
           },
@@ -115,21 +194,41 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
               Navigator.of(context).pop();
               if (selectedDate != null && selectedTime != null) {
                 final inicio = DateTime(
-                    selectedDate!.year,
-                    selectedDate!.month,
-                    selectedDate!.day,
-                    selectedTime!.hour,
-                    selectedTime!.minute);
+                  selectedDate!.year,
+                  selectedDate!.month,
+                  selectedDate!.day,
+                  selectedTime!.hour,
+                  selectedTime!.minute,
+                );
                 final fim = inicio.add(Duration(hours: 2));
-                setState(() {
-                  reunioes.add(Evento(eventNameController.text, inicio, fim,
-                      Colors.blue, false));
-                });
-                print(
-                    'Evento adicionado: ${eventNameController.text} em $inicio');
+
+                // Adicione o evento ao controlador
+                calendario.adicionarReuniao(
+                  selectedDate!,
+                  eventNameController.text,
+                );
+
+                // Exiba uma Snackbar quando o evento for cadastrado com sucesso
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Evento cadastrado com sucesso!'),
+                    duration: Duration(
+                        seconds: 2), // Opcional: Defina a duração da Snackbar
+                  ),
+                );
+
+                // Imprima todas as informações do evento
+                printEventDetails(Evento(
+                  eventNameController.text,
+                  inicio,
+                  fim,
+                  Colors.blue, // Defina a cor de fundo desejada
+                  false, // Defina se é o dia todo conforme necessário
+                ));
               } else {
                 print(
-                    'Data ou hora não selecionada. Não foi possível adicionar o evento.');
+                  'Data ou hora não selecionada. Não foi possível adicionar o evento.',
+                );
               }
             },
             child: Text('Adicionar'),
@@ -137,71 +236,5 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
         ],
       ),
     );
-  }
-}
-
-class Evento {
-  Evento(this.nomeEvento, this.inicio, this.fim, this.corFundo, this.diaTodo);
-  String nomeEvento;
-  DateTime inicio;
-  DateTime fim;
-  Color corFundo;
-  bool diaTodo;
-}
-
-class FonteDadosReuniao extends CalendarDataSource {
-  FonteDadosReuniao(List<Evento> fonte) {
-    appointments = fonte;
-  }
-  @override
-  DateTime getStartTime(int index) => appointments![index].inicio;
-  @override
-  DateTime getEndTime(int index) => appointments![index].fim;
-  @override
-  String getSubject(int index) => appointments![index].nomeEvento;
-  @override
-  Color getColor(int index) => appointments![index].corFundo;
-  @override
-  bool isAllDay(int index) => appointments![index].diaTodo;
-}
-
-class BlurGlassCardWidget extends StatelessWidget {
-  const BlurGlassCardWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GlassContainer(
-        height: 200,
-        width: 350,
-        gradient: LinearGradient(
-          colors: [
-            Colors.white.withOpacity(0.40),
-            Colors.white.withOpacity(0.10),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderGradient: LinearGradient(
-          colors: [
-            Colors.white.withOpacity(0.60),
-            Colors.white.withOpacity(0.10),
-            Colors.purpleAccent.withOpacity(0.05),
-            Colors.purpleAccent.withOpacity(0.60),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: [0.0, 0.39, 0.40, 1.0],
-        ),
-        blur: 20,
-        borderRadius: BorderRadius.circular(24.0),
-        borderWidth: 1.0,
-        elevation: 3.0,
-        isFrostedGlass: true,
-        shadowColor: Colors.purple.withOpacity(0.20),
-        child: Center(
-          child: CupertinoListTile(
-            title: Text('Ola mundo'),
-          ),
-        ));
   }
 }

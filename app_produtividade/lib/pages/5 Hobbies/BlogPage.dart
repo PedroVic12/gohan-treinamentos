@@ -1,6 +1,5 @@
 import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/PaginaCalendario.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarioPage.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
@@ -94,7 +93,11 @@ class _BlogPage2State extends State<BlogPage2> {
     _saveCounts();
     setState(() {});
 
-    Get.snackbar('Rotinas Resetadas!', 'Tenha um otimo inicio de semana');
+    Get.snackbar(
+      'Rotinas Resetadas!',
+      'Tenha um otimo inicio de semana',
+      showProgressIndicator: true,
+    );
   }
 
   @override
@@ -120,18 +123,19 @@ class _BlogPage2State extends State<BlogPage2> {
           const Center(
               child: Card(
                   child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(16.0),
             child: Text(
-              'Segunda, 02/10/2023',
+              'Segunda, 16/10/2023',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ))),
           const Text('You Only Need 5 hobbies'),
 
           DesempenhoCardWidget(
-              data: '02/10/23',
-              hiperfoco: 'Money',
-              rendimento: 'Médio',
+              data: '09/10/23',
+              total: 18,
+              hiperfoco: 'Creative',
+              rendimento: 'Fraco',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -209,7 +213,6 @@ class _BlogPage2State extends State<BlogPage2> {
 
           //BotaoNavegacao(        pagina: ContadorPage(), titlePagina: 'Pagina de Incrementador'),
 
-          BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           //CardProdutividade()
         ],
       ),
@@ -219,7 +222,7 @@ class _BlogPage2State extends State<BlogPage2> {
               label: 'Calendário',
               iconData: Icons.date_range_outlined,
               onPress: () {
-                Get.to(CalendarioPage());
+                Get.to(PaginaCalendario());
               }),
           NavigationBarItem(
               label: 'Todo List',
@@ -241,6 +244,7 @@ class _BlogPage2State extends State<BlogPage2> {
 
 class DesempenhoCardWidget extends StatelessWidget {
   final String data;
+  final int total;
   final String hiperfoco;
   final String rendimento;
   final VoidCallback onLongPressCard;
@@ -250,7 +254,8 @@ class DesempenhoCardWidget extends StatelessWidget {
       required this.hiperfoco,
       required this.rendimento,
       on,
-      required this.onLongPressCard});
+      required this.onLongPressCard,
+      required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +266,7 @@ class DesempenhoCardWidget extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(left: 15),
           child: CustomText(
-            text: 'Total da semana ($data): 19',
+            text: 'Semana ($data): \n$total',
             color: Colors.white,
             size: 14,
           ),
@@ -302,6 +307,14 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
               ),
               title: Text('Desemepenho do da semana: {data}'),
             ),
+            DesempenhoCardWidget(
+                data: '02/10/23',
+                total: 19,
+                hiperfoco: 'Money',
+                rendimento: 'Médio',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
             Divider(),
             const Card(
               color: Colors.grey,
@@ -312,7 +325,8 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
               ),
             ),
             DesempenhoCardWidget(
-                data: '25/09/23',
+                data: '25/09/23 ',
+                total: 17,
                 rendimento: 'Médio',
                 hiperfoco: 'Money',
                 onLongPressCard: (() {})),
@@ -325,6 +339,7 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
                     'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
               ]),
             ),
+            BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           ],
         ),
       ),

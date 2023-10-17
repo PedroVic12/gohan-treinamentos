@@ -1,3 +1,4 @@
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
 
 Widget BotaoPrioridade({
@@ -7,13 +8,17 @@ Widget BotaoPrioridade({
   required VoidCallback onPressed,
 }) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.all(2.0),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: selected ? color : Colors.grey,
       ),
       onPressed: onPressed,
-      child: Text(label),
+      child: CustomText(
+        text: label,
+        size: 12,
+        color: Colors.white,
+      ),
     ),
   );
 }
