@@ -104,7 +104,11 @@ class _BlogPage2State extends State<BlogPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gohan Treinamentos'),
+        title: const CustomText(
+          text: 'Gohan Treinamentos',
+          size: 20,
+          color: Colors.white,
+        ),
         backgroundColor: Colors.black,
         actions: [
           CircleAvatar(
@@ -266,18 +270,18 @@ class DesempenhoCardWidget extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(left: 15),
           child: CustomText(
-            text: 'Semana ($data): \n$total',
+            text: 'Semana ($data):\n\t\tTotal:$total',
             color: Colors.white,
             size: 14,
           ),
         ),
         trailing: CustomText(
-          text: 'Rendimento: $rendimento',
+          text: 'Rendimento:\n$rendimento',
           color: Colors.white,
           size: 14,
         ),
         leading: CustomText(
-          text: 'Foco maior: $hiperfoco',
+          text: 'Foco maior:\n$hiperfoco',
           color: Colors.white,
           size: 14,
         ),

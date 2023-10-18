@@ -1,5 +1,5 @@
 import 'package:app_produtividade/controllers/ApiService.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/Calendario/models/Evento.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/Evento.dart';
 import 'package:flutter/material.dart';
 
 class ControladorCalendario {

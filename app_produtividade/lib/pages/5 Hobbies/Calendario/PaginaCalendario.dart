@@ -1,13 +1,17 @@
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarWidget.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/ControleCalendario.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/Evento.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/BotaoPrioridade.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DateTimePicker.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DropDownCategorias.dart';
+import 'package:app_produtividade/widgets/BotaoNavega%C3%A7ao.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:intl/intl.dart';
 
 class PaginaCalendario extends StatefulWidget {
   @override
@@ -18,6 +22,10 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
   List<Evento> reunioes = <Evento>[];
   DateTime? dataSelecionada;
   CalendarioController calendario = Get.put(CalendarioController());
+  FonteDadosReuniao fonteDadosReuniao = FonteDadosReuniao([]);
+  Evento? _eventoSelecionado; // Propriedade para rastrear o evento selecionado
+  List<Evento> _eventos = <Evento>[];
+  final EventoService eventoService = EventoService();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +35,9 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
         children: [
           _buildCalendar(),
           _buildEventList(),
-          // BlurGlassCardWidget(
-          // eventos: reunioes,
+
+          //BlurGlassCardWidget(
+          //eventos: fonteDadosReuniao.appointments.toList(),
           //)
         ],
       ),
@@ -51,23 +60,22 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
             print('Data selecionada: ${details.date}');
             setState(() {
               dataSelecionada = details.date;
-            });
-
-            if (details.appointments != null &&
-                details.appointments!.isNotEmpty) {
-              setState(() {
+              if (details.appointments != null &&
+                  details.appointments!.isNotEmpty) {
                 final events = details.appointments as List<Evento>;
                 reunioes = events
                     .where((e) => e.inicio.day == details.date!.day)
                     .toList();
-              });
-              print('Eventos no dia selecionado: ${reunioes.length}');
-            } else {
-              setState(() {
+                if (reunioes.isNotEmpty) {
+                  // Defina o evento selecionado quando houver eventos
+                  _eventoSelecionado = reunioes.first;
+                }
+              } else {
                 reunioes = [];
-              });
-              print('Sem eventos no dia selecionado.');
-            }
+                _eventoSelecionado = null; // Limpe o evento selecionado
+              }
+            });
+            print('Eventos no dia selecionado: ${reunioes.length}');
           },
         ),
       ),
@@ -81,18 +89,48 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
           if (dataSelecionada != null)
             Text(
                 'Eventos em ${dataSelecionada!.day}/${dataSelecionada!.month}/${dataSelecionada!.year}'),
-          if (reunioes.isEmpty) Text('Nenhum evento encontrado.'),
+          if (_eventos.isEmpty) Text('Nenhum evento encontrado.'),
           Expanded(
             child: ListView.builder(
-              itemCount: reunioes.length,
+              itemCount: _eventos.length, // Usar a lista _eventos aqui
               itemBuilder: (context, index) {
-                final event = reunioes[index];
-                return Card(
-                  child: ListTile(
-                    title: Text(event.nomeEvento),
-                    subtitle: Text('${event.inicio} - ${event.fim}'),
-                  ),
-                );
+                final event = _eventos[index]; // Usar a lista _eventos aqui
+                // Verificar se o evento pertence ao dia selecionado
+                if (event.inicio.year == dataSelecionada!.year &&
+                    event.inicio.month == dataSelecionada!.month &&
+                    event.inicio.day == dataSelecionada!.day) {
+                  final dateFormat = DateFormat('dd/MM/yyyy');
+                  final timeFormat = DateFormat('HH:mm');
+                  final formattedStartDate = dateFormat.format(event.inicio);
+                  final formattedStartTime = timeFormat.format(event.inicio);
+                  final formattedEndDate = dateFormat.format(event.fim);
+                  final formattedEndTime = timeFormat.format(event.fim);
+                  final formattedDateTime =
+                      'Data: $formattedStartDate \nHorario: $formattedStartTime até $formattedEndTime';
+
+                  return Card(
+                    child: ListTile(
+                      title: Text('Evento: ${event.nomeEvento}'),
+                      subtitle: Text(formattedDateTime),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          // Remova o evento da lista _eventos
+                          setState(() {
+                            _eventos.removeAt(index);
+                          });
+
+                          // Remova o evento também da fonte de dados e notifique o SfCalendar
+                          fonteDadosReuniao.appointments?.remove(event);
+                          fonteDadosReuniao.notifyListeners(
+                              CalendarDataSourceAction.remove, [event]);
+                        },
+                      ),
+                    ),
+                  );
+                } else {
+                  return SizedBox.shrink(); // Oculta eventos de outros dias
+                }
               },
             ),
           ),
@@ -202,33 +240,20 @@ class _PaginaCalendarioState extends State<PaginaCalendario> {
                 );
                 final fim = inicio.add(Duration(hours: 2));
 
-                // Adicione o evento ao controlador
-                calendario.adicionarReuniao(
-                  selectedDate!,
-                  eventNameController.text,
-                );
-
-                // Exiba uma Snackbar quando o evento for cadastrado com sucesso
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Evento cadastrado com sucesso!'),
-                    duration: Duration(
-                        seconds: 2), // Opcional: Defina a duração da Snackbar
-                  ),
-                );
-
-                // Imprima todas as informações do evento
-                printEventDetails(Evento(
+                // Adicione o evento usando a classe de serviço
+                final evento = Evento(
                   eventNameController.text,
                   inicio,
                   fim,
-                  Colors.blue, // Defina a cor de fundo desejada
-                  false, // Defina se é o dia todo conforme necessário
-                ));
-              } else {
-                print(
-                  'Data ou hora não selecionada. Não foi possível adicionar o evento.',
+                  Colors.blue,
+                  false,
                 );
+                eventoService.adicionarEvento(evento);
+
+                // Atualize o estado para exibir o novo evento
+                setState(() {
+                  _eventoSelecionado = evento;
+                });
               }
             },
             child: Text('Adicionar'),
