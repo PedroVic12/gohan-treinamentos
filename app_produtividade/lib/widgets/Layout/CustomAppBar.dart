@@ -1,3 +1,4 @@
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,9 +6,11 @@ AppBar CustomAppBar() {
   return AppBar(
     backgroundColor: Colors.black,
     bottomOpacity: BorderSide.strokeAlignCenter,
-    title: const Text(
-      'Gohan Treinamentos Version 10 - 13/09/23',
-      style: TextStyle(color: Colors.white),
+    elevation: 3,
+    title: CustomText(
+      text: 'Gohan Treinamentos Version 11 - 18/10/23',
+      color: Colors.white,
+      size: 14,
     ),
     actions: [
       IconButton(
