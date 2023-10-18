@@ -17,7 +17,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-            
+
+      - name: Enter flutter project
+        run: cd app_produtividade
+
       - name: Install dependencies
         run: flutter pub get
 
