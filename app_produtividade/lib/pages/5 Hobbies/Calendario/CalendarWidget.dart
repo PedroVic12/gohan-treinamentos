@@ -1,4 +1,5 @@
-import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/ControleCalendario.dart';
+import 'dart:convert';
+
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/controller/Evento.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/BotaoPrioridade.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DateTimePicker.dart';
@@ -6,6 +7,7 @@ import 'package:app_produtividade/pages/5%20Hobbies/Calendario/widgets/DropDownC
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:get/get.dart';
 
@@ -22,53 +24,93 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
   final CalendarController _calendarController = CalendarController();
   List<Appointment> _eventosDoDia = [];
 
+  Future<void> _carregarEventosSalvos() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final eventosJson = prefs.getStringList('eventos_key') ?? [];
+      _appointments.clear(); // Limpa os eventos para evitar duplicações
+
+      eventosJson.forEach((eventoJson) {
+        final eventoMap = json.decode(eventoJson) as Map<String, dynamic>;
+
+        final evento = Evento.fromJson(eventoMap);
+
+        // Adiciona o evento aos appointments e eventos do diac
+        _appointments.add(Appointment(
+          startTime: evento.inicio,
+          endTime: evento.fim,
+          subject: evento.nomeEvento,
+        ));
+      });
+
+      setState(() {
+        _eventosDoDia = _appointments;
+      });
+
+      // Print para verificar os eventos carregados
+      for (final evento in _eventosDoDia) {
+        print('Evento Carregado: ${evento.subject}');
+      }
+    } catch (e) {
+      // Lidar com erros ao carregar eventos, se necessário
+      print('Erro ao carregar eventos: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _carregarEventosSalvos(); // Carrega os eventos ao iniciar a página
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Column(
+      body: ListView(
         children: [
-          SfCalendar(
-            controller: _calendarController,
-            view: CalendarView.month,
-            firstDayOfWeek: 6,
-            dataSource: ReuniaoDataSource(_appointments),
-            onTap: (calendarTapDetails) {
-              _atualizarEventosDoDia(calendarTapDetails.date!);
-            },
+          Container(
+            color: Colors.white30,
+            child: SfCalendar(
+              controller: _calendarController,
+              view: CalendarView.month,
+              firstDayOfWeek: 6,
+              dataSource: ReuniaoDataSource(_appointments),
+              onTap: (calendarTapDetails) {
+                _atualizarEventosDoDia(calendarTapDetails.date!);
+              },
+            ),
           ),
           _eventosDoDia.isEmpty
               ? Center(
                   child: Text('Nenhum evento para a data selecionada'),
                 )
-              : Expanded(
-                  child: Card(
-                    elevation: 3,
-                    margin: EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text('Eventos do Dia'),
-                        ),
-                        Divider(),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: _eventosDoDia.length,
-                          itemBuilder: (context, index) {
-                            final evento = _eventosDoDia[index];
-                            return ListTile(
-                              title: Text(evento.subject),
-                              trailing: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  _removerEvento(evento);
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+              : Card(
+                  elevation: 3,
+                  margin: EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text('Eventos do Dia'),
+                      ),
+                      Divider(),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _eventosDoDia.length,
+                        itemBuilder: (context, index) {
+                          final evento = _eventosDoDia[index];
+                          return ListTile(
+                            title: Text(evento.subject),
+                            trailing: IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () {
+                                _removerEvento(evento);
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ),
         ],
@@ -155,7 +197,6 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
                     _assunto,
                     startTime,
                     endTime,
-                    Colors.red,
                     false, // Defina diaTodo conforme necessário
                   );
 
@@ -166,6 +207,9 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
                     subject: _assunto,
                     color: Colors.red,
                   ));
+
+                  // Print para verificar o novo evento antes de salvá-lo
+                  print('Novo Evento: ${novoEvento.nomeEvento}');
 
                   // Salve o evento usando o EventoController
                   await EventoController().salvarEvento(novoEvento);
@@ -178,6 +222,9 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
 
                   // Fecha o formulário
                   Navigator.pop(context);
+
+                  // Após adicionar um novo evento, carregue novamente os eventos salvos
+                  _carregarEventosSalvos();
                 }
               },
               child: Text('Cadastrar'),
@@ -261,5 +308,88 @@ class CategoriaController extends GetxController {
 
   void atualizarPrioridade(String novaPrioridade) {
     prioridadeSelecionada.value = novaPrioridade;
+  }
+}
+
+class Evento {
+  String nomeEvento;
+  DateTime inicio;
+  DateTime fim;
+  bool diaTodo;
+
+  Evento(this.nomeEvento, this.inicio, this.fim, this.diaTodo);
+
+  factory Evento.fromJson(Map<String, dynamic> json) {
+    return Evento(
+      json['nomeEvento'],
+      DateTime.parse(json['inicio']),
+      DateTime.parse(json['fim']),
+      json['diaTodo'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'nomeEvento': nomeEvento,
+      'inicio': inicio.toIso8601String(),
+      'fim': fim.toIso8601String(),
+      'diaTodo': diaTodo,
+    };
+  }
+}
+
+class EventoController {
+  final List<Evento> eventos = [];
+  final String eventosKey = 'eventos_key';
+
+  Future<void> carregarEventos() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final eventosJson = prefs.getStringList(eventosKey) ?? [];
+
+      eventos.clear();
+      for (final eventoJson in eventosJson) {
+        final eventoMap = json.decode(eventoJson) as Map<String, dynamic>;
+        final evento = Evento.fromJson(eventoMap);
+        eventos.add(evento);
+      }
+    } catch (e) {
+      // Lidar com erros ao carregar eventos, se necessário
+      print('Erro ao carregar eventos: $e');
+    }
+  }
+
+  Future<void> salvarEvento(Evento evento) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final eventosJson = prefs.getStringList(eventosKey) ?? [];
+
+      final eventoJson =
+          json.encode(evento.toJson()); // Convertendo o evento para JSON
+
+      eventosJson.add(eventoJson);
+
+      await prefs.setStringList(eventosKey, eventosJson);
+    } catch (e) {
+      // Lidar com erros ao salvar eventos, se necessário
+      print('Erro ao salvar evento: $e');
+    }
+  }
+
+  Future<void> removerEvento(Evento evento) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final eventosJson = prefs.getStringList(eventosKey) ?? [];
+
+      final eventoJson =
+          json.encode(evento.toJson()); // Convertendo o evento para JSON
+
+      eventosJson.remove(eventoJson);
+
+      await prefs.setStringList(eventosKey, eventosJson);
+    } catch (e) {
+      // Lidar com erros ao remover eventos, se necessário
+      print('Erro ao remover evento: $e');
+    }
   }
 }

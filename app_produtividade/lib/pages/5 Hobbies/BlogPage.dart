@@ -1,5 +1,5 @@
 import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/Calendario/PaginaCalendario.dart';
+import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarWidget.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
@@ -226,7 +226,7 @@ class _BlogPage2State extends State<BlogPage2> {
               label: 'Calendário',
               iconData: Icons.date_range_outlined,
               onPress: () {
-                Get.to(PaginaCalendario());
+                Get.to(CalendarioWidget());
               }),
           NavigationBarItem(
               label: 'Todo List',
@@ -238,7 +238,7 @@ class _BlogPage2State extends State<BlogPage2> {
               label: 'SCRUM CALENDAR',
               iconData: Icons.person,
               onPress: () {
-                Get.to(PaginaCalendario());
+                Get.to(CalendarioWidget());
               }),
         ],
       ),
