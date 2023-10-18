@@ -18,25 +18,22 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Enter flutter project
-        run: cd app_produtividade
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Install dependencies and Build APK
+        run: |
+          cd app_produtividade
+          flutter pub get
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: app_produtividade/build/app/outputs/flutter-apk/app-release.apk
 
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          artifacts: build/app/outputs/flutter-apk/app-release.apk
+          artifacts: app_produtividade/build/app/outputs/flutter-apk/app-release.apk
           tag: v0.0.1
           token: ${{ secrets.TOKEN }}
