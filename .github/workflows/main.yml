@@ -22,7 +22,8 @@ jobs:
         run: cd app_produtividade
 
       - name: Install dependencies
-        run: flutter pub get
+      - run: cd app_produtividade
+      - run: flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
