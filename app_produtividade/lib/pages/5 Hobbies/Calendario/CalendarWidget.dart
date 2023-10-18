@@ -63,6 +63,12 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
     _carregarEventosSalvos(); // Carrega os eventos ao iniciar a página
   }
 
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
