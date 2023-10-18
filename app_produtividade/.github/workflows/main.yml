@@ -34,7 +34,6 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            build/app/outputs/flutter-apk/app-release.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          artifacts: build/app/outputs/flutter-apk/app-release.apk
+          tag: v0.0.1
+          token: ${{ secrets.TOKEN }}
