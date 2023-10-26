@@ -1,4 +1,6 @@
 import 'package:app_produtividade/pages/Home%20Page/GohanTreinamentosPage.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/Board/kanban_board.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/KanbanPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +63,7 @@ class _MyAppState extends State<MyApp> {
           GetPage(name: '/calisteniaApp', page: () => Page1()),
           GetPage(name: '/page2', page: () => Page2()),
           GetPage(name: '/page8', page: () => ListaDeFilmesPage()),
+          GetPage(name: '/KanbanBoard', page: () => KanbanPage()),
 
           //... (adicione todas as outras rotas aqui)
         ],

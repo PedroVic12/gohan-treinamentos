@@ -1,6 +1,7 @@
 import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarWidget.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
+import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/KanbanPage.dart';
 import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
@@ -20,6 +21,7 @@ import 'CRUD HIVE/views/notes_screen.dart';
 import 'CRUD HIVE/views/task_view.dart';
 import 'Hobbies/HobbyModel.dart';
 import 'Hobbies/HobbyController.dart';
+import 'package:intl/intl.dart';
 
 // TODO -> You only Need 5 Hobbies
 //
@@ -69,6 +71,12 @@ class _BlogPage2State extends State<BlogPage2> {
   void initState() {
     super.initState();
     _loadCounts();
+  }
+
+  getDataAtual() {
+    DateTime dataAtual = DateTime.now();
+    String dataFormatada = DateFormat('EEEE - dd/MM/yyyy').format(dataAtual);
+    return dataFormatada;
   }
 
   _loadCounts() async {
@@ -124,22 +132,25 @@ class _BlogPage2State extends State<BlogPage2> {
         children: [
           // TODO -> Transformar num Widget
 
-          const Center(
+          Center(
               child: Card(
                   child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
-              'Segunda, 16/10/2023',
+              getDataAtual(),
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ))),
-          const Text('You Only Need 5 hobbies'),
+          const CustomText(
+            text: 'You Only Need 5 hobbies',
+            weight: FontWeight.bold,
+          ),
 
           DesempenhoCardWidget(
-              data: '09/10/23',
-              total: 18,
-              hiperfoco: 'Creative',
-              rendimento: 'Fraco',
+              data: '16/10/23',
+              total: 16,
+              hiperfoco: 'Money',
+              rendimento: 'Medio',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -200,9 +211,10 @@ class _BlogPage2State extends State<BlogPage2> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(bottom: 25.0, top: 25),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+                Divider(),
                 Text("Desempenho da semana: ${totalHobbiesCount}/35",
                     style: const TextStyle(fontSize: 20)),
                 LinearProgressIndicator(
@@ -210,7 +222,8 @@ class _BlogPage2State extends State<BlogPage2> {
                   color: Colors.black,
                   valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
                   backgroundColor: Colors.grey[200],
-                )
+                ),
+                Divider(),
               ],
             ),
           ),
@@ -235,10 +248,10 @@ class _BlogPage2State extends State<BlogPage2> {
                 Get.to(TodoListPage());
               }),
           NavigationBarItem(
-              label: 'SCRUM CALENDAR',
-              iconData: Icons.person,
+              label: 'KANBAN',
+              iconData: Icons.add_chart_outlined,
               onPress: () {
-                Get.to(CalendarioWidget());
+                Get.toNamed('/KanbanBoard');
               }),
         ],
       ),
@@ -305,12 +318,15 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
         child: ListView(
           children: [
             Divider(),
-            ListTile(
-              leading: CircleAvatar(
-                child: Text('1'),
-              ),
-              title: Text('Desemepenho do da semana: {data}'),
-            ),
+            DesempenhoCardWidget(
+                data: '09/10/23',
+                total: 18,
+                hiperfoco: 'Creative',
+                rendimento: 'Fraco',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
+            Divider(),
             DesempenhoCardWidget(
                 data: '02/10/23',
                 total: 19,
@@ -328,6 +344,7 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
                 leading: Text('Foco maior {Money}'),
               ),
             ),
+            Divider(),
             DesempenhoCardWidget(
                 data: '25/09/23 ',
                 total: 17,

@@ -47,7 +47,8 @@ class DrawerNavigation extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Page 3 - Conceitos de Scrum e Produtividade'),
+            title: const Text(
+                'Page 3 - Conceitos de Scrum, Produtividade, Kanban e organização'),
             onTap: () {
               Navigator.push(
                 context,

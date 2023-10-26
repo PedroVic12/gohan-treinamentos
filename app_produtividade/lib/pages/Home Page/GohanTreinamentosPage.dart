@@ -22,22 +22,22 @@ class GohanTreinamentosPage extends StatelessWidget {
       bottomNavigationBar: CustomNavBar(
         navBarItems: [
           NavigationBarItem(
-              label: 'Pagina 3',
+              label: 'Calendario',
               iconData: Icons.home,
               onPress: () {
-                Get.to(Page3());
+                Get.toNamed('/blog');
               }),
           NavigationBarItem(
-              label: 'tab',
-              iconData: Icons.add_comment_sharp,
+              label: 'TODO LIST',
+              iconData: Icons.search,
               onPress: () {
                 Get.to(TodoListPage());
               }),
           NavigationBarItem(
-              label: 'Tab 3',
+              label: 'ORGANIZE',
               iconData: Icons.person,
               onPress: () {
-                //Get.to(TodoListViewPage());
+                Get.to(Page3());
               }),
         ],
       ),
