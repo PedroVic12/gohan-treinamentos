@@ -147,10 +147,10 @@ class _BlogPage2State extends State<BlogPage2> {
           ),
 
           DesempenhoCardWidget(
-              data: '16/10/23',
-              total: 16,
-              hiperfoco: 'Money',
-              rendimento: 'Medio',
+              data: '23/10/23',
+              total: 26,
+              hiperfoco: 'Creative',
+              rendimento: 'Energia Alta',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -232,6 +232,10 @@ class _BlogPage2State extends State<BlogPage2> {
 
           //CardProdutividade()
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
       bottomNavigationBar: CustomNavBar(
         navBarItems: [
