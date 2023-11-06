@@ -104,12 +104,9 @@ class KanbanController extends GetxController {
     columnKeys.addAll(columns.keys);
 
     // Adicionar itens às colunas
-    columns['backlog']!.add(ItemTrabalho(title: 'Example Task'));
-    columns['todo']!.add(ItemTrabalho(title: 'OPORTUNIDADE DE FICAR RICO'));
-    columns['todo']!.add(ItemTrabalho(title: 'MATERIA ATRASADA UFF'));
-    columns['inProgress']!.add(ItemTrabalho(title: 'APP KYOGRE'));
-    columns['inProgress']!.add(ItemTrabalho(title: 'CAMORIM PROJECTS'));
-    columns['done']!.add(ItemTrabalho(title: 'QUADRO KANBAN'));
+    columns['todo']!.add(ItemTrabalho(title: 'APP KYOGRE UI'));
+    columns['todo']!.add(ItemTrabalho(title: 'CAMORIM PROJECTS'));
+    columns['todo']!.add(ItemTrabalho(title: 'Front End React'));
   }
 
   void adicionarTarefa(int coluna, ItemTrabalho item) {

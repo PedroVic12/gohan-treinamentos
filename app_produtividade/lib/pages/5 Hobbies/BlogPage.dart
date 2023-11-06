@@ -323,6 +323,18 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
           children: [
             Divider(),
             DesempenhoCardWidget(
+                data: '30/10/23',
+                total: 13,
+                hiperfoco: 'Money',
+                rendimento: 'Fraco',
+                onLongPressCard: () {}),
+            DesempenhoCardWidget(
+                data: '23/10/23',
+                total: 26,
+                hiperfoco: 'Creative',
+                rendimento: 'Energia Alta',
+                onLongPressCard: () {}),
+            DesempenhoCardWidget(
                 data: '09/10/23',
                 total: 18,
                 hiperfoco: 'Creative',
