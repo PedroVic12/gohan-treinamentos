@@ -63,12 +63,6 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
     _carregarEventosSalvos(); // Carrega os eventos ao iniciar a página
   }
 
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -303,6 +297,9 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
   }
 }
 
+//! WIDGETS
+
+//!MODEL 1
 class ReuniaoDataSource extends CalendarDataSource {
   ReuniaoDataSource(List<Appointment> source) {
     appointments = source;
@@ -317,6 +314,7 @@ class CategoriaController extends GetxController {
   }
 }
 
+//! MODEL 2
 class Evento {
   String nomeEvento;
   DateTime inicio;

@@ -47,22 +47,22 @@ class _BlogPage2State extends State<BlogPage2> {
   final List<Hobby> hobbies = [
     Hobby(
         title: "One to make your money",
-        description:
-            "Estágio em Engenharia, Citta Delivery App, Iniciação Cientifica"),
+        description: "Estágio em Engenharia Camorim, Citta Delivery App"),
     Hobby(
         title: "One to keep you in shape",
         description:
-            "Calistenia App + Movimentos Calistenicos, Treino Academia + Força"),
+            "Calistenia App + Movimentos Calistenicos + Treino Academia + Força"),
     Hobby(
         title: "One to build Knowledge",
-        description: " 2 Disciplinas da UFF por Dia , 2 Aula + 5 Exericios"),
+        description: " 2 Disciplinas da UFF por Dia , 2 Aulas + 5 Exercicios"),
     Hobby(
         title: "One to grow your mindset",
-        description: "Fazer 1 Projeto que Resolva problemas"),
+        description:
+            "Fazer 1 Projeto que Resolva problemas, colocar em pratica algo que voce aprendeu"),
     Hobby(
         title: "One to stay creactive",
         description:
-            "Ler 1 Livro, Documentario, Material de Apoio de algo Revolucionario"),
+            "Ler 1 Capitulo de um Livro, Documentario, Estudar sobre algo Novo/Revolucionario"),
   ];
   int get totalHobbiesCount =>
       hobbies.fold(0, (previousValue, hobby) => previousValue + hobby.count);
@@ -101,10 +101,19 @@ class _BlogPage2State extends State<BlogPage2> {
     _saveCounts();
     setState(() {});
 
+    Get.snackbar('Rotinas Resetadas!', 'Tenha um otimo inicio de semana',
+        showProgressIndicator: true,
+        backgroundColor: Colors.redAccent.shade200);
+  }
+
+  void showCustomSnackbar(String title, String message) {
     Get.snackbar(
-      'Rotinas Resetadas!',
-      'Tenha um otimo inicio de semana',
-      showProgressIndicator: true,
+      title, // Título da Snackbar
+      message, // Mensagem da Snackbar
+      snackPosition: SnackPosition.BOTTOM, // Posição da Snackbar
+      duration: Duration(seconds: 3), // Duração da exibição
+      backgroundColor: Colors.blue, // Cor de fundo
+      colorText: Colors.white, // Cor do texto
     );
   }
 
@@ -147,10 +156,10 @@ class _BlogPage2State extends State<BlogPage2> {
           ),
 
           DesempenhoCardWidget(
-              data: '23/10/23',
-              total: 26,
-              hiperfoco: 'Creative',
-              rendimento: 'Energia Alta',
+              data: '06/11/23',
+              total: 27,
+              hiperfoco: 'Money',
+              rendimento: 'Energia Alta - quase ssj',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -191,7 +200,7 @@ class _BlogPage2State extends State<BlogPage2> {
                           width: 16,
                         ),
                         CircleAvatar(
-                          backgroundColor: Colors.grey.shade200,
+                          backgroundColor: Colors.grey.shade500,
                           child: IconButton(
                             icon: const Icon(Icons.add),
                             onPressed: () {
@@ -199,6 +208,9 @@ class _BlogPage2State extends State<BlogPage2> {
                                 hobbies[index].count++;
                                 _saveCounts();
                               });
+
+                              showCustomSnackbar('${hobbies[index].title}',
+                                  'Tarefa adicionada! Continue tentando!');
                             },
                           ),
                         ),
@@ -321,19 +333,21 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
       body: Card(
         child: ListView(
           children: [
-            Divider(),
+            const Divider(),
             DesempenhoCardWidget(
                 data: '30/10/23',
                 total: 13,
                 hiperfoco: 'Money',
                 rendimento: 'Fraco',
                 onLongPressCard: () {}),
+            const Divider(),
             DesempenhoCardWidget(
                 data: '23/10/23',
                 total: 26,
                 hiperfoco: 'Creative',
                 rendimento: 'Energia Alta',
                 onLongPressCard: () {}),
+            const Divider(),
             DesempenhoCardWidget(
                 data: '09/10/23',
                 total: 18,
@@ -342,7 +356,7 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
                 onLongPressCard: () {
                   Get.to(HistoricoDesempenhoCardWidget());
                 }),
-            Divider(),
+            const Divider(),
             DesempenhoCardWidget(
                 data: '02/10/23',
                 total: 19,
