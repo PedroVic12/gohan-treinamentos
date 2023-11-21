@@ -152,14 +152,15 @@ class _BlogPage2State extends State<BlogPage2> {
           ))),
           const CustomText(
             text: 'You Only Need 5 hobbies',
+            size: 36,
             weight: FontWeight.bold,
           ),
 
           DesempenhoCardWidget(
-              data: '06/11/23',
-              total: 27,
+              data: '13/11/23',
+              total: 26,
               hiperfoco: 'Money',
-              rendimento: 'Energia Alta - quase ssj',
+              rendimento: 'Aurea Limpa',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -171,13 +172,13 @@ class _BlogPage2State extends State<BlogPage2> {
               itemCount: hobbies.length,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Colors.amber.shade300,
-                  margin: const EdgeInsets.all(8.0),
+                  color: Colors.amber,
+                  margin: const EdgeInsets.all(16.0),
                   elevation: 5,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(24),
                   ),
-                  child: ListTile(
+                  child: CupertinoListTile(
                     title: Text(
                       hobbies[index].title,
                       style: const TextStyle(
@@ -333,6 +334,14 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
       body: Card(
         child: ListView(
           children: [
+            DesempenhoCardWidget(
+                data: '06/11/23',
+                total: 27,
+                hiperfoco: 'Money',
+                rendimento: 'Energia Alta - quase ssj',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
             const Divider(),
             DesempenhoCardWidget(
                 data: '30/10/23',
