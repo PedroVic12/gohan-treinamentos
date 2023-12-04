@@ -157,10 +157,10 @@ class _BlogPage2State extends State<BlogPage2> {
           ),
 
           DesempenhoCardWidget(
-              data: '13/11/23',
-              total: 26,
+              data: '27/11/23',
+              total: 18,
               hiperfoco: 'Money',
-              rendimento: 'Aurea Limpa',
+              rendimento: 'Depressivo determiando',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
@@ -334,6 +334,14 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
       body: Card(
         child: ListView(
           children: [
+            DesempenhoCardWidget(
+                data: '13/11/23',
+                total: 26,
+                hiperfoco: 'Money',
+                rendimento: 'Aurea Limpa',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
             DesempenhoCardWidget(
                 data: '06/11/23',
                 total: 27,
