@@ -152,7 +152,7 @@ class _BlogPage2State extends State<BlogPage2> {
           ))),
           const CustomText(
             text: 'You Only Need 5 hobbies',
-            size: 36,
+            size: 18,
             weight: FontWeight.bold,
           ),
 
@@ -173,12 +173,12 @@ class _BlogPage2State extends State<BlogPage2> {
               itemBuilder: (context, index) {
                 return Card(
                   color: Colors.amber,
-                  margin: const EdgeInsets.all(16.0),
-                  elevation: 5,
+                  margin: const EdgeInsets.all(8.0),
+                  elevation: 7,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(32),
                   ),
-                  child: CupertinoListTile(
+                  child: ListTile(
                     title: Text(
                       hobbies[index].title,
                       style: const TextStyle(

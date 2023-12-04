@@ -70,7 +70,7 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
       body: ListView(
         children: [
           Container(
-            color: Colors.white30,
+            color: Colors.white,
             child: SfCalendar(
               controller: _calendarController,
               view: CalendarView.month,
