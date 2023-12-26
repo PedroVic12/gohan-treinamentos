@@ -106,7 +106,7 @@ class KanbanController extends GetxController {
     // Adicionar itens às colunas
     columns['todo']!.add(ItemTrabalho(title: 'APP KYOGRE UI'));
     columns['todo']!.add(ItemTrabalho(title: 'CAMORIM PROJECTS'));
-    columns['todo']!.add(ItemTrabalho(title: 'Front End React'));
+    columns['todo']!.add(ItemTrabalho(title: 'Machine Learning Python'));
   }
 
   void adicionarTarefa(int coluna, ItemTrabalho item) {

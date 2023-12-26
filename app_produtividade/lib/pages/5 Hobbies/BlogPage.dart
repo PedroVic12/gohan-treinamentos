@@ -157,16 +157,14 @@ class _BlogPage2State extends State<BlogPage2> {
             size: 18,
             weight: FontWeight.bold,
           ),
-
           DesempenhoCardWidget(
-              data: '04/12/23',
-              total: 23,
+              data: '18/12/23',
+              total: 25,
               hiperfoco: 'Money',
-              rendimento: 'Chatbot + Kyogre',
+              rendimento: 'Bom',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
-
           //! CODIGO LIMPO MAS MOSTRA APENAS 1 HobbyList(controller: _controller),
 
           Expanded(
