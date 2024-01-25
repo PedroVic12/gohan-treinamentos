@@ -14,7 +14,7 @@ class TableCustom extends StatelessWidget {
         border: TableBorder.all(),
         children: [
           TableRow(
-            decoration: BoxDecoration(color: Colors.redAccent[300]),
+            decoration: BoxDecoration(color: Colors.redAccent),
             children: columns.map((col) {
               return TableCell(
                 child: Padding(

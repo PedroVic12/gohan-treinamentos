@@ -70,7 +70,7 @@ class GohanTreinamentosPage extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          const Text('Flutter Padawan Dia 6 - 17/02/2023'),
+          const Text('Flutter Jedi  - 25/01/2024'),
           const Card(
             child: Padding(
               padding: EdgeInsets.all(8.0),
