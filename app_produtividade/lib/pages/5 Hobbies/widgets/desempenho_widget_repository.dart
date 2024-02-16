@@ -73,6 +73,14 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
                   Get.to(HistoricoDesempenhoCardWidget());
                 }),
             DesempenhoCardWidget(
+                data: '29/01/24',
+                total: 36,
+                hiperfoco: 'Money',
+                rendimento: 'Quantidade != Qualidade',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
+            DesempenhoCardWidget(
                 data: '22/01/24',
                 total: 32,
                 hiperfoco: 'Money',

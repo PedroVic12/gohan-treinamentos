@@ -132,7 +132,7 @@ class _CalendarioWidgetState extends State<CalendarioWidget> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Novo evento'),
+          title: Text('Novo evento do dia :)'),
           content: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
               return Column(
