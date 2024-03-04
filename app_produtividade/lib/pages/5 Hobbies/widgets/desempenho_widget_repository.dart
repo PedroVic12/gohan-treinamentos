@@ -64,6 +64,30 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
       body: Card(
         child: ListView(
           children: [
+                  DesempenhoCardWidget(
+              data: '19/02/24',
+              total: 34,
+              hiperfoco: 'Money',
+              rendimento: 'karate - caos-  peixes',
+              onLongPressCard: () {
+                Get.to(HistoricoDesempenhoCardWidget());
+              }),
+            DesempenhoCardWidget(
+                data: '12/02/24',
+                total: 23,
+                hiperfoco: 'Money',
+                rendimento: 'Carnaval',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
+            DesempenhoCardWidget(
+                data: '05/02/24',
+                total: 34,
+                hiperfoco: 'Money',
+                rendimento: 'Pouca atitude',
+                onLongPressCard: () {
+                  Get.to(HistoricoDesempenhoCardWidget());
+                }),
             DesempenhoCardWidget(
                 data: '29/01/24',
                 total: 36,

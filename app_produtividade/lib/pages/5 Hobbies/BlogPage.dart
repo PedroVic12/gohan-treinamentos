@@ -158,10 +158,10 @@ class _BlogPage2State extends State<BlogPage2> {
             weight: FontWeight.bold,
           ),
           DesempenhoCardWidget(
-              data: '05/02/24',
+              data: '19/02/24',
               total: 34,
               hiperfoco: 'Money',
-              rendimento: 'Pouca atitude',
+              rendimento: 'karate - caos-  peixes',
               onLongPressCard: () {
                 Get.to(HistoricoDesempenhoCardWidget());
               }),
