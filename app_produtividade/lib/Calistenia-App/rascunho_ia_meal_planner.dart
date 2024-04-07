@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
 
 class GeminiController {
   // Simulate API interaction (replace with actual API calls)

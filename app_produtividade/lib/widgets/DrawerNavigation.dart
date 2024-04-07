@@ -29,6 +29,22 @@ class DrawerNavigation extends StatelessWidget {
             },
           ),
           Divider(),
+
+          ListTile(
+            title: const Text('Todo List 2024'),
+            onTap: () {
+              Get.to(MyHomePage( title: 'Todo List 2024'));
+            },
+          ),
+
+              ListTile(
+            title: const Text('Quizz app'),
+            onTap: () {
+              Get.to(QuizzPage());
+            },
+          ),
+
+
           ListTile(
             title: const Text('Page 1 - Calistenia APP'),
             onTap: () {

@@ -1,26 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-void main() {
-  registerIntances();
-  runApp(const MyApp());
-} 
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
 
 //! app/(public)
@@ -61,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
       children:[
         counter(),
+        TodoContainer()
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
