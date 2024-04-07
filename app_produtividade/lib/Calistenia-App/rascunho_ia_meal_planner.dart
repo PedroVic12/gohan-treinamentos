@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GeminiController {
   // Simulate API interaction (replace with actual API calls)
@@ -9,7 +11,8 @@ class GeminiController {
   }
 
   // Simplified text generation (replace with actual model logic)
-  String modeloGenerativoTxt({required String userData, String objective = 'Manter Peso'}) {
+  String modeloGenerativoTxt(
+      {required String userData, String objective = 'Manter Peso'}) {
     final Map<String, dynamic> plannerData = {
       "range": "Weight Range",
       "target": "Target Weight",
@@ -23,7 +26,7 @@ class GeminiController {
     // Customize based on objective (replace with real calculations)
     plannerData["target"] = objective == "Ganhar Peso" ? 150 : 130;
 
-    //return jsonEncode(plannerData);
+    return jsonEncode(plannerData);
   }
 }
 
@@ -86,7 +89,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _planner.gerarPrompt().then((prompt) => setState(() => _planner.user_data = prompt));
+    _planner
+        .gerarPrompt()
+        .then((prompt) => setState(() => _planner.user_data = prompt));
   }
 
   @override
@@ -111,21 +116,20 @@ class _MyAppState extends State<MyApp> {
                       child: Text(objective),
                     );
                   }).toList(),
-                  onChanged: (objective) => setState(() => _selectedObjective = objective!),
+                  onChanged: (objective) =>
+                      setState(() => _selectedObjective = objective!),
                 ),
                 const SizedBox(height: 16.0),
                 InputField(labelText: 'Genero (Opcional)'),
                 const SizedBox(height: 16.0),
-                InputField(
-                  labelText: 'Idade',
-                  validator: (value) {
-                  }
-                ),
+                InputField(labelText: 'Idade', validator: (value) {}),
                 const SizedBox(height: 16.0),
                 InputField(
                   labelText: 'Altura (cm)',
                   validator: (value) {
-                    if (value == null || double.tryParse(value) == null || double.parse(value) <= 0) {
+                    if (value == null ||
+                        double.tryParse(value) == null ||
+                        double.parse(value) <= 0) {
                       return 'Digite uma altura válida.';
                     }
                     return null;
@@ -136,7 +140,9 @@ class _MyAppState extends State<MyApp> {
                 InputField(
                   labelText: 'Peso (kg)',
                   validator: (value) {
-                    if (value == null || double.tryParse(value) == null || double.parse(value) <= 0) {
+                    if (value == null ||
+                        double.tryParse(value) == null ||
+                        double.parse(value) <= 0) {
                       return 'Digite um peso válido.';
                     }
                     return null;
@@ -159,7 +165,8 @@ class _MyAppState extends State<MyApp> {
                 ),
                 if (_results.isNotEmpty) ...[
                   const SizedBox(height: 16.0),
-                  Text('Plano Gerado:', style: Theme.of(context).textTheme.headline6),
+                  Text('Plano Gerado:',
+                      style: Theme.of(context).textTheme.headline6),
                   const SizedBox(height: 8.0),
                   Text(_results),
                 ],

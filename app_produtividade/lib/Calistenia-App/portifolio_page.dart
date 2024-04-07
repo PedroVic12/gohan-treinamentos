@@ -124,7 +124,7 @@ class AssistentePessoalPage extends StatelessWidget {
                     ),
                     
                     Row(
-                    mainAxisAligment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                             TextButton(
                                 onPressed: assistente._textoReconhecido.isNotEmpty ? assistente._copyText : null,
