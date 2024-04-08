@@ -1,17 +1,15 @@
-
+import 'package:app_produtividade/Calistenia-App/src/todo_repository.dart';
+import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-
-
-
-//! app/(public)
 class MyHomePage extends StatefulWidget {
   final String title;
 
   const MyHomePage({
-    super.key,
+    Key? key,
     required this.title,
-  });
+  }) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -19,16 +17,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-    final actions = TodoAction();    
+  final actions = TodoAction();
 
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
   }
-  
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     actions.fetchTodos();
   }
@@ -40,10 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Column(
-      children:[
-        counter(),
-        TodoContainer()
-      ]),
+        children: [
+          counter(),
+          TodoContainer(),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -51,216 +50,104 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  
-  Widget counter()
-  {
+
+  Widget counter() {
     return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'You have pushed the button this many times:',
+          ),
+          Text(
+            '$_counter',
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        ],
+      ),
+    );
   }
-  
-  Widget TodoContainer()
-  {
-    
-    final actions = TodoAction();    
-    void editTodoDialog([TodoModel? model]){
-      model ??= TodoModel(id:-1,titulo: "", check: false);
-      
-      showDialog(
-      context: context,
-        builder: (context){
-          return AlertDialog(
-          title: const Text("Editar tarefa"),
-            content: TextFormField(
-            initialValue: model?.titulo,
-            onChanged:(value){
-              model = model!.copyWith(titulo: value);
-            }
-            ),
-            
-            actions: [
-              TextButton(
-              
-              onPressed: (
-              ){},
-                
-               child: const Text("Cancelar")
-                ),
-              
-              TextButton(
-              
-              onPressed: (
-              ){
-                actions.add(model!);
-              },
-                
-               child: const Text("Salvar")
-                )
-            ],
-            
-          );
-        }
-      );
-    }
-    
+
+  Widget TodoContainer() {
     return RxBuilder(builder: (_) {
       final todos = todoState.value;
-      
+
       return ListView.builder(
-      
-      itemCount: todos.lenght,
-        itemBuilder: (_,index){
+        itemCount: todos.length,
+        itemBuilder: (_, index) {
           final tarefa = todos[index];
           return CheckboxListTile(
-          value: tarefa.check,
-            onChanged: (value) {}
-            
+            value: tarefa.check,
+            onChanged: (value) {},
+            title: Text(tarefa.titulo),
           );
-        }
+        },
       );
     });
-  }  
   }
+}
 
-
-//!app/interecator/models
-
-class TodoModel{
+class TodoModel {
   final int id;
   final String titulo;
   final bool check;
-  
-  TodoModel({required this.id, required this.titulo, required this.check});
-  
+
+  TodoModel({
+    required this.id,
+    required this.titulo,
+    required this.check,
+  });
+
   TodoModel copyWith({
     int? id,
     String? titulo,
-    bool? check
-  })
-  {
+    bool? check,
+  }) {
     return TodoModel(
-    id: id ?? this.id,
-    titulo: titulo ?? this.titulo,
-    check: check ?? this.check
+      id: id ?? this.id,
+      titulo: titulo ?? this.titulo,
+      check: check ?? this.check,
     );
   }
-  
 }
 
-
-
-//!app/interecator/todo_atom
-// flutter pug add asp
 final todoState = Atom<List<TodoModel>>([]);
 
+class TodoAction {
+  var _autoIncrement = 4;
 
-//!app/interecator/actions
-
-class TodoAction{
-  var _autoIncriment = 4;
-    final repository = TodoRepository();
+  final repository = Get.put(BancoDeDados());
 
   Future<void> fetchTodos() async {
-    
-  todoState.value = await repository.getAll();
-    
+    todoState.value = await repository.getAll();
+  }
 
-    
-   
-}
-  
   Future<void> putTodo(TodoModel model) async {
-     if(model.id == -1){
-       await repository.inserir(model);
-     } else{
-       await repository.update(model);
-     }
-    
+    if (model.id == -1) {
+      await repository.inserir(model);
+    } else {
+      await repository.update(model);
+    }
+
     fetchTodos();
   }
-  
-  
-  
-Future<void> add(TodoModel model) async {
-  if (model.id == -1){
-    _autoIncriment++;
-    todoState.value = [
-      ...todoState.value,
-      model.copyWith(id: _autoIncriment)
-    ];
-  } else {
-    final index= todoState.value.indexWhere(
-      (e) => e.id == model.id);
-    
-    todoState.value[index] = model;
-    todoState();
+
+  void add(TodoModel model) {
+    if (model.id == -1) {
+      _autoIncrement++;
+      todoState.value = [
+        ...todoState.value,
+        model.copyWith(id: _autoIncrement),
+      ];
+    } else {
+      final index = todoState.value.indexWhere((e) => e.id == model.id);
+      todoState.value[index] = model;
+      todoState.value = todoState.value;
+    }
+  }
+
+  Future<void> delete(int id) async {
+    todoState.value = todoState.value.where((e) => e.id != id).toList();
+    await repository.delete(id);
   }
 }
-Future<void> delete(int id) async {
-  todoState.value = todoState.value.where((e)) => e.id != id).toList();
-  
-  await repository.delete(id);
-}
-
-}
-
-
-
-
-
-
-
-
-
-//!app/repositorys
-abstract class TodoRepository {
-  Future<List<TodoModel>> getAll();
-  Future<TodoModel> inserir(TodoModel model);
-  
-  Future<TodoModel> update(TodoModel model);
-  
-  Future<bool> delete(int id);
-
-  
-
-}
-
-
-class BancoDeDados implements TodoRepository{
-  
-  late db;
-  
-  Future<List<TodoModel>> getAll()
-  {
-    todoState.value = [
-    
-    ];
-  }   
-  
-  
-    Future<TodoModel> inserir(TodoModel model);
-  
-  Future<TodoModel> update(TodoModel model);
-  
-  Future<bool> delete(int id);
-}
-
-void registerIntances(){
-  var banco = BancoDeDados();
-  final actions = TodoAction();    
-
-}
-
-
-

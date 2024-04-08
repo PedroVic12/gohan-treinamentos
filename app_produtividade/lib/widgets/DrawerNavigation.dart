@@ -1,14 +1,18 @@
+import 'package:app_produtividade/Calistenia-App/portifolio_page.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/filmes_repository.dart';
 import 'package:app_produtividade/pages/Page6.dart';
+import 'package:app_produtividade/pages/QuizzPage/views/QuizzPage.dart';
 import 'package:app_produtividade/pages/Todo%20List/TodoListPage.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/page3.dart';
 import 'package:app_produtividade/pages/page5.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../Calistenia-App/todo_list_2024.dart';
 
 class DrawerNavigation extends StatelessWidget {
   const DrawerNavigation({super.key});
@@ -29,22 +33,28 @@ class DrawerNavigation extends StatelessWidget {
             },
           ),
           Divider(),
-
+          ListTile(
+            title: const Text('Portifolio'),
+            leading: CircleAvatar(
+              child: Icon(Icons.calendar_month),
+            ),
+            onTap: () {
+              Get.to(PortifolioPage());
+            },
+          ),
+          Divider(),
           ListTile(
             title: const Text('Todo List 2024'),
             onTap: () {
-              Get.to(MyHomePage( title: 'Todo List 2024'));
+              //Get.to(MyHomePage(title: 'Todo List 2024'));
             },
           ),
-
-              ListTile(
+          ListTile(
             title: const Text('Quizz app'),
             onTap: () {
               Get.to(QuizzPage());
             },
           ),
-
-
           ListTile(
             title: const Text('Page 1 - Calistenia APP'),
             onTap: () {
@@ -115,6 +125,24 @@ class DrawerNavigation extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget navigator(text, onClicar) {
+    return Column(
+      children: [
+        Divider(),
+        ListTile(
+          title: Text(text),
+          leading: CircleAvatar(
+            child: Icon(Icons.calendar_month),
+          ),
+          onTap: () {
+            onClicar();
+          },
+        ),
+        Divider(),
+      ],
     );
   }
 }
