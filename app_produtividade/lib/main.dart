@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:get/get.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
@@ -27,6 +28,19 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
   await Hive.openBox<Task>('tasks');
+
+  try {
+    //flutter run –dart-define-from-files=.env
+
+    //Gemini.init(apiKey: const String.fromEnvironment('chave_key'));
+    Gemini.init(apiKey: "AIzaSyDVufkW23RIvdiTrUY3_ql67cnyVTMMIq8");
+    print("C3po conectado!");
+
+    final bot = Gemini.instance;
+    bot.listModels();
+  } on Exception catch (e) {
+    print("Erro no c3po ao conectar com api ${e}");
+  }
 
   // Rodando o App
   runApp(const MyApp());

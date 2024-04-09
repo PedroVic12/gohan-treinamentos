@@ -17,32 +17,42 @@ import '../Calistenia-App/todo_list_2024.dart';
 class DrawerNavigation extends StatelessWidget {
   const DrawerNavigation({super.key});
 
+  navegar(context, Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => page,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
-          Divider(),
+          const Divider(),
           ListTile(
             title: const Text('Blog + Calendario'),
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               child: Icon(Icons.calendar_month),
             ),
             onTap: () {
               Get.toNamed('/blog');
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
             title: const Text('Portifolio'),
-            leading: CircleAvatar(
-              child: Icon(Icons.calendar_month),
+            leading: const CircleAvatar(
+              child: Icon(Icons.person),
             ),
             onTap: () {
-              Get.to(PortifolioPage());
+              navegar(context, PortifolioPage());
+              //Get.to(PortifolioPage());
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
             title: const Text('Todo List 2024'),
             onTap: () {
@@ -52,7 +62,7 @@ class DrawerNavigation extends StatelessWidget {
           ListTile(
             title: const Text('Quizz app'),
             onTap: () {
-              Get.to(QuizzPage());
+              Get.to(const QuizzPage());
             },
           ),
           ListTile(
@@ -131,17 +141,17 @@ class DrawerNavigation extends StatelessWidget {
   Widget navigator(text, onClicar) {
     return Column(
       children: [
-        Divider(),
+        const Divider(),
         ListTile(
           title: Text(text),
-          leading: CircleAvatar(
+          leading: const CircleAvatar(
             child: Icon(Icons.calendar_month),
           ),
           onTap: () {
             onClicar();
           },
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }

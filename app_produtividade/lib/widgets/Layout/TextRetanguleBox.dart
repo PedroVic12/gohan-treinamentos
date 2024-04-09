@@ -18,11 +18,8 @@ class CaixaTextoRetangulo extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Text(
-              'Momento chill: ' +
-                  this.string_parametro.toString() +
-                  '- Recebo um parametro!',
-              style: TextStyle(fontSize: 25)),
+          child: Card(
+              child: Text(string_parametro, style: TextStyle(fontSize: 25))),
         ),
       ),
     );
