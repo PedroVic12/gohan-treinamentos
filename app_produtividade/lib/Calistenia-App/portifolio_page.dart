@@ -1,4 +1,5 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
+import 'package:app_produtividade/C3PO/chat_page.dart';
 import 'package:app_produtividade/widgets/Custom/CustomNavBar.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/TextRetanguleBox.dart';
@@ -33,12 +34,17 @@ class PortifolioPage extends StatelessWidget {
       ),
       bottomNavigationBar: CustomNavBar(navBarItems: [
         NavigationBarItem(
-            label: 'chat',
-            iconData: Icons.home,
+            label: 'c3po IA',
+            iconData: Icons.radio_button_unchecked_outlined,
             onPress: () {
               Get.to(TextPage());
             }),
-        NavigationBarItem(label: '', iconData: Icons.search, onPress: () {}),
+        NavigationBarItem(
+            label: 'chat page',
+            iconData: Icons.sms,
+            onPress: () {
+              Get.to(Basic());
+            }),
       ]),
     );
   }

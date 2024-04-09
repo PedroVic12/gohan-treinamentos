@@ -66,6 +66,7 @@ dependencies:
   flutter_gemini: ^2.0.3
   fluent_ui: ^4.8.7
   animated_text_kit: ^4.2.2
+  dash_chat_2: ^0.0.20
 
 dev_dependencies:
   flutter_test:
