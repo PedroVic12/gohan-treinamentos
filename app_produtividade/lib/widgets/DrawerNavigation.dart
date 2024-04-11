@@ -1,3 +1,4 @@
+import 'package:app_produtividade/C3PO/assistente.dart';
 import 'package:app_produtividade/Calistenia-App/portifolio_page.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
@@ -41,6 +42,18 @@ class DrawerNavigation extends StatelessWidget {
               Get.toNamed('/blog');
             },
           ),
+          const Divider(),
+          ListTile(
+            title: const Text('c3po assistente virtual'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.person),
+            ),
+            onTap: () {
+              navegar(context, C3poGenaiAssistentePessoal());
+              //Get.to(PortifolioPage());
+            },
+          ),
+          const Divider(),
           const Divider(),
           ListTile(
             title: const Text('Portifolio'),
@@ -138,7 +151,7 @@ class DrawerNavigation extends StatelessWidget {
     );
   }
 
-  Widget navigator(text, onClicar) {
+  Widget navigator(String text, onClicar) {
     return Column(
       children: [
         const Divider(),
@@ -148,7 +161,7 @@ class DrawerNavigation extends StatelessWidget {
             child: Icon(Icons.calendar_month),
           ),
           onTap: () {
-            onClicar();
+            onClicar;
           },
         ),
         const Divider(),

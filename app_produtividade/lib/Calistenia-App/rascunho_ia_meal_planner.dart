@@ -72,14 +72,15 @@ class InputField extends StatelessWidget {
   }
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class PlanoDeTreinoWidget extends StatefulWidget {
+  const PlanoDeTreinoWidget({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<PlanoDeTreinoWidget> createState() => _PlanoDeTreinoWidgetState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
+  @override
   final _formKey = GlobalKey<FormState>();
   final _controller = GeminiController();
   final _planner = IAplanner();

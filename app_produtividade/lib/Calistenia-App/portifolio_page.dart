@@ -1,5 +1,6 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
 import 'package:app_produtividade/C3PO/chat_page.dart';
+import 'package:app_produtividade/Calistenia-App/rascunho_ia_meal_planner.dart';
 import 'package:app_produtividade/widgets/Custom/CustomNavBar.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:app_produtividade/widgets/Layout/TextRetanguleBox.dart';
@@ -15,19 +16,22 @@ class PortifolioPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurpleAccent,
       appBar: AppBar(
-        title: Text("Portifolio de PV"),
+        title: const Text("Portifolio de PV"),
       ),
       body: Center(
         child: ListView(children: [
-          CaixaTextoRetangulo(
+          const CaixaTextoRetangulo(
               string_parametro: "Como ter um assistente pessoal"),
           header(),
           apresetationInfo(),
           Row(children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.sensor_occupied)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.social_distance)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.media_bluetooth_off)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.install_mobile))
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.sensor_occupied)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.social_distance)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.media_bluetooth_off)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.install_mobile))
           ]),
           projectSection()
         ]),
@@ -37,13 +41,19 @@ class PortifolioPage extends StatelessWidget {
             label: 'c3po IA',
             iconData: Icons.radio_button_unchecked_outlined,
             onPress: () {
-              Get.to(TextPage());
+              Get.to(const C3poGenaiAssistentePessoal());
             }),
         NavigationBarItem(
             label: 'chat page',
             iconData: Icons.sms,
             onPress: () {
               Get.to(Basic());
+            }),
+        NavigationBarItem(
+            label: 'IA trainer',
+            iconData: Icons.sms,
+            onPress: () {
+              Get.to(PlanoDeTreinoWidget());
             }),
       ]),
     );
@@ -65,7 +75,7 @@ class PortifolioPage extends StatelessWidget {
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Column(children: [
-          Text("Meus Projetos"),
+          const Text("Meus Projetos"),
           ProjectCard("Projeto 1", "https://via.placeholder.com/515X700",
               "Projeto Analise de Dados", "link github"),
           ProjectCard("Projeto 2", "https://via.placeholder.com/515X700",
@@ -79,29 +89,30 @@ class PortifolioPage extends StatelessWidget {
     return Container(
       child: Row(children: [
         Container(
-            child: Column(children: [
-          Text("Hello World! Sou o Pedro Victor Veras"),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-              "Um desenvolvedor frontend em formação apaixonado por tecnologia.\nEstou sempre me desafiando com novos projetos e buscando feedback na comunidade de programação, além de compartilhar meus conhecimentos.\n 😁Ah, também sou fã de jogos, filmes, séries e animes. 💜"),
-          SizedBox(
-            height: 5,
-          ),
-        ])),
-        CircleAvatar(child: Placeholder())
+          child: const Column(children: [
+            Text("Hello World! Sou o Pedro Victor Veras"),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+                "Um desenvolvedor frontend em formação apaixonado por tecnologia.\nEstou sempre me desafiando com novos projetos e buscando feedback na comunidade de programação, além de compartilhar meus conhecimentos.\n 😁Ah, também sou fã de jogos, filmes, séries e animes. 💜"),
+            SizedBox(
+              height: 5,
+            ),
+          ]),
+        ),
+        const CircleAvatar(child: Placeholder())
       ]),
     );
   }
 
   Widget header() {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      CircleAvatar(
+      const CircleAvatar(
         child: Icon(Icons.abc),
       ),
       TextButton(
-          child: CustomText(
+          child: const CustomText(
             text: "Meus Projetos",
             size: 24,
           ),

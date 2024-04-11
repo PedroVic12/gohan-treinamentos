@@ -49,16 +49,16 @@ class C3PoAssistente {
   }
 }
 
-class TextPage extends StatefulWidget {
-  const TextPage({Key? key}) : super(key: key);
+class C3poGenaiAssistentePessoal extends StatefulWidget {
+  const C3poGenaiAssistentePessoal({super.key});
 
   @override
-  State<TextPage> createState() => _TextPageState();
+  State<C3poGenaiAssistentePessoal> createState() =>
+      _C3poStateGenaiAssistentePessoal();
 }
 
-class _TextPageState extends State<TextPage> {
-  //late final Gemini gemini;
-
+class _C3poStateGenaiAssistentePessoal
+    extends State<C3poGenaiAssistentePessoal> {
   final gemini = Gemini.instance;
   var question = '';
   String? answer = '';
@@ -91,68 +91,21 @@ class _TextPageState extends State<TextPage> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('GENAI C3po'),
+      ),
       body: Column(
         children: [
-          const Text('GENAI C3po'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   c3poColumn(),
+                  showRespostaAssistente(),
                   Text(question),
-                  Visibility(
-                    visible: isLoading,
-                    child: const CircularProgressIndicator(),
-                  ),
-                  Visibility(
-                    visible: !isLoading,
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Center(
-                        child: AnimatedTextKit(
-                          key: ValueKey(answer),
-                          displayFullTextOnTap: true,
-                          isRepeatingAnimation: false,
-                          animatedTexts: [
-                            TyperMarkdownAnimatedText(answer!),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: question.isEmpty && !isLoading,
-                    child: const Center(
-                      child: Text('Faça uma pergunta ao GEMINI!'),
-                    ),
-                  )
+                  myColumn()
                 ],
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: txtController,
-              onSubmitted: (text) async {
-                setState(() {
-                  question = text;
-                  isLoading = true;
-                });
-                txtController.clear();
-
-                final response = await gemini.text(question).then((value) {
-                  print(value?.output);
-                  var resposta = value?.output;
-
-                  setState(() {
-                    answer = resposta;
-                    isLoading = false;
-                  });
-                });
-
-                print(response);
-              },
             ),
           ),
         ],
@@ -170,17 +123,86 @@ class _TextPageState extends State<TextPage> {
     );
   }
 
+  Widget showRespostaAssistente() {
+    return ListView(
+      children: [
+        Visibility(
+          visible: isLoading,
+          child: const CircularProgressIndicator(),
+        ),
+        Visibility(
+          visible: !isLoading,
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Center(
+              child: AnimatedTextKit(
+                key: ValueKey(answer),
+                displayFullTextOnTap: true,
+                isRepeatingAnimation: false,
+                animatedTexts: [
+                  TyperMarkdownAnimatedText(answer!),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Visibility(
+          visible: question.isEmpty && !isLoading,
+          child: const Center(
+            child:
+                Text('Faça uma pergunta ao c3po seu assistnte virtual TDAH!'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget formularioSimples(Function(String)? onTap, bool obscureText,
+      TextEditingController controlador, String hintText) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: TextField(
+        onSubmitted: onTap,
+        obscureText: obscureText,
+        autocorrect: true,
+        controller: controlador,
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            ),
+            fillColor: Theme.of(context).colorScheme.secondary,
+            filled: true,
+            hintText: hintText,
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary)),
+      ),
+    );
+  }
+
   Widget c3poColumn() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TextField(
-          controller: _textController,
-          decoration: InputDecoration(
-            hintText: 'Digite o texto...',
-          ),
-        ),
+        formularioSimples((text) async {
+          setState(() {
+            question = text;
+            isLoading = true;
+          });
+          txtController.clear();
+
+          final response = await gemini.text(question).then((value) {
+            print(value?.output);
+            var resposta = value?.output;
+
+            setState(() {
+              answer = resposta;
+              isLoading = false;
+            });
+          });
+
+          print(response);
+        }, false, txtController, "Pergunte ao TDAH"),
         SizedBox(height: 20),
         _isLoading
             ? Image.asset(
@@ -198,5 +220,60 @@ class _TextPageState extends State<TextPage> {
                   ),
       ],
     );
+  }
+
+  Widget myColumn() {
+    final assistente = C3PoAssistente();
+
+    assistente.initSpeechState();
+    return Column(children: [
+      ElevatedButton(
+        onPressed: () async {
+          //String? command = await assistant.listenCommand();
+          //await assistant.interpretCommand(command);
+        },
+        child: Text('Ouvir Comando'),
+      ),
+      Divider(),
+      Divider(),
+      Divider(),
+      TextField(
+        controller: assistente.inputText,
+        decoration: InputDecoration(
+            hintText: "Enter text", border: OutlineInputBorder()),
+        maxLines: 3,
+      ),
+      SizedBox(height: 30),
+      TextButton(
+          onPressed: () {
+            assistente.falar(assistente.inputText.text);
+          },
+          child: Text("C3po falar")),
+      Container(
+          child: Column(children: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(assistente.isListening ? Icons.mic : Icons.mic_none),
+          iconSize: 100,
+          color: assistente.isListening ? Colors.green : Colors.red,
+        ),
+        Card(
+            child: Text(assistente.textoReconhecido.isNotEmpty
+                ? assistente.textoReconhecido
+                : "Results here...")),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          TextButton(
+              onPressed: assistente.textoReconhecido.isNotEmpty
+                  ? assistente.copyText
+                  : null,
+              child: Text("Copiar")),
+          TextButton(
+              onPressed: assistente.textoReconhecido.isNotEmpty
+                  ? assistente.clearText
+                  : null,
+              child: Text("Cancelar"))
+        ])
+      ]))
+    ]);
   }
 }
