@@ -1,5 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:app_produtividade/core/animated_markdown.dart';
+import 'package:app_produtividade/widgets/Custom/CustomText.dart';
+import 'package:app_produtividade/widgets/Layout/TextRetanguleBox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -90,41 +92,40 @@ class _C3poStateGenaiAssistentePessoal
       });
     }
 
+    //Debug, COde, Motivation, Rest and Train
+
+// 4 botoes
+
+// 2 cards no centro
+
+// plano de fundo
+
+// setas com svg
+
+// botão bolado que sai som do pokemon ao apertar e tem uma animação --> Seus proprios widgets
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GENAI C3po'),
+        title: const Text('GENAI C3po Assistente'),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  c3poColumn(),
-                  showRespostaAssistente(),
-                  Text(question),
-                  myColumn()
-                ],
-              ),
+          c3poColumn(),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomText(text: question),
             ),
           ),
+          showRespostaAssistente(),
+          myColumn()
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (_isListening) {
-            //_stopListening();
-          } else {
-            //_startListening();
-          }
-        },
-        child: Icon(_isListening ? Icons.mic_off : Icons.mic),
       ),
     );
   }
 
   Widget showRespostaAssistente() {
-    return ListView(
+    return Column(
       children: [
         Visibility(
           visible: isLoading,
@@ -134,14 +135,19 @@ class _C3poStateGenaiAssistentePessoal
           visible: !isLoading,
           child: Align(
             alignment: Alignment.topLeft,
-            child: Center(
-              child: AnimatedTextKit(
-                key: ValueKey(answer),
-                displayFullTextOnTap: true,
-                isRepeatingAnimation: false,
-                animatedTexts: [
-                  TyperMarkdownAnimatedText(answer!),
-                ],
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: AnimatedTextKit(
+                    key: ValueKey(answer),
+                    displayFullTextOnTap: true,
+                    isRepeatingAnimation: false,
+                    animatedTexts: [
+                      TyperMarkdownAnimatedText(answer!),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -201,19 +207,18 @@ class _C3poStateGenaiAssistentePessoal
             });
           });
 
-          print(response);
+          //print(response);
         }, false, txtController, "Pergunte ao TDAH"),
         SizedBox(height: 20),
         _isLoading
-            ? Image.asset(
-                'assets/loading.gif') // Substitua pelo seu GIF de carregamento
+            ? CircularProgressIndicator()
             : _response.isEmpty
-                ? Image.asset(
-                    'assets/static_image.png') // Substitua pela sua imagem estática
+                ? Image.network(
+                    'https://moseisleychronicles.files.wordpress.com/2015/11/untitled-215.gif') // Substitua pela sua imagem estática
                 : Column(
                     children: [
-                      Image.asset(
-                          'assets/static_image.png'), // Substitua pela sua imagem estática
+                      Image.network(
+                          'https://moseisleychronicles.files.wordpress.com/2015/11/untitled-215.gif'), // Substitua pela sua imagem estática
                       SizedBox(height: 10),
                       Text(_response),
                     ],
@@ -227,16 +232,6 @@ class _C3poStateGenaiAssistentePessoal
 
     assistente.initSpeechState();
     return Column(children: [
-      ElevatedButton(
-        onPressed: () async {
-          //String? command = await assistant.listenCommand();
-          //await assistant.interpretCommand(command);
-        },
-        child: Text('Ouvir Comando'),
-      ),
-      Divider(),
-      Divider(),
-      Divider(),
       TextField(
         controller: assistente.inputText,
         decoration: InputDecoration(
@@ -244,23 +239,35 @@ class _C3poStateGenaiAssistentePessoal
         maxLines: 3,
       ),
       SizedBox(height: 30),
-      TextButton(
-          onPressed: () {
+      ElevatedButton(
+          onPressed: () async {
             assistente.falar(assistente.inputText.text);
+
+            //String? command = await assistant.listenCommand();
+            //await assistant.interpretCommand(command);
           },
           child: Text("C3po falar")),
       Container(
           child: Column(children: [
         IconButton(
-          onPressed: () {},
-          icon: Icon(assistente.isListening ? Icons.mic : Icons.mic_none),
+          onPressed: () {
+            if (_isListening) {
+              //_stopListening();
+            } else {
+              //_startListening();
+            }
+          },
+          icon: Icon(_isListening ? Icons.mic_off : Icons.mic),
           iconSize: 100,
           color: assistente.isListening ? Colors.green : Colors.red,
         ),
         Card(
-            child: Text(assistente.textoReconhecido.isNotEmpty
-                ? assistente.textoReconhecido
-                : "Results here...")),
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(assistente.textoReconhecido.isNotEmpty
+              ? assistente.textoReconhecido
+              : "Results here..."),
+        )),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           TextButton(
               onPressed: assistente.textoReconhecido.isNotEmpty

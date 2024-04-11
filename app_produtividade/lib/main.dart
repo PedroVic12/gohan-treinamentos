@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primaryColor: Colors.indigo,
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
           scaffoldBackgroundColor: Colors.blueGrey,
           textTheme: const TextTheme(
             bodyMedium: TextStyle(

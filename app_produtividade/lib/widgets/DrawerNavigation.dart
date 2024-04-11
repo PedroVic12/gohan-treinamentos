@@ -1,5 +1,6 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
 import 'package:app_produtividade/Calistenia-App/portifolio_page.dart';
+import 'package:app_produtividade/pages/PlanosGENAI/Planos%20de%20treino/rascunho_ia_meal_planner.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/Page8.dart';
@@ -13,7 +14,7 @@ import 'package:app_produtividade/pages/page5.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Calistenia-App/todo_list_2024.dart';
+import '../pages/PlanosGENAI/Plano de Estudos/todo_list_2024.dart';
 
 class DrawerNavigation extends StatelessWidget {
   const DrawerNavigation({super.key});
@@ -54,7 +55,6 @@ class DrawerNavigation extends StatelessWidget {
             },
           ),
           const Divider(),
-          const Divider(),
           ListTile(
             title: const Text('Portifolio'),
             leading: const CircleAvatar(
@@ -65,19 +65,47 @@ class DrawerNavigation extends StatelessWidget {
               //Get.to(PortifolioPage());
             },
           ),
+          ListTile(
+            title: const Text('Notas e Cards app'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.book),
+            ),
+            onTap: () {
+              //Get.to(const QuizzPage());
+            },
+          ),
+          const Divider(),
           const Divider(),
           ListTile(
             title: const Text('Todo List 2024'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.person),
+            ),
             onTap: () {
-              //Get.to(MyHomePage(title: 'Todo List 2024'));
+              navegar(context, TodoList2024());
             },
           ),
+          const Divider(),
           ListTile(
             title: const Text('Quizz app'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.book),
+            ),
             onTap: () {
               Get.to(const QuizzPage());
             },
           ),
+          const Divider(),
+          ListTile(
+            title: const Text('Plano de Treino - GENAI'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.wine_bar),
+            ),
+            onTap: () {
+              Get.to(const PlanoDeTreinoWidget());
+            },
+          ),
+          const Divider(),
           ListTile(
             title: const Text('Page 1 - Calistenia APP'),
             onTap: () {

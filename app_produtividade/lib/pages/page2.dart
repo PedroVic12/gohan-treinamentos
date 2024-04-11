@@ -103,12 +103,7 @@ class _RandomTextButtonState extends State<Page2> {
 
 // botão bolado que sai som do pokemon ao apertar e tem uma animação --> Seus proprios widgets
 
-              CaixaTextoRetangulo(
-                  string_parametro: 'Como ser mais produtivo?\n\n'),
-
-              CaixaTextoRetangulo(
-                string_parametro: 'Ola mundo! $_selectedMomentoChill',
-              ),
+              CaixaTextoRetangulo(text: 'Como ser mais produtivo?\n\n'),
 
               Container(
                 decoration: BoxDecoration(

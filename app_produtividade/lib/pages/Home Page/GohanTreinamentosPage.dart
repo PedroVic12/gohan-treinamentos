@@ -22,7 +22,7 @@ class GohanTreinamentosPage extends StatelessWidget {
       bottomNavigationBar: CustomNavBar(
         navBarItems: [
           NavigationBarItem(
-              label: 'Calendario',
+              label: 'Habit Tracker',
               iconData: Icons.home,
               onPress: () {
                 Get.toNamed('/blog');
