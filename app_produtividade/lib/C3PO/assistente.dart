@@ -137,7 +137,7 @@ class _C3poStateGenaiAssistentePessoal
             alignment: Alignment.topLeft,
             child: Card(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Center(
                   child: AnimatedTextKit(
                     key: ValueKey(answer),
