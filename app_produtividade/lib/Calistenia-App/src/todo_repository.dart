@@ -11,13 +11,17 @@ abstract class TodoRepository {
 class BancoDeDados implements TodoRepository {
   late var db;
 
+  List<TodoModel> arrayTodo = [];
+
   @override
   Future<List<TodoModel>> getAll() async {
     // Implementar a lógica para obter todos os itens do banco de dados
 
-    return [
+    arrayTodo.add(
       TodoModel(id: 1, titulo: "titulo", check: false, category: "Projetos"),
-    ];
+    );
+
+    return arrayTodo;
   }
 
   @override

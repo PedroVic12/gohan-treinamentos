@@ -17,6 +17,15 @@ import 'pages/5 Hobbies/BlogPage.dart';
 import 'pages/5 Hobbies/CRUD HIVE/models/task.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];
+ThemeData lightMode = ThemeData(
+    colorScheme: ColorScheme.light(
+  background: Colors.grey.shade300,
+  primary: Colors.grey.shade500,
+  secondary: Colors.grey.shade100,
+  tertiary: Colors.white,
+  error: Colors.red,
+  inversePrimary: Colors.grey.shade700,
+));
 
 void main() async {
   // iniciando

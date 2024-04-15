@@ -3,12 +3,20 @@ import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+final Map<String, Color> categoryColors = {
+  "Faculdade": Colors.blue,
+  "Estagio": Colors.green,
+  "Projetos": Colors.orange,
+  "Freelancer": Colors.red,
+};
+
 class TodoList2024 extends StatelessWidget {
   final TodoAction controller = Get.put(TodoAction());
 
   @override
   Widget build(BuildContext context) {
     controller.fetchTodos();
+    registerInstances();
 
     return Scaffold(
       appBar: AppBar(
@@ -25,8 +33,9 @@ class TodoList2024 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Implementar a lógica para adicionar uma nova tarefa
+          controller.todoDialog();
         },
-        tooltip: 'Increment',
+        tooltip: 'Add Tarefas',
         child: const Icon(Icons.add),
       ),
     );
@@ -43,15 +52,17 @@ class TodoList2024 extends StatelessWidget {
           itemCount: todos.length,
           itemBuilder: (_, index) {
             final tarefa = todos[index];
-            return CheckboxListTile(
-              value: tarefa.check,
-              onChanged: (value) {
-                // Implementar a lógica para marcar/desmarcar uma tarefa
-              },
-              title: Text(
-                tarefa.titulo,
-                style: TextStyle(
-                  color: categoryColors[tarefa.category] ?? Colors.black,
+            return Card(
+              child: CheckboxListTile(
+                value: tarefa.check,
+                onChanged: (value) {
+                  // Implementar a lógica para marcar/desmarcar uma tarefa
+                },
+                title: Text(
+                  tarefa.titulo,
+                  style: TextStyle(
+                    color: categoryColors[tarefa.category] ?? Colors.black,
+                  ),
                 ),
               ),
             );
@@ -124,12 +135,60 @@ class TodoAction {
     todoState.removeWhere((e) => e.id == id);
     await repository.delete(id);
   }
-}
 
-// Mapa de cores para categorias
-final Map<String, Color> categoryColors = {
-  "Faculdade": Colors.blue,
-  "Estagio": Colors.green,
-  "Projetos": Colors.orange,
-  "Freelancer": Colors.red,
-};
+  void todoDialog([TodoModel? model]) {
+    var selecionado;
+
+    model ??=
+        TodoModel(id: -1, titulo: "", check: false, category: "Faculdade");
+    Get.dialog(
+      AlertDialog(
+        title: Text("Adicionar tarefa"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: TextEditingController(text: model.titulo),
+              onChanged: (value) {
+                model = model!.copyWith(titulo: value);
+              },
+              decoration: InputDecoration(hintText: "Título"),
+            ),
+            const Text("Categoria: "),
+
+            Row(children: [
+              TextButton(
+                  onPressed: () {
+                    selecionado = categoryColors[0].toString();
+                    model = model!.copyWith(category: "Faculdade");
+
+                    putTodo(model!);
+                  },
+                  child: Text(categoryColors[0].toString())),
+              TextButton(
+                  onPressed: () {}, child: Text(categoryColors[1].toString())),
+              TextButton(
+                  onPressed: () {}, child: Text(categoryColors[2].toString())),
+            ]), //
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text("Cancelar"),
+          ),
+          TextButton(
+            onPressed: () {
+              putTodo(model!);
+              Get.back();
+            },
+            child: Text("Salvar"),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
+    );
+  }
+}
