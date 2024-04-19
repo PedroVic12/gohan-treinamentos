@@ -102,6 +102,8 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
         ),
         CustomText(
           text: "R\$ ${widget.produto_selecionado.preco_1.toString()} reais",
+          color: Colors.grey,
+          weight: FontWeight.bold,
         ),
         const SizedBox(height: 16),
 
@@ -165,6 +167,8 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
                   title: CustomText(text: adicional),
                   subtitle: CustomText(
                     text: "Preço: R\$ $precoAdicional",
+                    color: Colors.grey,
+                    weight: FontWeight.bold,
                   ),
                   value: addSelecionados[adicional] ?? false,
                   onChanged: (value) {

@@ -15,6 +15,11 @@ class C3PoAssistente {
   String textoReconhecido = '';
   final inputText = TextEditingController();
   final chatbotInput = TextEditingController();
+  var question = '';
+  String? answer = '';
+  var isLoading = false;
+  final txtController = TextEditingController();
+  String response = '';
 
   Future<void> initSpeechState() async {
     await _speechToText.initialize();

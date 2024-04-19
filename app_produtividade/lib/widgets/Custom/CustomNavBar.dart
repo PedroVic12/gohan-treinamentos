@@ -7,22 +7,25 @@ import '../../pages/5 Hobbies/BlogPage.dart';
 
 class CustomNavBar extends StatelessWidget {
   final List<NavigationBarItem> navBarItems;
+  final navColor;
 
-  CustomNavBar({required this.navBarItems});
+  CustomNavBar({required this.navBarItems, this.navColor = Colors.grey});
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.grey,
-      items: navBarItems.map((item) {
-        // Crie uma cópia personalizada do BottomNavigationBarItem
-        return BottomNavigationBarItem(
-            icon: Icon(item.iconData), label: item.label);
-      }).toList(),
-      onTap: (index) {
-        // Chame a função onPress do item selecionado
-        navBarItems[index].onPress();
-      },
+    return Builder(
+      builder: (context) => BottomNavigationBar(
+        backgroundColor: navColor,
+        items: navBarItems.map((item) {
+          // Crie uma cópia personalizada do BottomNavigationBarItem
+          return BottomNavigationBarItem(
+              icon: Icon(item.iconData), label: item.label);
+        }).toList(),
+        onTap: (index) {
+          // Chame a função onPress do item selecionado
+          navBarItems[index].onPress();
+        },
+      ),
     );
   }
 }
