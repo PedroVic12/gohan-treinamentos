@@ -31,7 +31,7 @@ class DrawingPage extends HookWidget {
     ValueNotifier<List<Sketch>> allSketches = useState([]);
 
     final animationController = useAnimationController(
-      duration: const Duration(milliseconds: 150),
+      duration: const Duration(milliseconds: 40),
       initialValue: 1,
     );
     return Scaffold(
@@ -41,6 +41,7 @@ class DrawingPage extends HookWidget {
       ),
       body: Stack(
         children: [
+          // todo scroll na tela de desenha
           Container(
             color: kCanvasColor,
             width: double.maxFinite,
