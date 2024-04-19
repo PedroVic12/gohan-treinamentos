@@ -67,6 +67,13 @@ dependencies:
   fluent_ui: ^4.8.7
   animated_text_kit: ^4.2.2
   dash_chat_2: ^0.0.20
+  flutter_drawing_board: ^0.7.0+2
+  flutter_hooks: ^0.20.5
+  image_picker: ^1.0.8
+  file_saver: ^0.2.12
+  font_awesome_flutter: ^10.7.0
+  flutter_colorpicker: ^1.0.3
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:

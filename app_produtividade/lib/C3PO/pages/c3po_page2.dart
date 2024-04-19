@@ -25,7 +25,7 @@ class _ChatbotVozC3poState extends State<ChatbotVozC3po> {
         title: const Text('GENAI C3po Chatbot por Voz'),
       ),
       body: Container(
-        color: Colors.lightGreenAccent,
+        color: Colors.black.withBlue(10),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -77,9 +77,16 @@ class _ChatbotVozC3poState extends State<ChatbotVozC3po> {
                 child: TextField(
                   controller: assistente.chatbotInput,
                   decoration: InputDecoration(
-                    hintText: 'Texto reconhecido',
-                    border: OutlineInputBorder(),
-                  ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.tertiary),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: "Texto Reconhecido por Voz",
+                      hintStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary)),
+
                   maxLines: null,
                   readOnly: true, // Para impedir a edição do texto pelo usuário
                 ),

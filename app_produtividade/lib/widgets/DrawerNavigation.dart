@@ -1,5 +1,6 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
 import 'package:app_produtividade/Calistenia-App/portifolio_page.dart';
+import 'package:app_produtividade/pages/Notes%20App/views/DrawingPage.dart';
 import 'package:app_produtividade/pages/PlanosGENAI/Planos%20de%20treino/rascunho_ia_meal_planner.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/BlogPage.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
@@ -40,21 +41,16 @@ class DrawerNavigation extends StatelessWidget {
               child: Icon(Icons.calendar_month),
             ),
             onTap: () {
-              Get.toNamed('/blog');
+              Get.toNamed("/blog");
             },
           ),
-          const Divider(),
-          ListTile(
-            title: const Text('c3po assistente virtual'),
-            leading: const CircleAvatar(
-              child: Icon(Icons.person),
-            ),
-            onTap: () {
+          navigator(
+            'c3po assistente virtual',
+            () {
               navegar(context, C3poGenaiAssistentePessoal());
-              //Get.to(PortifolioPage());
             },
+            Icons.person,
           ),
-          const Divider(),
           ListTile(
             title: const Text('Portifolio'),
             leading: const CircleAvatar(
@@ -62,20 +58,15 @@ class DrawerNavigation extends StatelessWidget {
             ),
             onTap: () {
               navegar(context, PortifolioPage());
-              //Get.to(PortifolioPage());
             },
           ),
-          ListTile(
-            title: const Text('Notas e Cards app'),
-            leading: const CircleAvatar(
-              child: Icon(Icons.book),
-            ),
-            onTap: () {
-              //Get.to(const QuizzPage());
+          navigator(
+            'Notas e Cards app',
+            () {
+              Get.to(const DrawingPage());
             },
+            Icons.book,
           ),
-          const Divider(),
-          const Divider(),
           ListTile(
             title: const Text('Todo List 2024'),
             leading: const CircleAvatar(
@@ -179,18 +170,14 @@ class DrawerNavigation extends StatelessWidget {
     );
   }
 
-  Widget navigator(String text, onClicar) {
+  Widget navigator(String text, Function() onTap, IconData icon) {
     return Column(
       children: [
         const Divider(),
         ListTile(
           title: Text(text),
-          leading: const CircleAvatar(
-            child: Icon(Icons.calendar_month),
-          ),
-          onTap: () {
-            onClicar;
-          },
+          leading: CircleAvatar(child: Icon(icon)),
+          onTap: onTap,
         ),
         const Divider(),
       ],

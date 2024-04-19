@@ -28,7 +28,6 @@ class C3poGenaiAssistentePessoal extends StatefulWidget {
 class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
     with SingleTickerProviderStateMixin {
   final assistente = Get.put(C3PoAssistente());
-
   @override
   void initState() {
     super.initState();
@@ -39,10 +38,12 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
 
   @override
   Widget build(BuildContext context) {
+    bool _showResponderVoz = false;
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('GENAI C3po Assistente Pessoal'),
+        title: const Text('GENAI C3PO Assistente Pessoal'),
       ),
       body: ListView(
         children: [
@@ -56,16 +57,35 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
 
 // setas com svg
 
-// botão bolado que sai som do pokemon ao apertar e tem uma animação --> Seus proprios widgets
+// botão bolado que sai som do pokemon ao apertar e tem uma animação --> Seus próprios widgets
           //Tab1
-          C3poChatbotSimples(),
+          const C3poChatbotSimples(),
 
           // tab2
+          const Divider(),
+
+          const Center(
+            child: CustomText(
+              text: "C3PO RESPONDE FALANDO",
+              color: Colors.white,
+              size: 26,
+            ),
+          ),
+          const Divider(),
           c3poTextToSpeech(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(
+              _showResponderVoz ? Icons.close : Icons.add), // Alterna o ícone
+
+          onPressed: () {
+            setState(() {
+              _showResponderVoz = !_showResponderVoz;
+            });
+          }),
       bottomNavigationBar: CustomNavBar(
-        navColor: Colors.blueGrey,
+        navColor: Colors.blue,
         navBarItems: [
           NavigationBarItem(
               label: 'TODO LIST',
@@ -107,7 +127,7 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
   Widget formularioSimples(Function(String)? onTap, bool obscureText,
       TextEditingController controlador, String hintText) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
         onSubmitted: onTap,
         obscureText: obscureText,
@@ -132,40 +152,44 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
     return Column(children: [
       TextField(
         controller: assistente.inputText,
+        autocorrect: true,
         decoration: InputDecoration(
-          hintText: "Digite o texto para ouvir!",
-          border: OutlineInputBorder(),
-        ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            ),
+            fillColor: Colors.white,
+            filled: true,
+            hintText: "Digite o texto para ouvir!",
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary)),
         maxLines: 2,
       ),
-      SizedBox(height: 30),
-      Form(
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: assistente.textoReconhecido.isNotEmpty
-                    ? assistente.copyText
-                    : null,
-                child: Text("Copiar"),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  await assistente.falar(assistente.inputText.text);
-                },
-                child: Text("C3po falar"),
-              ),
-              TextButton(
-                onPressed: assistente.textoReconhecido.isNotEmpty
-                    ? assistente.clearText
-                    : null,
-                child: Text("Cancelar"),
-              ),
-            ],
-          ),
-        ]),
-      ),
+      const SizedBox(height: 30),
+      Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: assistente.textoReconhecido.isNotEmpty
+                  ? assistente.copyText
+                  : null,
+              child: const Text("Copiar"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await assistente.falar(assistente.inputText.text);
+              },
+              child: const Text("C3po falar"),
+            ),
+            TextButton(
+              onPressed: assistente.textoReconhecido.isNotEmpty
+                  ? assistente.clearText
+                  : null,
+              child: const Text("Cancelar"),
+            ),
+          ],
+        ),
+      ]),
     ]);
   }
 }
