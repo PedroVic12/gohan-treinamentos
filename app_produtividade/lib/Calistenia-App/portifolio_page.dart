@@ -1,5 +1,5 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
-import 'package:app_produtividade/C3PO/chat_page.dart';
+import 'package:app_produtividade/C3PO/cardapioView/chat_page.dart';
 import 'package:app_produtividade/pages/PlanosGENAI/Planos%20de%20treino/rascunho_ia_meal_planner.dart';
 import 'package:app_produtividade/widgets/Custom/CustomNavBar.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
