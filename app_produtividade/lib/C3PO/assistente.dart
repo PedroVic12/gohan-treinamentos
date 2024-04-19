@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 import '../widgets/Custom/CustomNavBar.dart';
+import 'cardapioView/model_food.dart';
 
 class C3poGenaiAssistentePessoal extends StatefulWidget {
   const C3poGenaiAssistentePessoal({super.key});
@@ -57,6 +58,7 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
 // botão bolado que sai som do pokemon ao apertar e tem uma animação --> Seus proprios widgets
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('GENAI C3po Assistente'),
       ),
@@ -91,7 +93,21 @@ class _C3poStateGenaiAssistentePessoal extends State<C3poGenaiAssistentePessoal>
               label: 'TODO LIST',
               iconData: Icons.search,
               onPress: () {
-                Get.to(ItemDetailsPage());
+                Get.to(ItemDetailsPage(
+                  produto_selecionado: ProdutoModel(
+                    nome: "HAMBÚRGUER",
+                    preco_1: 32.0,
+                    ingredientes: "Pão, carne, queijo, alface, tomate",
+                    sub_categoria: "SIM",
+                    categoria: "ARTESANAL",
+                    Adicionais: {
+                      "Bacon": 5.0,
+                      "Ovo": 3.0,
+                      "Queijo": 2.0,
+                      "Molho especial": 1.0
+                    },
+                  ),
+                ));
               }),
           NavigationBarItem(
               label: 'ORGANIZE', iconData: Icons.person, onPress: () {}),

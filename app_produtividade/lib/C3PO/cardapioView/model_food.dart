@@ -6,6 +6,7 @@ class ProdutoModel {
   double? preco_2;
   String? ingredientes;
   String? imagem;
+  Map? Adicionais;
 
   ProdutoModel({
     required this.nome,
@@ -15,7 +16,25 @@ class ProdutoModel {
     this.preco_2,
     this.ingredientes,
     this.imagem,
+    this.Adicionais,
   });
+  ProdutoModel copyWith({
+    String? nome,
+    double? preco_1,
+    String? ingredientes,
+    String? sub_categoria,
+    String? categoria,
+    Map<String, double>? Adicionais,
+  }) {
+    return ProdutoModel(
+      nome: nome ?? this.nome,
+      preco_1: preco_1 ?? this.preco_1,
+      ingredientes: ingredientes ?? this.ingredientes,
+      sub_categoria: sub_categoria ?? this.sub_categoria,
+      categoria: categoria ?? this.categoria,
+      Adicionais: Adicionais ?? this.Adicionais,
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {

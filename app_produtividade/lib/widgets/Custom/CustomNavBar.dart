@@ -13,7 +13,7 @@ class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       items: navBarItems.map((item) {
         // Crie uma cópia personalizada do BottomNavigationBarItem
         return BottomNavigationBarItem(
@@ -49,7 +49,7 @@ class CustomLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: TextStyle(color: textColor),
+      style: const TextStyle(color: Colors.black),
     );
   }
 }
