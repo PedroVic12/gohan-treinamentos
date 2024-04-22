@@ -1,45 +1,60 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'package:ar_core/ar_core.dart';
 
-class PlanetaTerraScreen extends StatefulWidget {
-  PlanetaTerraScreen({Key? key}) : super(key: key);
+List<CameraDescription> cameras = [];
 
-  @override
-  _PlanetaTerraScreenState createState() => _PlanetaTerraScreenState();
+void initCamera() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    cameras = await availableCameras();
+  } on CameraException catch (e) {
+    print('Error: $e.code\nError Message: ${e}');
+  }
+  final firstCamera = cameras.first;
+  final cameraController = CameraController(
+    firstCamera,
+    ResolutionPreset.medium,
+  );
+  await cameraController.initialize();
 }
 
-class _PlanetaTerraScreenState extends State<PlanetaTerraScreen> {
-  late ArCoreController arCoreController;
+class EarthScreen extends StatefulWidget {
+  const EarthScreen({super.key});
 
   @override
+  State<EarthScreen> createState() => _EarthScreenState();
+}
+
+class _EarthScreenState extends State<EarthScreen> {
+  //late ARCoreController arCoreController;
+
+  late CameraController cameraController;
+  bool isStarted = false;
+  @override
   void dispose() {
-    arCoreController.dispose();
     super.dispose();
   }
 
-  void _onArCoreViewCreated(ArCoreController controller) {
-    arCoreController = controller;
-    _displayEarthMap();
-  }
+  @override
+  void initState() {
+    super.initState();
+    initCamera();
 
-  Future<void> _displayEarthMap() async {
-    final ByteData textureBytes = await rootBundle.load('assets/earth.jpg');
+    try {
+      print(cameras);
 
-    final materials = ArCoreMaterial(
-      color: const Color.fromARGB(120, 66, 134, 244),
-      textureBytes: textureBytes.buffer.asUint8List(),
-    );
-
-    final sphere = ArCoreSphere(materials: [materials], radius: 0.1);
-
-    final node = ArCoreNode(
-      shape: sphere,
-      position: Vector3(0, 0, -1.5),
-    );
-
-    arCoreController.addArCoreNode(node);
+      cameraController = CameraController(cameras[0], ResolutionPreset.max);
+      cameraController.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } catch (e) {
+      print("nao achou nenhuma camera");
+    }
   }
 
   @override
@@ -48,23 +63,10 @@ class _PlanetaTerraScreenState extends State<PlanetaTerraScreen> {
       appBar: AppBar(
         title: Text('Planeta Terra'),
       ),
-      body: ListView(
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Planeta Terra',
-                style: TextStyle(fontSize: 24),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ArCoreView(
-              onArCoreViewCreated: _onArCoreViewCreated,
-            ),
-          ),
-        ],
+      body: Center(
+        child: Augmented(
+          'assets/earth.png', // Substitua pelo link da imagem ou caminho local
+        ),
       ),
     );
   }
