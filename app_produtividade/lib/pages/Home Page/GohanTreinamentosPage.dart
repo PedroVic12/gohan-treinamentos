@@ -66,11 +66,12 @@ class GohanTreinamentosPage extends StatelessWidget {
   }
 
   Widget _communicationSection(BuildContext context) {
+    var data = DateTime.now().toIso8601String();
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          const Text('Flutter Jedi  - 25/01/2024'),
+          Text('Flutter Jedi  - ${data}'),
           const Card(
             child: Padding(
               padding: EdgeInsets.all(8.0),

@@ -15,6 +15,7 @@ import 'package:app_produtividade/pages/page5.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../pages/PlanosGENAI/Plano de Estudos/tarefas_diarias.dart';
 import '../pages/PlanosGENAI/Plano de Estudos/todo_list_2024.dart';
 
 class DrawerNavigation extends StatelessWidget {
@@ -76,6 +77,8 @@ class DrawerNavigation extends StatelessWidget {
               navegar(context, TodoList2024());
             },
           ),
+          navigator("Quadro de horarios",
+              () => Get.to(PlanoEstudosOrganizacao()), Icons.book),
           const Divider(),
           ListTile(
             title: const Text('Quizz app'),
