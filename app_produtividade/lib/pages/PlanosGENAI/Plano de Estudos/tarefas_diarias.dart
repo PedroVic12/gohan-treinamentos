@@ -1,4 +1,5 @@
 import 'package:app_produtividade/pages/PlanosGENAI/PDF%20data%20Analysis/cadastro_simples.dart';
+import 'package:app_produtividade/pages/TodoList%20Interativa/todoList_page_2024.dart';
 import 'package:app_produtividade/widgets/Custom/CustomNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,6 +59,12 @@ class _PlanoEstudosOrganizacaoState extends State<PlanoEstudosOrganizacao> {
             iconData: Icons.search,
             onPress: () {
               Get.to(CadastroSimples());
+            }),
+        NavigationBarItem(
+            label: 'TODO LIST 2024',
+            iconData: Icons.search,
+            onPress: () {
+              Get.to(TodoListWidget());
             }),
       ],
     );
