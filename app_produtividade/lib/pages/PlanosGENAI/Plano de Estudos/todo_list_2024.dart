@@ -1,4 +1,4 @@
-import 'package:app_produtividade/Calistenia-App/src/todo_repository.dart';
+import 'package:app_produtividade/controllers/Calistenia-App/src/todo_repository.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,7 @@ class TodoList2024 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     controller.fetchTodos();
-    registerInstances();
+    //registerInstances();
 
     return Scaffold(
       appBar: AppBar(
