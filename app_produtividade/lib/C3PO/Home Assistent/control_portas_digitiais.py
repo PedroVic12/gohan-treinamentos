@@ -1,5 +1,6 @@
-import serial.tools.list_ports
 import serial
+
+import serial.tools.list_ports
 
 
 def select_com_port():
@@ -14,14 +15,16 @@ def select_com_port():
     while True:
         com = input("\nSelect the COM port that the Arduino is connected to: ")
         for port in portsList:
-            if port.startswith(f"COM{com}"):
-                return port
+            print("porta conectada: ", port)
+            return com
         print("Tente outra porta USB. Please try again.")
 
 
 def main():
-    use = select_com_port()
-    serialInst = serial.Serial(use, 9600)
+    use_port = select_com_port()
+    # porta = "/dev/ttyUSB0"  # default value, just to avoid errors
+
+    serialInst = serial.Serial(use_port, 9600)
     print("Arduino Connected")
 
     while True:
