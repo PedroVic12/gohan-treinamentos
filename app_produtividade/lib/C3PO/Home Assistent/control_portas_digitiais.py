@@ -1,28 +1,36 @@
-# pip install pyserial
 import serial.tools.list_ports
+import serial
 
-ports = serial.tools.list_ports.comports()
-serialInst = serial.Serial()
-portsList = []
 
-for one in ports:
-    portsList.append(str(one))
-    print(str(one))
+def select_com_port():
+    ports = serial.tools.list_ports.comports()
+    portsList = [str(port) for port in ports]
 
-com = input("Select Com Port for Arduino #: ")
+    print("Available COM Ports:")
+    for port in portsList:
+        if "n/a" not in port:
+            print(port)
 
-for i in range(len(portsList)):
-    if portsList[i].startswith("COM" + str(com)):
-        use = "COM" + str(com)
-        print(use)
+    while True:
+        com = input("\nSelect the COM port that the Arduino is connected to: ")
+        for port in portsList:
+            if port.startswith(f"COM{com}"):
+                return port
+        print("Tente outra porta USB. Please try again.")
 
-serialInst.baudrate = 9600
-serialInst.port = use
-serialInst.open()
 
-while True:
-    command = input("Arduino Command (ON/OFF/exit): ")
-    serialInst.write(command.encode("utf-8"))
+def main():
+    use = select_com_port()
+    serialInst = serial.Serial(use, 9600)
+    print("Arduino Connected")
 
-    if command == "exit":
-        exit()
+    while True:
+        command = input("Arduino Command (ON/OFF/SAIR): ").upper()
+        serialInst.write(command.encode("utf-8"))
+
+        if command == "SAIR":
+            serialInst.close()
+            break
+
+
+main()
