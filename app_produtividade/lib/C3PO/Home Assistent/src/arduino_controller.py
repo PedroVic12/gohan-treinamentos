@@ -3,6 +3,11 @@ import serial.tools.list_ports
 import requests
 import pyttsx3
 import speech_recognition as sr
+import os
+
+
+# executar comando no terminal com lib os
+# permite leitura e escrita na porta serial
 
 
 class ArduinoControl:
@@ -15,6 +20,9 @@ class ArduinoControl:
 
     def close_connection(self):
         self.serialInst.close()
+
+    def enviar_comando(self, comando):
+        self.serialInst.write(comando.encode("utf-8"))
 
 
 class InternetControl:
@@ -38,7 +46,7 @@ class VoiceControl:
 
         try:
             command = self.recognizer.recognize_google(audio).upper()
-            print("You said:", command)
+            print("VOCE DISSE:", command)
             return command
         except sr.UnknownValueError:
             print("Could not understand audio")
@@ -48,12 +56,10 @@ class VoiceControl:
             return None
 
     def execute_command(self, command, arduino):
-        if command == "LIGAR":
+        if command == "TURN ON":
             arduino.send_command("ON")
-        elif command == "DESLIGAR":
+        elif command == "TURN OFF":
             arduino.send_command("OFF")
-        else:
-            print("Unknown command")
 
 
 def select_com_port():
@@ -67,6 +73,8 @@ def select_com_port():
 
     while True:
         com = input("\nSelect the COM port that the Arduino is connected to: ")
+        os.system(f"sudo chmod a+rw {com}")
+
         for port in portsList:
             print("porta conectada: ", port)
             return com
@@ -77,21 +85,27 @@ def main():
     com_port = select_com_port()
     arduino = ArduinoControl(com_port)
 
-    # internet_control = InternetControl("http://your-fastapi-url")
+    internet_control = InternetControl("http://your-fastapi-url")
     voice_control = VoiceControl()
+    mode = input("Select mode: [Internet/Voice] ").upper()
 
-    while True:
-        command = input("Select mode: [Internet/Voice] ").upper()
-        if command == "INTERNET":
-            internet_command = input("Enter command (ON/OFF/SAIR): ").upper()
-            if internet_command == "SAIR":
-                break
-            # internet_control.send_command(internet_command)
-        elif command == "VOICE":
-            voice_command = voice_control.recognize_command()
-            if voice_command == "SAIR":
-                break
-            voice_control.execute_command(voice_command, arduino)
+    try:
+        while True:
+            # command = input("Digite o comando:").upper()
+
+            if mode == "INTERNET":
+                internet_command = input("Enter command (ON/OFF/SAIR): ").upper()
+                if internet_command == "SAIR":
+                    break
+                internet_control.send_command(internet_command)
+            elif mode == "VOICE":
+                voice_command = voice_control.recognize_command()
+                if voice_command == "SAIR":
+                    break
+                voice_control.execute_command(voice_command, arduino)
+
+    except KeyboardInterrupt:
+        print("Exiting...")
 
     arduino.close_connection()
 

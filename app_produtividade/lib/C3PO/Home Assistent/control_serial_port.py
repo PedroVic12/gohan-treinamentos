@@ -24,7 +24,7 @@ def select_com_port():
 
 def main():
     use_port = select_com_port()
-    # porta = "/dev/ttyUSB0"  # default value, just to avoid errors
+    # use_port = "/dev/ttyUSB0"  # default value, just to avoid errors
 
     serialInst = serial.Serial(use_port, 9600)
     print("Arduino Connected")
