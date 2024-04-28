@@ -2,6 +2,8 @@ import serial
 
 import serial.tools.list_ports
 
+# sudo chmod a+rw /dev/ttyUSB0
+
 
 def select_com_port():
     ports = serial.tools.list_ports.comports()
