@@ -87,7 +87,7 @@ def main():
 
     internet_control = InternetControl("http://your-fastapi-url")
     voice_control = VoiceControl()
-    mode = input("Select mode: [Internet/Voice] ").upper()
+    mode = input("\nSelect mode: [Internet/Voice/TXT] ").upper()
 
     try:
         while True:
@@ -98,6 +98,9 @@ def main():
                 if internet_command == "SAIR":
                     break
                 internet_control.send_command(internet_command)
+            elif mode == "TXT":
+                command = input("Digite o comando via terminal (ON/OFF/SAIR): ").upper()
+                arduino.send_command(command)
             elif mode == "VOICE":
                 voice_command = voice_control.recognize_command()
                 if voice_command == "SAIR":
