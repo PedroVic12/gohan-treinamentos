@@ -1,25 +1,13 @@
-import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/controllers/contador_controller.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/Calendario/CalendarWidget.dart';
-import 'package:app_produtividade/pages/5%20Hobbies/widgets/HobbyList.dart';
 import 'package:app_produtividade/pages/5%20Hobbies/widgets/desempenho_widget_repository.dart';
-import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/KanbanPage.dart';
-import 'package:app_produtividade/widgets/CarregamentoWidget.dart';
 import 'package:app_produtividade/widgets/Custom/CustomText.dart';
-import 'package:app_produtividade/widgets/Layout/CustomAppBar.dart';
-import 'package:app_produtividade/widgets/Layout/MapaMentalWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../widgets/BotaoNavegaçao.dart';
 import '../../widgets/Custom/CustomNavBar.dart';
-import '../../widgets/Custom/TableCustom.dart';
 import '../Todo List/TodoListPage.dart';
-import '../Todo List/TodoListViewPage.dart';
-import 'CRUD HIVE/views/notes_screen.dart';
-import 'CRUD HIVE/views/task_view.dart';
 import 'Hobbies/HobbyModel.dart';
 import 'Hobbies/HobbyController.dart';
 import 'package:intl/intl.dart';
