@@ -1,76 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class GeminiController {
-  // Simulate API interaction (replace with actual API calls)
-  Future<String> connectApi() async {
-    String userData = await rootBundle.loadString('assets/user_data.json');
-    return userData;
-  }
 
-  // Simplified text generation (replace with actual model logic)
-  String modeloGenerativoTxt(
-      {required String userData, String objective = 'Manter Peso'}) {
-    final Map<String, dynamic> plannerData = {
-      "range": "Weight Range",
-      "target": "Target Weight",
-      "difference": "Weight to Adjust",
-      "IMC": "Calculated BMI",
-      "meal_plan": "Sample Meal Plan",
-      "total_days": "Estimated Days to Reach Target",
-      "weight_per_week": "Weight Adjustment per Week",
-    };
-
-    // Customize based on objective (replace with real calculations)
-    plannerData["target"] = objective == "Ganhar Peso" ? 150 : 130;
-
-    return jsonEncode(plannerData);
-  }
-}
-
-class IAplanner {
-  final List<String> objetivo = ["Ganhar Peso", "Manter Peso", "Perder Peso"];
-  String user_data = ''; // Initialize with empty string
-
-  String get output_format => """
-  range: Range of ideal weight,
-  target: Target weight,
-  difference: Weight i need to loose or gain,
-  IMC: Imc calculado,
-  meal_plan: Meal plan for 7 days,
-  total_days: Total days to reach target weight,
-  weight_per_week: Weight to loose or gain per week
-  """;
-
-  Future<String> gerarPrompt() async {
-    user_data = await GeminiController().connectApi();
-    return "Me de a informação, siga o output no seguinte formato. \n Me o o output em formato em json, somente em json \n $output_format";
-  }
-}
-
-class InputField extends StatelessWidget {
-  final String labelText;
-  final String? Function(String?)? validator;
-  final TextInputType? keyboardType;
-
-  const InputField({
-    Key? key,
-    required this.labelText,
-    this.validator,
-    this.keyboardType,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: labelText),
-      validator: validator,
-      keyboardType: keyboardType,
-    );
-  }
-}
 
 class PlanoDeTreinoWidget extends StatefulWidget {
   const PlanoDeTreinoWidget({super.key});
@@ -84,6 +16,8 @@ class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
   final _formKey = GlobalKey<FormState>();
   final _controller = GeminiController();
   final _planner = IAplanner();
+
+  
   String _results = '';
   String _selectedObjective = 'Manter Peso';
 
@@ -97,9 +31,7 @@ class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text("IA MEAL PLANNER"),
         ),
@@ -164,8 +96,14 @@ class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
                   },
                   child: const Text('Gerar Plano de Treino'),
                 ),
+
+                // animated text c3po
+                  // 8:14 front end com cards em colunas dos dados do usuario
+                // resultado esperado é um formato json para cada dia e os dados iniciais
                 if (_results.isNotEmpty) ...[
                   const SizedBox(height: 16.0),
+
+                 // Plano gerado organizado e bem informativo para o usuario
                   Text('Plano Gerado:',
                       style: Theme.of(context).textTheme.headline6),
                   const SizedBox(height: 8.0),
@@ -175,7 +113,6 @@ class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
