@@ -78,6 +78,7 @@ dependencies:
   camera: ^0.9.8+1
   ar_core: ^0.0.2+7
   excel: ^4.0.3
+  csv: ^6.0.0
 
 dev_dependencies:
   flutter_test:

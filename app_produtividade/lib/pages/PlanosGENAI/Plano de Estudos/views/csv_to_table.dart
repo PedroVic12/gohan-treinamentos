@@ -72,12 +72,12 @@ class _CsvDataTableState extends State<CsvDataTable> {
                       .sublist(1)
                       .map((row) => DataRow(
                           cells: row
-                              .map((cell) => DataCell(Text(cell.toString()),
-                                  onTap: () {
+                              .map((cell) =>
+                                  DataCell(Text(cell.toString()), onTap: () {
                                     // Ao clicar em uma célula, atualiza a data
                                     // e recalcula os dias restantes
                                     setState(() {
-                                      _data![1][1] = cell.toString(); 
+                                      _data![1][1] = cell.toString();
                                       _calcularDiasRestantes();
                                     });
                                   }))
