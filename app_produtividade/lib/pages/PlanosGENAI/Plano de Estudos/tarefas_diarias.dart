@@ -21,12 +21,13 @@ class _PlanoEstudosOrganizacaoState extends State<PlanoEstudosOrganizacao> {
 
   List<List<String?>> rows = [
     ['Eletromag', '24/04', '0'],
-    ['Eletromag p1 online', '08/05', ''],
-    ['Circuitos CC', '18/04', '3.8'],
-    ['Fetran testes', '04/05', 'TODO'],
-    ['Fetran relatorio pratico', '09/05', 'TODO'],
-    ['Circuitos Digitaisl P1', '08/05', 'TODO'],
-    ['Ruby express', '05/05', 'TODO'],
+    ['Circuitos CC P1', '18/04', '3.8'],
+    ['Circuitos CC P2', '20/05', '3.8'],
+    ['Fetran p1', '16/05', 'TODO'],
+    ['Fetran testes', '16/05', 'TODO'],
+    ['Fetran relatorio pratico', '15/05', 'TODO'],
+    ['Circuitos Digitais P1', '08/05', 'TODO'],
+    ['Ruby express', '20/05', 'TODO'],
   ];
 
   void updateRows(List<List<String?>> updatedRows) {
@@ -45,7 +46,7 @@ class _PlanoEstudosOrganizacaoState extends State<PlanoEstudosOrganizacao> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('QUADRO DE HORARIOS '),
+          title: Text('QUADRO DE HORARIOS 2024 '),
         ),
         body: Center(
           child: Column(
