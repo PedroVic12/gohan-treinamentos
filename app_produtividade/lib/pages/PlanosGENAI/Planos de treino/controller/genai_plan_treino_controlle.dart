@@ -4,6 +4,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'dart:convert';
 
+// ! Recuperação muscular
+//1) Me atentaria a minha ingestão de calorias para não fazer dietas muitos restritivas por que isso pode impactar diretamente na recuperação.
+
+//2) Começaria a prestar atenção na quantidade de água que eu consumo no dia, principalmente nos dias mais quentes e que os treinos são mais longos e intensos.
+
+//3) Dormiria 30min mais cedo que o meu habitual, evitaria luz artificial e estimulantes, e investiria em chás calmantes para ajudar a melhorar a qualidade do meu sono.
+
+//4) Aumentaria o meu consumo de frutas, legumes e verduras por que eles possuem compostos que podem maximizar a minha recuperação e a adaptação aos treinos.
+
+//5) Não deixaria de consumir bons carboidratos ao longo dia para manter meus estoques de glicogênio cheios, principalmente próximos aos meus horários de treino.
+
+
 class GeminiController {
   final gemini = Gemini.instance;
   bool isLoading = false;
