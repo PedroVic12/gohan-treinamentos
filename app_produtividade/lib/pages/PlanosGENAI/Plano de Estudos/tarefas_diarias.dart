@@ -60,6 +60,10 @@ class _PlanoEstudosOrganizacaoState extends State<PlanoEstudosOrganizacao> {
                   onUpdate: updateRows,
                 ),
               ),
+              Container(
+                height: 1200,
+                child: TodoListWidget()
+              )
             ],
           ),
         ),
