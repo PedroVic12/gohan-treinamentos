@@ -1,4 +1,4 @@
-# IA THE AGE 2024
+# IA THE AGE 2024 - 30/08/2024
 
 
 ## Inovação
@@ -18,7 +18,7 @@
 ## Etapas de um projeto
 1) Planejamento
 2) Levantamento de requisitos
-3) Modelagem de dados e Logica de negocios
+3) Modelagem de dados(5 etapas) e Logica de negocios
 4) Backend com models e Crud simples
 5) API com link do server
 6) Front End
@@ -27,6 +27,10 @@
 
 
 ## Levantamento de Requisitos para Landing Page Moderna 
+**Gerenciamento de Conteúdo:** Podemos integrar um CMS simples para que os clientes possam atualizar informações básicas como textos e imagens sem precisar de conhecimento técnico
+
+**Customização:** Cada cliente terá um arquivo de configuração (JSON ou JavaScript) para personalizar o template com sua marca: - Logotipo - Paleta de cores - Imagens - Textos - 
+
 
 ### Objetivo: 
 Criar uma landing page moderna, visualmente atraente e otimizada para conversão, com o objetivo de [inserir objetivo principal da página, ex.: capturar leads, apresentar um novo produto, etc.]. 
