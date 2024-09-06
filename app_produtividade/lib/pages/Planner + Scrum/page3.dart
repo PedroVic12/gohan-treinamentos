@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:app_produtividade/widgets/Layout/card_soft.dart';
 import 'package:get/get.dart';
 
-import 'Views/Tabela.dart';
-
 class Page3 extends StatelessWidget {
   Page3({Key? key}) : super(key: key);
 

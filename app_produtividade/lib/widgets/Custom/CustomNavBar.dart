@@ -3,8 +3,6 @@ import 'package:app_produtividade/pages/Todo%20List/TodoListViewPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../pages/5 Hobbies/BlogPage.dart';
-
 class CustomNavBar extends StatelessWidget {
   final List<NavigationBarItem> navBarItems;
   final navColor;
@@ -56,5 +54,3 @@ class CustomLabel extends StatelessWidget {
     );
   }
 }
-
-

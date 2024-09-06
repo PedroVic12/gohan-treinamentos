@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../widgets/Custom/CustomNavBar.dart';
-import '../../widgets/drag_BOX.dart';
 import 'Board/kanban_column.dart';
 
 class KanbanPage extends StatelessWidget {

@@ -106,9 +106,13 @@ class C3PoAssistente {
     Clipboard.setData(ClipboardData(text: textoReconhecido));
   }
 
-  Future<String?> generateText(String text) async {}
+  Future<String?> generateText(String text) async {
+    return null;
+  }
 
-  Future<String?> describeImage(String imagePath, String prompt) async {}
+  Future<String?> describeImage(String imagePath, String prompt) async {
+    return null;
+  }
 
   pickImage() {}
 

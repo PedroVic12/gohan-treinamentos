@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:app_produtividade/pages/Lista%20de%20Filmes/filmes_controller.dart';
 import 'package:flutter/material.dart';

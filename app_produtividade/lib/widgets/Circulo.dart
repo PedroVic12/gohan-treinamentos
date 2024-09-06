@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class CircleWithText extends StatelessWidget {
   @override
@@ -118,8 +117,8 @@ class _ArrowPainter extends CustomPainter {
     canvas.drawPath(arrowPath, paint);
 
     var circlePaint = Paint()..color = Colors.blue;
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), size.width / 2,
-        circlePaint);
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), size.width / 2, circlePaint);
   }
 
   @override

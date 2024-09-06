@@ -101,10 +101,8 @@ class _EditarNotasState extends State<EditarNotas> {
       // Editando uma nota existente
       Note? note =
           Get.find<NotesController>().observableBox.getAt(widget.index);
-      if (note != null) {
-        titleController.text = note.title ?? '';
-        noteController.text = note.note ?? '';
-      }
+      titleController.text = note.title ?? '';
+      noteController.text = note.note ?? '';
     }
   }
 

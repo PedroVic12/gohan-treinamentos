@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:open_file/open_file.dart';
 
-
 class PegandoArquivosPage extends StatefulWidget {
   const PegandoArquivosPage({Key? key}) : super(key: key);
 
@@ -41,7 +40,7 @@ class _PegandoArquivosPageState extends State<PegandoArquivosPage> {
                 var results;
                 controller.lerVariosArquivos(results);
 
-                if (results == null) return;
+                return;
 
                 //abrindo o arquivo
                 final file_object = results.files.first;

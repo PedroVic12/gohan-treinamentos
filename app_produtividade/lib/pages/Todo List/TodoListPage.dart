@@ -5,7 +5,6 @@ import 'package:app_produtividade/pages/Todo%20List/TodoListViewPage.dart';
 import 'package:app_produtividade/pages/Todo%20List/TodoScreen.dart';
 
 //packages
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 //! Tela onde mostra as listas
