@@ -1,64 +1,79 @@
 {
   "treinos": {
     "Pull": {
-      "1": [
-        "100 Pull Ups - Next",
+      "1:[
+        "100 Pull ups - Chris Heria",
         "",
-        "Normal"
+        "Normal",
       ],
-      "2": [
-        "50 Bent-over Rows",
-        "Rest for 60 seconds",
-        "Medium"
-      ]
+
+      "2:[
+        "Skin the Cat + 100 Pull ups + Muscle Up",
+        "",
+        "Sayajin",
+      ],
     },
     "Push": {
       "1": [
-        "50 Push Ups - Next",
-        "",
+        "100 Pull Ups - Next",
+        "https://www.youtube.com/watch?v=X4XDkWOlQD8",
         "Normal"
       ],
       "2": [
-        "30 Bench Press - 70% 1RM",
-        "Rest for 90 seconds",
-        "Hard"
+        "100 Push ups - Chris Heria",
+        "https://www.youtube.com/watch?v=IYLxm0T6qls",
+        "Sayajin"
+      ],
+      "3": [
+        "5 minutes 30x30",
+        "",
+        "Normal"
+      ],
       ]
     },
     "ABS": {
       "1": [
-        "Plank - 1 minute",
-        "",
+        "Get ABS in 28 Days",
+        "https://www.youtube.com/watch?v=TIMghHu6QFU",
         "Normal"
       ],
       "2": [
-        "30 Bicycle Crunches",
-        "Rest for 30 seconds",
-        "Easy"
+        "DO THIS ABS WORKOUT EVERY DAY",
+        "https://www.youtube.com/watch?v=xRXhpMsLaXo&t=285s",
+        "Normal"
       ]
     },
     "Legs": {
       "1": [
-        "Squats - 3 sets of 15",
-        "Rest for 60 seconds",
-        "Medium"
-      ],
-      "2": [
-        "Leg Press - 4 sets of 10",
-        "Rest for 90 seconds",
-        "Hard"
-      ]
-    },
-    "Skill_Moves": {
-      "1": [
-        "10 Minutes of Dribbling Drills",
+        "100 Squads a Day - Chris Heria",
         "",
         "Normal"
       ],
+
+    },
+    "Skill_Moves": {
+      "1": [
+        "10 Muscle Ups",
+        "",
+        "Sayajin"
+      ],
       "2": [
-        "5 Minutes of Juggling",
-        "Focus on control",
-        "Easy"
-      ]
+        "50 Pseudo Push Ups",
+        "",
+        "Normal"
+      ],
+      "3": [
+        "FrogStand + Plance",
+        "",
+        "Sayajin"
+      ],
     }
+  },
+
+  "alongamentos":{
+    "Flow Legs":"",
+    "Split legs":"",
+    "Full Body Flow + taps":"",
+    "Sleep Flow":"",
   }
 }
