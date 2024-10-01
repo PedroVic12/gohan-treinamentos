@@ -51,6 +51,8 @@
       ],
 
     },
+
+  },
     "Skill_Moves": {
       "1": [
         "10 Muscle Ups",
@@ -67,9 +69,7 @@
         "",
         "Sayajin"
       ],
-    }
-  },
-
+    },
   "alongamentos":{
     "Flow Legs":"",
     "Split legs":"",
