@@ -1,5 +1,4 @@
 import 'package:app_produtividade/pages/Home%20Page/GohanTreinamentosPage.dart';
-import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/Board/kanban_board.dart';
 import 'package:app_produtividade/pages/Planner%20+%20Scrum/Views/Kanban/KanbanPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +9,8 @@ import 'package:get/get.dart';
 import 'package:app_produtividade/pages/Calistenia%20App/page1.dart';
 import 'package:app_produtividade/pages/page2.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import 'pages/5 Hobbies/BlogPage.dart';
-import 'pages/5 Hobbies/CRUD HIVE/models/task.dart';
 
 List<String> titles = <String>['Cloud', 'Beach', 'Sunny', '(24)99319-9126 '];
 ThemeData lightMode = ThemeData(
@@ -32,11 +28,6 @@ void main() async {
   GetStorage.init();
 
   WidgetsFlutterBinding.ensureInitialized();
-
-  //Hive
-  await Hive.initFlutter();
-  Hive.registerAdapter(TaskAdapter());
-  await Hive.openBox<Task>('tasks');
 
   try {
     //flutter run –dart-define-from-files=.env

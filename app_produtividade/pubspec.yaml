@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.0.5
   get_storage: ^2.1.1
   http: ^0.13.5
+  archive: ^3.5.0
   youtube_player_flutter: ^8.1.2
   url_launcher: ^6.1.10
   percent_indicator: ^4.2.3
@@ -64,7 +65,7 @@ dependencies:
   speech_to_text: ^6.6.1
   google_generative_ai: ^0.0.1-dev
   flutter_gemini: ^2.0.3
-  fluent_ui: ^4.8.7
+  fluent_ui: ^1.2.3
   animated_text_kit: ^4.2.2
   dash_chat_2: ^0.0.20
   flutter_drawing_board: ^0.7.0+2
@@ -72,7 +73,6 @@ dependencies:
   image_picker: ^1.0.8
   file_saver: ^0.2.12
   font_awesome_flutter: ^10.7.0
-  flutter_colorpicker: ^1.0.3
   flutter_svg: ^2.0.9
   arcore_flutter_plugin: ^0.1.0
   camera: ^0.9.8+1

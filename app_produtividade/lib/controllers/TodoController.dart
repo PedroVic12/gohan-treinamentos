@@ -9,7 +9,7 @@ class TodoController extends GetxController {
   void onInit() {
     List? storedTodos = GetStorage().read<List>('TODO Itens');
 
-    todoItens.assignAll(storedTodos.map((todo) => TodoList.fromMap(todo)));
+    todoItens.assignAll(storedTodos!.map((todo) => TodoList.fromMap(todo)));
 
     ever(todoItens, (_) {
       GetStorage().write('TODO Itens', todoItens.toList());

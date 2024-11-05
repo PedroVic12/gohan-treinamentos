@@ -1,6 +1,5 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
 import 'package:app_produtividade/controllers/Calistenia-App/portifolio_page.dart';
-import 'package:app_produtividade/pages/Notes%20App/views/DrawingPage.dart';
 import 'package:app_produtividade/pages/PlanosGENAI/Planos%20de%20treino/plano_treino_view.dart';
 import 'package:app_produtividade/pages/Page6.dart';
 import 'package:app_produtividade/pages/QuizzPage/views/QuizzPage.dart';
@@ -56,13 +55,6 @@ class DrawerNavigation extends StatelessWidget {
             onTap: () {
               navegar(context, PortifolioPage());
             },
-          ),
-          navigator(
-            'Notas e Cards app',
-            () {
-              Get.to(const DrawingPage());
-            },
-            Icons.book,
           ),
           ListTile(
             title: const Text('Todo List 2024'),

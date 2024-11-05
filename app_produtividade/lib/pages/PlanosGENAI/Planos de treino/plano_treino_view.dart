@@ -116,7 +116,7 @@ class _PlanoDeTreinoWidgetState extends State<PlanoDeTreinoWidget> {
 
                 // Plano gerado organizado e bem informativo para o usuario
                 Text('Plano Gerado:',
-                    style: Theme.of(context).textTheme.headline6),
+                    style: Theme.of(context).textTheme.bodyLarge),
                 const SizedBox(height: 8.0),
                 Text(_results),
               ],

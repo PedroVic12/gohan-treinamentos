@@ -1,4 +1,3 @@
-import 'package:app_produtividade/pages/5%20Hobbies/CRUD%20HIVE/views/task_view.dart';
 import 'package:app_produtividade/widgets/BotaoNavega%C3%A7ao.dart';
 import 'package:app_produtividade/widgets/Layout/MapaMentalWidget.dart';
 import 'package:flutter/material.dart';
@@ -297,7 +296,6 @@ class HistoricoDesempenhoCardWidget extends StatelessWidget {
                     'Pesquisa -> Planejamento -> Execução -> Correção de falhas'),
               ]),
             ),
-            BotaoNavegacao(pagina: TaskView(), titlePagina: 'CRUD HIVE'),
           ],
         ),
       ),
