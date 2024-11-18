@@ -88,8 +88,8 @@ class GohanTreinamentosPage extends StatelessWidget {
           _dailyQuote(),
           _scheduleSection(),
           _dayObjectives(),
-          _virtualAssistantNotes(),
-          _otherLinks(),
+          //_virtualAssistantNotes(),
+          //_otherLinks(),
         ],
       ),
     );
