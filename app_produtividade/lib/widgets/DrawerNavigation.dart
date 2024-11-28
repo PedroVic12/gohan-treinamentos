@@ -1,5 +1,4 @@
 import 'package:app_produtividade/C3PO/assistente.dart';
-import 'package:app_produtividade/controllers/Calistenia-App/portifolio_page.dart';
 import 'package:app_produtividade/pages/PlanosGENAI/Planos%20de%20treino/plano_treino_view.dart';
 import 'package:app_produtividade/pages/Page6.dart';
 import 'package:app_produtividade/pages/QuizzPage/views/QuizzPage.dart';
@@ -53,7 +52,9 @@ class DrawerNavigation extends StatelessWidget {
               child: Icon(Icons.person),
             ),
             onTap: () {
-              navegar(context, PortifolioPage());
+              print(
+                  "Usar portfoio dev, backend e cientista de dados como Tabelas uasndo CRM");
+              //navegar(context, PortifolioPage());
             },
           ),
           ListTile(
